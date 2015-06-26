@@ -28,6 +28,8 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'mysql2'
+gem 'haml-rails'
 
 
 # irbの上位互換pryを使用
@@ -44,15 +46,6 @@ gem 'hirb-unicode'
 # ログを見やすくする
 gem 'quiet_assets'
 
-group :development, :test do
-gem 'mysql2'
-end
-
 group :doc do
  gem 'sdoc', '0.3.20', require: false
-end
-
-group :production do
- gem 'mysql2'
- gem 'rails_12factor', '0.0.2'
 end
