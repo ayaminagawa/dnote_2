@@ -1,0 +1,18 @@
+!!! 5
+%html{:lang =>"ja"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title
+      dnote_2
+    %meta{:viewport =>""}    
+    %link{:rel => "stylesheet", :href => "styles/css/application.css"}
+    %script{:src => "scripts/application.js"}
+    %script{:src => "//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"}
+    %link{:rel => "stylesheet", :href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"}
+  %body
+    = render 'shared/google_analytics'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application' 
+    = csrf_meta_tags
+
+
