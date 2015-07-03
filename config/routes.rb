@@ -1,4 +1,51 @@
-Rails.application.routes.draw do
+Dnote2::Application.routes.draw do
+
+  get "/nutritionist_show" ,to: "users#nutritionist_show"
+  
+  get "contacts/new"
+  post "contacts/create"
+  
+  devise_for :nutritionists, controllers: {
+    :sessions => "users/sessions",
+    :registrations => "users/registrations"
+  }
+ 
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks",
+    :passwords => "users/passwords",
+    :registrations => "users/registrations",
+    :sessions => "users/sessions"
+  }
+
+  resources :menus
+  resources :users
+  resources :menu_recipes
+  resources :ingredients
+  resources :made_reports
+  resources :recipes
+  resources :favorites, only: [:create, :destroy]
+  resources :nutritionists
+  resources :columns
+
+
+  get "menu/new"
+  get "menu/create"
+  get "menu/destroy"
+  root  'about#index'
+  match '/about', to:'about#index', via:'get'
+  get "company", to: "about#company"
+  get "security_information", to: "about#security_information"
+  get "privacy_policy", to: "about#privacy_policy"
+
+  get "about/index"
+
+
+  get '/kinds', to:'recipes#recipe_kinds'
+  get '/categories', to:'recipes#recipe_categories'
+  get '/calories', to:'recipes#calories'
+
+  get '/menu_recipes', to:'menus#menu_recipes'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

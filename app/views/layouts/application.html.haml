@@ -9,13 +9,16 @@
     %script{:src => "scripts/application.js"}
     %script{:src => "//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"}
     %link{:rel => "stylesheet", :href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"}
-  %body
+  %body#body
     = render 'shared/google_analytics'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application' 
     = csrf_meta_tags
 
     #contents
-      = render 'render/header'
+      = render 'layouts/header_top'
+      = render 'layouts/header_nav'
+
+      = yield
 
 

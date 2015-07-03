@@ -1,0 +1,75 @@
+//ヘッダー上部
+
+#header-top{
+  background-color: #FFFFFF;
+}
+
+li.header-top__menu__item, #header-top__menu__logo{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+li.header-top__menu__item a{
+  font-size: 11px;
+}
+
+
+
+//ヘッダーナビゲーション
+
+#header-nav{
+  background-color: #F5B42A;
+}
+
+ul#header-nav__block{
+  text-align: center;
+  height: 3em;
+}
+
+li.header-nav__button, li.header-nav__search, li.header-nav__category, {
+  display: inline-block;
+  color: #FFFFFF;
+}
+
+li.header-nav__button{
+
+}
+
+li.header-nav__search{
+  background-color: #DAA024;
+}
+
+li.header-nav__category{
+  background-color: #DAA024;
+}
+
+li.header-nav__button a{
+  color: #FFFFFF;
+  display: block;
+  height: 3em;
+  padding-top: 12%;
+}
+
+li.header-nav__button a:hover,
+a:focus {
+  background-color: #DAA024;
+}
+
+li.header-nav__search p{
+  padding-top: 4%;
+  display: inline-block;
+  height: 3em;
+}
+
+li.header-nav__category a{
+  display: block;
+  height: 3em;
+}
+
+#category-dropdown-box{
+  display:none;
+}
+
+
+

@@ -1,0 +1,3 @@
+class RecipeFeelingsController < ApplicationController
+  
+end
