@@ -1,19 +1,28 @@
 %header#header-top
   .header-top-inner
-    %ul#header-top__menu
-      %li#header-top__menu__logo.col-md-offset-2
+    #header-top__menu.sp-off
+      #header-top__menu__logo.col-md-offset-2
         = link_to image_tag("logo.png" , class: "logo", alt: "dnote"), about_path
-      %li.header-top__menu__item.col-md-offset-3
+      .header-top__menu__item.col-md-offset-3
         %p.c-cercle.u-pink
           = link_to image_tag("pen_black.png", width: "40px"), new_recipe_path
         = link_to 'レシピをのせる', new_recipe_path
-      %li.header-top__menu__item
+      .header-top__menu__item
         %p.c-cercle.u-yellow
           = link_to image_tag("pen_green.png", width: "40px"), new_menu_path
         = link_to '献立をのせる', new_menu_path
-      %li.header-top__menu__item
+      .header-top__menu__item
         %p.c-cercle.u-green
           = link_to image_tag("key.png", width: "30px"), new_user_path
         = link_to 'ログイン', new_user_path
+
+    //モバイル
+    #sp-header-top__menu.pc-off
+      .sp-header-top__menu__logo.col-sm-5= link_to image_tag("dnote-sp-logo.png" , class: "logo", alt: "dnote"), about_path
+      %h1.sp-header-top__menu__logo.col-sm-5
+        糖尿病のおいしい生活
+      .sp-header-top__menu__sidebar.col-sm-2
+        = button_tag '<i class="fa fa-bars fa-5x"></i>'.html_safe, :class => "c-btn c-btn--sidebar"
+
 
 
