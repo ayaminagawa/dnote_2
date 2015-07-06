@@ -1,0 +1,66 @@
+%footer#footer
+  .footer-inner
+    #fotter__logo
+      = link_to image_tag("logo.png" , class: "logo", alt: "dnote", height: "110px"), about_path
+    #footer__nav.hidden-xs
+      %ul.footer__nav__list
+        %li.footer__nav__list__content
+          = link_to new_recipe_path do
+            %i.fa.fa-caret-right
+            お問い合わせ
+        %li.footer__nav__list__content
+          = link_to new_recipe_path do
+            %i.fa.fa-caret-right
+            利用規約
+        %li.footer__nav__list__content
+          = link_to company_path do
+            %i.fa.fa-caret-right
+            運営会社
+        %li.footer__nav__list__content
+          = link_to privacy_policy_path do
+            %i.fa.fa-caret-right
+            個人情報保護方針
+        %li.footer__nav__list__content
+          = link_to security_information_path do
+            %i.fa.fa-caret-right
+            情報セキュリティ基本方針
+      %ul.footer__nav__list
+        %li.footer__nav__list__content
+          = link_to recipes_path do
+            %i.fa.fa-caret-right
+            レシピ一覧
+        %li.footer__nav__list__content
+          = link_to menus_path do
+            %i.fa.fa-caret-right
+            献立一覧
+        %li.footer__nav__list__content
+          = link_to columns_path do
+            %i.fa.fa-caret-right
+            コラム一覧
+      %ul.footer__nav__list
+        %li.footer__nav__list__content
+          = link_to calories_path do
+            %i.fa.fa-caret-right
+            カロリー表示あり
+          - Recipe.categories.each do |key, value|
+            %li.footer__nav__list__content
+              = link_to categories_path(:r_category => key) do
+                %i.fa.fa-caret-right
+                value
+
+
+    //モバイル
+    #sp-footer__nav.visible-xs
+      %ul.sp-footer__nav__list
+        %li.sp-footer__nav__list__content.col-xs-6
+          = link_to '運営会社', company_path
+        %li.sp-footer__nav__list__content.col-xs-6
+          = link_to '個人情報保護方針', privacy_policy_path
+        %li.sp-footer__nav__list__content.col-xs-6
+          = link_to 'Twitter', user_omniauth_authorize_path(:facebook)
+        %li.sp-footer__nav__list__content.col-xs-6
+          = link_to 'Facebook', user_omniauth_authorize_path(:twitter)
+
+
+
+

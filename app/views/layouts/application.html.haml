@@ -8,6 +8,7 @@
     %link{:rel => "stylesheet", :href => "styles/css/application.css"}
     %script{:src => "scripts/application.js"}
     %script{:src => "//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"}
+    %meta{:name => "viewport", :content => "width=device-width; initial-scale=1.0"}
     %link{:rel => "stylesheet", :href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"}
   %body#body
     = render 'shared/google_analytics'
@@ -21,5 +22,7 @@
       = render 'layouts/sidebar'
 
       = yield
+
+      = render 'layouts/footer'
 
 

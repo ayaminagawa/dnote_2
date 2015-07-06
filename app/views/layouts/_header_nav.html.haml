@@ -1,11 +1,11 @@
 %header#header-nav
   .header-nav-inner
-    #header-nav__block.sp-off
-      .header-nav__button.col-md-1.col-md-offset-2= link_to 'HOME', root_path
-      .header-nav__button.col-md-1= link_to 'レシピ一覧', recipes_path
-      .header-nav__button.col-md-1= link_to '献立', menus_path
-      .header-nav__button.col-md-1= link_to 'コラム', columns_path
-      .header-nav__search.col-md-3>
+    %ul#header-nav__block.hidden-xs
+      %li.header-nav__button.col-md-1.col-md-offset-2= link_to 'HOME', root_path
+      %li.header-nav__button.col-md-1= link_to 'レシピ一覧', recipes_path
+      %li.header-nav__button.col-md-1= link_to '献立', menus_path
+      %li.header-nav__button.col-md-1= link_to 'コラム', columns_path
+      %li.header-nav__search.col-md-3>
         %p<>
           レシピを探す 
         = form_tag recipes_path, :method => 'get' do 
