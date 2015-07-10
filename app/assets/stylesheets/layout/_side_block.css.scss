@@ -1,0 +1,49 @@
+//トップページサイド
+
+.index-side{
+  border: 3px solid #F5B42A;
+  background-color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+
+.index-side__title{
+  height: 30px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.index-side__title__font{
+  position: relative;
+  top: -23px;
+}
+
+
+.index-side__image{
+  text-align: center;
+}
+
+.index-side__contents p{
+  color: #896650;
+  font-size: 10px;
+}
+
+.index-side__list__item{
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #A69480;
+}
+
+.index-side__list__item img{
+  width: 25px;
+}
+
+.index-side__list__item a{
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.search-bar-2{
+  width: auto;
+}

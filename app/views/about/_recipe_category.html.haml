@@ -1,0 +1,19 @@
+.index-main.hidden-xs
+  .index-main__top
+    .index-main__top__english
+      %p Category
+    .index-main__top__japanese.col-md-10
+      %p.u-white-1.c-circle.c-large.u-green-2 レ
+      %p.u-white-1.c-circle.c-large.u-green-2 シ
+      %p.u-white-1.c-circle.c-large.u-green-2 ピ
+      %p.c-circle.c-large.u-beige-2 カ
+      %p.c-circle.c-large.u-beige-2 テ
+      %p.c-circle.c-large.u-beige-2 ゴ
+      %p.c-circle.c-large.u-beige-2 リ
+    
+  %ul.index-main__contents--recipe-category
+    - Recipe.arr.each do |key, image, name|
+      %li.index-main__contents--recipe-category__item.u-mt10
+        = link_to kinds_path(:r_kind => key) do
+          = image_tag image 
+          = name

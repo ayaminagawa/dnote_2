@@ -1,0 +1,36 @@
+#recipe__show.letter-spacing
+  
+  #contents-inner.contents-inner__cover
+    .contents-inner__white.hidden-xs.clearfix
+      .recipe__show__main.hidden-xs
+        .recipe__show__top
+          .recipe__show__name-favorite.u-ls-2
+            = link_to @recipe.name, recipe_path(@recipe)
+            .button#save-btn
+
+          .recipe__show__description.u-ls-2
+            = @recipe.description
+          .recipe__show__kcal-user-name.u-ls-2.clearfix
+            .recipe__show__kcal
+              %i.fa.fa-fire
+              = @recipe.calorie
+              kcal
+            .recipe__show__user-name
+              = link_to @recipe.user.name, user_path(@recipe.user)
+          .recipe__show__image-ingredient
+            .recipe__show__image.col-md-5{style:"background-image: url('%{@recipe.image.url}');"}
+            %ul.recipe__show__ingredient.col-md-5 
+              %li.ingredient__top
+                材料
+                = @recipe.people
+                人分
+              - @ingredients.each do |ingredient|
+                %li.ingredient__list
+                  .ingredient-name
+                    = ingredient.name
+                  .ingredient-quantity
+                    = ingredient.volume
+
+        .recipe__show__procedure
+        .recipe__show__point
+      =render 'layouts/side_block'

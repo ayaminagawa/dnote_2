@@ -24,21 +24,39 @@ li {
 }
 
 #body {
-  background-color: #FAF0E6;
+  background-image: url('bg_dot.png');
+  background-repeat: repeat;
+  z-index: 0;
+  letter-spacing:0.6pt;
 }
 
 form{
   display: inline;
 }
 
-@media (max-width: 992px){
-  .sp-off {
-    display: none !important;
-  }
+#contents-inner{
+  margin-right: 200px;
+  margin-left: 200px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-@media (min-width: 992px) {
-  .pc-off {
-    display: none !important;
-  }
+.contents-inner__white{
+  background-color: #FFFFFF;
+  margin: 10px 10px 10px 10px;
+  z-index: 1;
+  padding: 15px 15px 15px 15px;
+}
+
+.contents-inner__cover{
+  background-image: url('bg_check.png');
+  background-repeat: repeat;
+  z-index: 2;
+}
+
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
 }

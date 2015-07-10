@@ -1,7 +1,7 @@
 %footer#footer
   .footer-inner
-    #fotter__logo
-      = link_to image_tag("logo.png" , class: "logo", alt: "dnote", height: "110px"), about_path
+    #fotter__logo.hidden-xs
+      = link_to image_tag("sp-footer-logo.png" , class: "logo", alt: "dnote", height: "110px"), about_path
     #footer__nav.hidden-xs
       %ul.footer__nav__list
         %li.footer__nav__list__content
@@ -50,6 +50,8 @@
 
 
     //モバイル
+    #sp-fotter__logo.visible-xs
+      = link_to image_tag("sp-footer-logo.png" , class: "logo", alt: "dnote", height: "50px"), about_path
     #sp-footer__nav.visible-xs
       %ul.sp-footer__nav__list
         %li.sp-footer__nav__list__content.col-xs-6

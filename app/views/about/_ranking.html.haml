@@ -1,0 +1,73 @@
+.index-main.hidden-xs
+  .index-main__top.clearfix
+    .index-main__top__english
+      %p Ranking
+    .index-main__top__japanese.col-md-10
+      %p.u-white-1.c-circle.c-large.u-yellow-2 人
+      %p.u-white-1.c-circle.c-large.u-yellow-2 気
+      %p.u-white-1.c-circle.c-large.u-yellow-2 の
+      %p.c-circle.c-large.u-beige-2 レ
+      %p.c-circle.c-large.u-beige-2 シ
+      %p.c-circle.c-large.u-beige-2 ピ
+    .index-main__top__link.col-md-2
+      = link_to new_recipe_path do
+        = @d.month
+        月ランキング
+  %ul.index-main__contents__cover.clearfix
+    .index-main__contents.clearfix
+      - i = 0
+      - @favorite_recipes.each do |favorite_recipe|
+        - i += 1
+        %li.index-main__contents__item.col-md-4.u-pr10.u-pl10
+          .ranking-item__top.u-pink-1
+            =image_tag "crown.png"
+            = i
+            位
+          .ranking-item__image
+            = link_to recipe_path(favorite_recipe) do 
+              .ranking-item__image{style:"background-image: url(%{favorite_recipe.image.url});"}
+          .ranking-item__name
+            = link_to favorite_recipe.name, recipe_path(favorite_recipe)
+          .ranking-item__description
+            = favorite_recipe.description
+          .ranking-item__user-name
+            = link_to favorite_recipe.user.name, user_path(favorite_recipe.user)
+
+//モバイル
+
+.mobile-index-main.visible-xs
+  .mobile-index-main__top.clearfix
+    .index-main__top__english.col-xs-8
+      %p Ranking
+    .mobile-index-main__top__link.col-xs-4
+      = link_to new_recipe_path do
+        = @d.month
+        月ランキング
+  .mobile-index-main__top__japanese.col-md-10
+    %p.u-white-1.c-circle.c-mobile.u-yellow-2 人
+    %p.u-white-1.c-circle.c-mobile.u-yellow-2 気
+    %p.u-white-1.c-circle.c-mobile.u-yellow-2 の
+    %p.c-circle.c-mobile.u-beige-2 レ
+    %p.c-circle.c-mobile.u-beige-2 シ
+    %p.c-circle.c-mobile.u-beige-2 ピ
+  %ul.mobile-index-main__contents__cover.clearfix
+    .index-main__contents.clearfix
+      - i = 0
+      - @favorite_recipes.each do |favorite_recipe|
+        - i += 1
+        %li.mobile-index-main__contents__item.u-pr10.u-pl10
+          .ranking-item__image.col-xs-5
+            = link_to recipe_path(favorite_recipe) do 
+              .ranking-item__image{style:"background-image: url(%{favorite_recipe.image.url});"}
+          .ranking-item__name.col-xs-7
+            = link_to favorite_recipe.name, recipe_path(favorite_recipe)
+            .ranking-item__description
+              = favorite_recipe.description
+          .mobile-ranking-item__top.u-white-1.c-circle.c-small.u-pink-2
+            = i
+          .mobile-ranking-item__top.u-white-1.c-circle.c-small.u-pink-2
+            位
+
+
+
+

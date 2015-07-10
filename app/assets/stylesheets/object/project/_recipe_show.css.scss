@@ -1,0 +1,33 @@
+//レイアウト
+
+.recipe__show__main{
+  width: 65%;
+  float: left;
+}
+
+//細かい設定
+
+.recipe__show__name-favorite a{
+  color: #EF8766;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.recipe__show__kcal{
+  float: left;
+  font-size: 20px;
+  color: #EF8766;
+}
+
+.recipe__show__user-name{
+  border-bottom: 1px solid #000000;
+  float: right;
+}
+
+.ingredient__top{
+  background-color: #E2D1B6;
+}
+
+.ingredient__list{
+  background-color: #FAF5F0;
+}

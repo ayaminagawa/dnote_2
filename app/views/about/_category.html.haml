@@ -1,0 +1,17 @@
+.index-side.hidden-xs
+  .index-side__title
+    = image_tag 'side_title.png'
+    .index-side__title__font.u-white-1
+      %i.fa.fa-cutlery カテゴリーから探す
+  .index-side__contents
+    %ul.index-side__contents__list
+      %li.index-side__list__item.u-mr20.u-ml20
+        =link_to calories_path do
+          = image_tag 'spoon.png'
+          カロリー表示あり
+      - Recipe.categories.each do |key, value|
+        %li.index-side__list__item.u-mr20.u-ml20
+          =link_to categories_path(:r_category => key) do
+            = image_tag 'spoon.png'
+            = value
+

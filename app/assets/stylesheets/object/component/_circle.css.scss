@@ -1,7 +1,22 @@
 .c-circle{
-    height: 40px;
-    width: 40px;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
+}
+
+//サイズ
+
+.c-large{
+  height: 40px;
+  width: 40px;
+}
+
+.c-small{
+  height: 25px;
+  width: 25px;
+}
+
+.c-mobile{
+  height: 30px;
+  width: 30px;
 }

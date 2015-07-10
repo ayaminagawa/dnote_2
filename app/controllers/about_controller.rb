@@ -1,6 +1,7 @@
 class AboutController < ApplicationController
   def index
-  	@favorite_recipes = Favorite.favorite_count.map{|recipe_id| Recipe.find_by(id: recipe_id)}
+  	# @favorite_recipes = Favorite.favorite_count.map{|recipe_id| Recipe.find_by(id: recipe_id)}
+    @favorite_recipes = Recipe.limit(3)
   	@todays_menu = Menu.find(:last)
 
   	@todays_recipes = @todays_menu.recipes

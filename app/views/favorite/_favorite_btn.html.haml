@@ -1,0 +1,5 @@
+- if user_signed_in?
+  - if current_user.favorite_recipe?(recipe) 
+    = render 'favorites/destroy', recipe: recipe
+  - else
+    = render 'favorites/create', recipe: recipe

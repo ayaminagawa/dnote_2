@@ -1,0 +1,80 @@
+.index-main.hidden-xs
+  .index-main__top.clearfix
+    .index-main__top__english
+      %p Today's menu
+    .index-main__top__japanese.col-md-10
+      %p.u-white-1.c-circle.c-large.u-pink-2 本
+      %p.u-white-1.c-circle.c-large.u-yellow-2 日
+      %p.u-white-1.c-circle.c-large.u-green-2 の
+      %p.c-circle.c-large.u-beige-2 献
+      %p.c-circle.c-large.u-beige-2 立
+      %p.c-circle.c-large.u-beige-2 て
+    .index-main__top__link.col-md-2
+      = link_to new_recipe_path do
+        %i.fa.fa-caret-right
+        一覧を見る
+  .index-main__contents__cover.clearfix
+    .index-main__contents.clearfix
+      .index-main__contents__image.col-md-6
+        = link_to menu_path(@todays_menu) do
+          .index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
+      .index-main__contents__description.col-md-6
+        .index-main__recipe.index-main__recipe--name
+          = link_to menu_path(@todays_menu) do
+            %i.fa.fa-caret-right
+            = @todays_menu.name
+        %p.index-main__recipe.u-lighter
+          = @todays_menu.point
+        .index-main__recipe
+          %ul
+            %li.index-main__recipe__li
+              .index-main__recipe__select.c-circle.c-small.u-pink-2.u-white-1 主
+              .index-main__recipe__name
+                =link_to @main_recipe.name, recipe_path(@main_recipe)
+            - @side_recipes.each do |recipe|
+              %li.index-main__recipe__li
+                .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
+                .index-main__recipe__name
+                  =link_to recipe.name, recipe_path(recipe)
+        .index-main__recipe--user
+          = link_to user_path(@todays_menu.user) do
+            by
+            = @todays_menu.user.name
+
+//モバイル
+
+.mobile-index-main.visible-xs
+  .index-main__top.clearfix
+    .mobile-index-main__top.clearfix
+      .index-main__top__english.col-xs-8
+        %p Today's menu
+      .mobile-index-main__top__link.col-xs-4
+        = link_to new_recipe_path do
+          %i.fa.fa-caret-right
+          一覧を見る  
+    .mobile-index-main__top__japanese
+      %p.u-white-1.c-circle.c-mobile.u-pink-2 本
+      %p.u-white-1.c-circle.c-mobile.u-yellow-2 日
+      %p.u-white-1.c-circle.c-mobile.u-green-2 の
+      %p.c-circle.c-mobile.u-white-2 献
+      %p.c-circle.c-mobile.u-white-2 立
+  .index-main__contents
+    .mobile-index-main__contents__image
+      = link_to menu_path(@todays_menu) do
+        .index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
+    .mobile-index-main__contents__name
+      = link_to @todays_menu.name, menu_path(@todays_menu)
+    .mobile-index-main__recipe
+      %ul
+        %li.index-main__recipe__li
+          .index-main__recipe__select.c-circle.c-small.u-pink-2.u-white-1 主
+          .index-main__recipe__name
+            =link_to @main_recipe.name, recipe_path(@main_recipe)
+            - @side_recipes.each do |recipe|
+              %li.index-main__recipe__li
+                .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
+                .index-main__recipe__name
+                  = link_to recipe.name, recipe_path(recipe)
+          %p.mobile-index-main__recipe.u-lighter.u-dark-grey-1.u-pr10.u-pl10
+            = @todays_menu.point
+

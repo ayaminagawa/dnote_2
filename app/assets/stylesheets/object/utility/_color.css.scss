@@ -1,15 +1,53 @@
-.u-pink{
+//フォントカラー(-1)
+
+.u-white-1{
+  color: #FFFFFF;
+}
+
+.u-grey-1{
+  color: #848484;
+}
+
+.u-dark-grey-1{
+　color: #5F5C54;
+}
+
+.u-pink-1{
+  color: #EF8766;
+}
+
+.u-brown{
+  color: #815D47;
+}
+
+//背景カラー(-2)
+
+.u-pink-2{
   background-color: #EF8766;
 }
 
-.u-yellow{
+.u-yellow-2{
   background-color: #F5B42A;
 }
 
-.u-green{
+.u-green-2{
   background-color: #3C9547;
 }
 
-.u-grey{
-  color: #848484;
+.u-beige-2{
+  background-color: #AFA896;
+}
+
+.u-white-2{
+  background-color: #FFFFFF;
+}
+
+//太字
+
+.u-bold{
+  font-weight: bold;
+}
+
+.u-lighter{
+  font-weight: lighter;
 }
