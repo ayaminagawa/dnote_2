@@ -1,8 +1,12 @@
 //レイアウト
 
 .recipe__show__main{
-  width: 65%;
   float: left;
+}
+
+#recipe__show__main-contents{
+  float: left;
+  width: 60%;
 }
 
 //細かい設定
@@ -26,8 +30,70 @@
 
 .ingredient__top{
   background-color: #E2D1B6;
+  height: 37px;
+  line-height: 37px;
+  padding-left: 25px;
+  border-bottom: 4px solid #CCC4BB;
+}
+
+.recipe__show__procedure{
+  margin-top: 30px;
 }
 
 .ingredient__list{
   background-color: #FAF5F0;
+  height: 37px;
+  line-height: 37px;
+  padding-left: 25px;
+  border-bottom: 3px solid #F0E9E0;
+}
+
+.procedure__list__number{
+  line-height: 33px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe__show__point{
+  background-color: #F6ECD6;
+  margin-top: 20px;
+}
+
+.recipe__point__title{
+  width: 50%;
+  text-align: center;
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  top: -15px;
+  left: 10px;
+}
+
+.recipe__show__baloon{
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+}
+
+.recipe__show__angle{
+  font-size: 30px;
+  position: relative;
+  top: -15px;
+  color: #000000;
+}
+
+
+//つくれぽ
+
+.recipe__show__tsukurepo-top{
+  margin-left: 100px;
+}
+
+.tsukurepo-li__date{
+  font-size: 20px;
+}
+
+.tsukurepo-li__name{
+  float: right;
 }

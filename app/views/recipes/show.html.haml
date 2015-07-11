@@ -1,36 +1,76 @@
-#recipe__show.letter-spacing
+#recipe__show.letter-spacing.clearfix
   
-  #contents-inner.contents-inner__cover
-    .contents-inner__white.hidden-xs.clearfix
-      .recipe__show__main.hidden-xs
-        .recipe__show__top
-          .recipe__show__name-favorite.u-ls-2
-            = link_to @recipe.name, recipe_path(@recipe)
-            .button#save-btn
+  #recipe__show__main-contents
+    #contents-inner.contents-inner__cover
+      .contents-inner__white.hidden-xs.clearfix
+        .recipe__show__main.hidden-xs
+          .recipe__show__top.clearfix
+            .recipe__show__name-favorite.u-ls-2
+              = link_to @recipe.name, recipe_path(@recipe)
+              .button#save-btn
 
-          .recipe__show__description.u-ls-2
-            = @recipe.description
-          .recipe__show__kcal-user-name.u-ls-2.clearfix
-            .recipe__show__kcal
-              %i.fa.fa-fire
-              = @recipe.calorie
-              kcal
-            .recipe__show__user-name
-              = link_to @recipe.user.name, user_path(@recipe.user)
-          .recipe__show__image-ingredient
-            .recipe__show__image.col-md-5{style:"background-image: url('%{@recipe.image.url}');"}
-            %ul.recipe__show__ingredient.col-md-5 
-              %li.ingredient__top
-                材料
-                = @recipe.people
-                人分
-              - @ingredients.each do |ingredient|
-                %li.ingredient__list
-                  .ingredient-name
-                    = ingredient.name
-                  .ingredient-quantity
-                    = ingredient.volume
-
-        .recipe__show__procedure
-        .recipe__show__point
-      =render 'layouts/side_block'
+            .recipe__show__description.u-ls-2
+              = @recipe.description
+            .recipe__show__kcal-user-name.u-ls-2.clearfix
+              .recipe__show__kcal
+                %i.fa.fa-fire
+                = @recipe.calorie
+                kcal
+              .recipe__show__user-name
+                = link_to @recipe.user.name, user_path(@recipe.user)
+            .recipe__show__image-ingredient.clearfix
+              .recipe__show__image.col-md-6{style:"background-image: url('%{@recipe.image.url}');"}
+              %ul.recipe__show__ingredient.col-md-6
+                %li.ingredient__top.clearfix.u-ls-06
+                  .ingredirnt__top__title.col-md-9
+                    材料
+                  .ingredient__top__people.col-md-2
+                    = @recipe.people
+                    人分
+                - @ingredients.each do |ingredient|
+                  %li.ingredient__list.clearfix.u-ls-0
+                    .ingredient-name.col-md-8
+                      = ingredient.name
+                    .ingredient-quantity.col-md-4
+                      = ingredient.volume
+            %ul.recipe__show__procedure.clearfix
+              - @procedures.each_with_index do | procedure, index |
+                %li.procedure__list.col-md-4
+                  - if procedure.image_file_name != nil 
+                    .procedure__list__image{style:"background-image: url('<%= procedure.image.url(:original) %>');"}
+                  .procedure__list__contents
+                    .procedure__list__number.c-circle.c-procedure.u-green-2.u-white-1
+                      = 1 + index
+                    .procedure__list__body.u-mb15 
+                      = procedure.body
+            .recipe__show__point.u-ls-2
+              .recipe__point__title
+                .recipe__show__baloon.u-white-1.u-black-2
+                  \\　コツ・ポイント　/
+                .recipe__show__angle
+                  ▼
+              .recipe__point__body.u-mr10.u-ml10.u-pb15
+                = @recipe.tip
+    .recipe__show__tsukurepo-top
+      .index-main__top__english
+        %p Tsukutta_button
+      .index-main__top__japanese.col-md-10
+        %p.u-white-1.c-circle.c-large.u-pink-2 作
+        %p.u-white-1.c-circle.c-large.u-pink-2 っ
+        %p.u-white-1.c-circle.c-large.u-pink-2 た
+        %p.c-circle.c-large.u-beige-2 ボ
+        %p.c-circle.c-large.u-beige-2 タ
+        %p.c-circle.c-large.u-beige-2 ン
+    #contents-inner.contents-inner__cover.clearfix
+      .contents-inner__white.hidden-xs.clearfix
+        %ul.recipe__show__tsukurepo-ul.clearfix
+          - @made_reports.each do |made_report|
+            %li.recipe__show__tsukurepo-li.col-md-4.u-pr10
+              .tsukurepo-li__date.u-pink-1
+                = made_report.created_at.strftime("%Y/%m/%d")
+              .tsukurepo-li__image{style:"background-image: url('<%= made_report.image.url %>');"}
+              .tsukurepo-li__body
+                = made_report.message
+              .tsukurepo-li__name.u-pink-1
+                = made_report.user.name
+  =render 'layouts/side_block'
