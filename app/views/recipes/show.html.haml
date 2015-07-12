@@ -1,4 +1,4 @@
-#recipe__show.letter-spacing.clearfix
+#recipe__show.letter-spacing.clearfix.hidden-xs
   
   #recipe__show__main-contents
     .contents-inner.contents-inner__cover
@@ -51,7 +51,7 @@
                   ▼
               .recipe__point__body.u-mr10.u-ml10.u-pb15
                 = @recipe.tip
-    .recipe__show__tsukurepo-top.clearfix
+    .recipe__show__tsukurepo-top.clearfix.hidden-xs
       .index-main__top__english
         %p Tsukutta_button
       .index-main__top__japanese.col-md-10.clearfix
@@ -74,3 +74,64 @@
                 .tsukurepo-li__name.u-pink-1
                   = made_report.user.name
   =render 'layouts/side_block'
+#mobile-recipe__show__main.visible-xs
+  .mobile-recipe__show__top.visible-xs.u-pr10.u-pl10
+    .mobile-recipe__show__english
+      %p Recipe
+    .mobile-recipe__show__japanese.col-md-10
+      %p.u-white-1.c-circle.c-large.u-pink-2 レ
+      %p.u-white-1.c-circle.c-large.u-yellow-2 シ
+      %p.u-white-1.c-circle.c-large.u-green-2 ピ
+  .mobile-recipe__show__image.visible-xs{style:"background-image: url('%{@recipe.image.url}');"}
+  .mobile-recipe__show__title.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.name
+  .mobile-recipe__show__kcal-category-name.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.clearfix
+    .mobile-recipe__show__kcal.u-pink-1.col-xs-5
+      %i.fa.fa-fire
+      合計
+      = @recipe.calorie
+      kcal
+    .mobile-recipe__show__category.col-xs-5
+    .mobile-recipe__show__name.col-xs-2
+      = @recipe.user.name 
+  .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.description
+  %ul.mobile-recipe__show__ingredient.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
+    %li.ingredient__top.clearfix.u-ls-06
+      .ingredirnt__top__title.col-xs-9 買い物リスト
+      .ingredient__top__people.col-xs-2
+        = @recipe.people
+        人分
+    - @ingredients.each do |ingredient|
+      %li.ingredient__list.clearfix.u-ls-0
+        .ingredient-name.col-xs-8.u-bold
+          = ingredient.name
+        .ingredient-quantity.col-xs-4
+          = ingredient.volume
+  %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
+    - @procedures.each_with_index do | procedure, index |
+      %li.mobile-procedure__list.clearfix.u-pt10
+        .mobile-procedure__list__number.c-circle.c-small.u-green-2.u-white-1.col-xs-2.u-mr5
+          = 1 + index
+        - if procedure.image_file_name != nil 
+          .mobile-procedure__list__body.u-mb15.col-xs-5= procedure.body
+          .mobile-procedure__list__image.col-xs-5{style:"background-image: url('<%= procedure.image.url(:original) %>');"}
+        - else
+          .mobile-procedure__list__body.u-mb15.col-xs-10= procedure.body
+  .mobile-recipe__show__point.visible-xs.u-white-2.u-pr10.u-pl10.clearfix
+    .mobile-recipe__point__title
+      .mobile-recipe__show__baloon.u-white-1.u-black-2
+        \\　コツ・ポイント　/
+      .mobile-recipe__show__angle
+        ▼
+      .mobile-recipe__point__body.u-mr10.u-ml10.u-pb15.clearfix
+        = @recipe.tip
+  .mobile-recipe__show__tsukurepo.visible-xs.u-white-2.u-pr10.u-pl10.clearfix
+    .mobile-recipe__show__english
+      %p Tsukutta_button
+    .mobile-recipe__show__japanese.col-md-10.clearfix
+      %p.u-white-1.c-circle.c-large.u-pink-2 作
+      %p.u-white-1.c-circle.c-large.u-pink-2 っ
+      %p.u-white-1.c-circle.c-large.u-pink-2 た
+      %p.c-circle.c-large.u-beige-2 ボ
+      %p.c-circle.c-large.u-beige-2 タ
+      %p.c-circle.c-large.u-beige-2 ン
+

@@ -97,3 +97,58 @@
 .tsukurepo-li__name{
   float: right;
 }
+
+//モバイル
+
+.mobile-recipe__show__english{
+  border-bottom :1px solid #E2D8C2;
+  color: #817F7F;
+}
+
+.mobile-recipe__show__japanese p{
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mobile-recipe__show__title{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.mobile-recipe__show__name{
+  float: right;
+}
+
+.mobile-procedure__list{
+  border-top :1px solid #E2D8C2;
+}
+
+.mobile-procedure__list__number{
+  line-height: 25px;
+  text-align: center;
+}
+
+.mobile-recipe__point__title{
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+}
+
+.mobile-recipe__show__baloon{
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+}
+
+.mobile-recipe__show__angle{
+  font-size: 25px;
+  position: relative;
+  top: -10px;
+  color: #000000;
+}
+
+.mobile-recipe__point__body{
+  background-color: #F7ECD3;
+}
