@@ -1,0 +1,11 @@
+%li.col-md-3
+  .fields
+    .step-count
+      = 1+f.index.to_i
+    .imgInput
+      = image_tag("no_image.png", :class => "imgView photo", :size => "180x160")
+      = f.file_field :image
+    = f.text_area :body ,class: "edit-field",rows: "2" ,cols: "30", placeholder: "作り方を入力", style: "font-size: 1.25rem;height: 80px;"
+    = link_to_remove_fields "削除", f
+
+

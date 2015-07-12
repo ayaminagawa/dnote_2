@@ -1,0 +1,60 @@
+.recipe__new__top.u-mt30
+= form_for(@recipe) do |f|
+  .recipe__new__contents.u-mb30
+    .recipe__new__title
+      レシピをのせる
+    .recipe__new__name
+      .recipe__new__name-1
+        レシピのタイトルを入力
+      .recipe__new__name-2
+        = f.text_field :name, class:'', placeholder:'レシピのタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
+    .recipe__new__descroption
+      .recipe__new__descroption-1
+        キャッチコピーを入力
+      .recipe__new__descroption-2
+        = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 60%;height: 70px;"
+    .recipe__new__image-ingredient.clearfix.u-pt10
+      .recipe__new__image.col-md-5
+        写真
+        = f.file_field :image
+        = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
+      .recipe__new__ingredient.col-md-7
+        .recipe__new__ingredient-people.col-md-6
+          材料の人数
+          = f.text_field :people, value:'2', style:"width: 70px;"
+          人分
+        .recipe__new__ingredient-calorie.col-md-6
+          １人分のカロリー
+          = f.text_field :calorie, class:'', style:"width: 70px;"
+          kcal
+        .recipe__new__ingredient-sugar.col-md-6.col-md-offset-6
+          １人分の糖質量
+          = f.text_field :sugar, class:'', style:"width: 85px;"
+          g
+        %ul.recipe__new__ingredent-ul.clearfix
+          %li.recipe__new__ingredent-li.u-pb10.u-pt10.clearfix
+            .ingredient-li__item.col-md-7
+              材料
+            .ingredient-li__quantity.col-md-5
+              分量
+          = f.fields_for :ingredients, @ingredients do |ingredient|
+            = render 'recipes/fields_ingredient',{:f => ingredient}
+          .ingredient__add.u-pt10
+            = link_to_add_fields "＋", f, :ingredients
+            材料を追加する
+    .recipe__new__procedure.u-pt10.clearfix
+      作り方
+      %ul
+        = f.fields_for :procedures, @procedures do |procedure|
+          = render 'fields_procedure', {:f => procedure}
+        .procedure__add
+          = link_to_add_fields "+", f, :procedures, id: "add-proc"
+          作り方を追加する
+    .recipe__new__point.u-pt10
+      .recipe__new__point-title
+        レシピのポイント
+      = f.text_area :tip, class:'edit-field', placeholder:'レシピのポイントを入力', style: "font-size: 1.25rem;width: 70%;height: 100px;"
+    .recipe__new__category
+    .recipe__new__submit
+      = f.submit "レシピを公開する", name: 'save'
+      = f.submit "レシピを下書き保存する", name: 'pre_save'

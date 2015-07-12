@@ -1,0 +1,48 @@
+//レイアウト
+
+#recipe__new__box{
+  margin-right: 100px;
+  margin-left: 100px;
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+
+//細かい設定
+
+.recipe__new__top{
+  background-image: url('bg_check.png');
+  background-repeat: repeat;
+  height: 50px;
+}
+
+.recipe__new__contents{
+  padding: 15px 35px 40px 35px;
+}
+
+.recipe__new__title{
+  border-bottom :5px solid #E2D8C2;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 70%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.recipe__new__name-1, .recipe__new__descroption-1{
+  margin-top: 20px;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+}
+
+.recipe__new__descroption{
+
+}
+
+.recipe__new__submit{
+  text-align: center;
+}
