@@ -1,7 +1,7 @@
 #recipe__show.letter-spacing.clearfix
   
   #recipe__show__main-contents
-    #contents-inner.contents-inner__cover
+    .contents-inner.contents-inner__cover
       .contents-inner__white.hidden-xs.clearfix
         .recipe__show__main.hidden-xs
           .recipe__show__top.clearfix
@@ -51,26 +51,26 @@
                   ▼
               .recipe__point__body.u-mr10.u-ml10.u-pb15
                 = @recipe.tip
-    .recipe__show__tsukurepo-top
+    .recipe__show__tsukurepo-top.clearfix
       .index-main__top__english
         %p Tsukutta_button
-      .index-main__top__japanese.col-md-10
+      .index-main__top__japanese.col-md-10.clearfix
         %p.u-white-1.c-circle.c-large.u-pink-2 作
         %p.u-white-1.c-circle.c-large.u-pink-2 っ
         %p.u-white-1.c-circle.c-large.u-pink-2 た
         %p.c-circle.c-large.u-beige-2 ボ
         %p.c-circle.c-large.u-beige-2 タ
         %p.c-circle.c-large.u-beige-2 ン
-    #contents-inner.contents-inner__cover.clearfix
-      .contents-inner__white.hidden-xs.clearfix
-        %ul.recipe__show__tsukurepo-ul.clearfix
-          - @made_reports.each do |made_report|
-            %li.recipe__show__tsukurepo-li.col-md-4.u-pr10
-              .tsukurepo-li__date.u-pink-1
-                = made_report.created_at.strftime("%Y/%m/%d")
-              .tsukurepo-li__image{style:"background-image: url('<%= made_report.image.url %>');"}
-              .tsukurepo-li__body
-                = made_report.message
-              .tsukurepo-li__name.u-pink-1
-                = made_report.user.name
+      #contents-inner.contents-inner__cover.clearfix
+        .contents-inner__white.hidden-xs.clearfix
+          %ul.recipe__show__tsukurepo-ul.clearfix
+            - @made_reports.each do |made_report|
+              %li.recipe__show__tsukurepo-li.col-md-4.u-pr10
+                .tsukurepo-li__date.u-pink-1
+                  = made_report.created_at.strftime("%Y/%m/%d")
+                .tsukurepo-li__image{style:"background-image: url('<%= made_report.image.url %>');"}
+                .tsukurepo-li__body
+                  = made_report.message
+                .tsukurepo-li__name.u-pink-1
+                  = made_report.user.name
   =render 'layouts/side_block'

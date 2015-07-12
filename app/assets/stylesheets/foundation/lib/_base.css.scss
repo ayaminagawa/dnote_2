@@ -34,7 +34,7 @@ form{
   display: inline;
 }
 
-#contents-inner{
+.contents-inner{
   margin-left: 100px;
   overflow: hidden;
   margin-top: 10px;
@@ -53,7 +53,7 @@ form{
   background-image: url('bg_check.png');
   background-repeat: repeat;
   z-index: 2;
-  width: 85%;
+
 }
 
 .clearfix:after{
