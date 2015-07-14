@@ -8,8 +8,8 @@
 
 @import "foundation/lib/_normalize";
 @import "foundation/lib/_html5reset";
-@import "foundation/lib/custom-bootstrap";
 @import "foundation/lib/_base";
+@import "foundation/lib/custom-bootstrap";
 
 // -----------------------------------------------------------------
 // Project
@@ -45,6 +45,8 @@
 
 @import "object/project/_recipe_show.css.scss";
 @import "object/project/_recipe_new.css.scss";
+@import "object/project/_recipe_index.css.scss";
+@import "object/project/_recipes_menus.css.scss";
 @import "object/project/_menu_show.css.scss";
 
 

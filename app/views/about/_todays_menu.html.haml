@@ -15,14 +15,15 @@
         一覧を見る
   .index-main__contents__cover.clearfix
     .index-main__contents.clearfix
-      .index-main__contents__image.col-md-6
-        = link_to menu_path(@todays_menu) do
-          .index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
-      .index-main__contents__description.col-md-6
-        .index-main__recipe.index-main__recipe--name
+      .row
+        .col-md-6
           = link_to menu_path(@todays_menu) do
-            %i.fa.fa-caret-right
-            = @todays_menu.name
+            .index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
+        .col-md-6
+          .index-main__recipe.index-main__recipe--name
+            = link_to menu_path(@todays_menu) do
+              %i.fa.fa-caret-right
+              = @todays_menu.name
         %p.index-main__recipe.u-lighter
           = @todays_menu.point
         .index-main__recipe
@@ -39,6 +40,7 @@
         .index-main__recipe--user
           = link_to user_path(@todays_menu.user) do
             by
+            .item-contents__user-image.c-circle{style: "background-image: url('#{@todays_menu.user.image.url(:original)}');"}
             = @todays_menu.user.name
 
 //モバイル
@@ -70,11 +72,12 @@
           .index-main__recipe__select.c-circle.c-small.u-pink-2.u-white-1 主
           .index-main__recipe__name
             =link_to @main_recipe.name, recipe_path(@main_recipe)
-            - @side_recipes.each do |recipe|
-              %li.index-main__recipe__li
-                .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
-                .index-main__recipe__name
-                  = link_to recipe.name, recipe_path(recipe)
+            %ul
+              - @side_recipes.each do |recipe|
+                %li.index-main__recipe__li
+                  .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
+                  .index-main__recipe__name
+                    = link_to recipe.name, recipe_path(recipe)
           %p.mobile-index-main__recipe.u-lighter.u-dark-grey-1.u-pr10.u-pl10
             = @todays_menu.point
 

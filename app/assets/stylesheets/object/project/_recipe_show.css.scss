@@ -132,21 +132,22 @@
 
 .mobile-recipe__point__title{
   text-align: center;
-  height: 25px;
-  line-height: 25px;
 }
 
 .mobile-recipe__show__baloon{
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
+  height: 25px;
+  line-height: 25px;
 }
 
 .mobile-recipe__show__angle{
   font-size: 25px;
   position: relative;
-  top: -10px;
+  top: -15px;
   color: #000000;
+  height: 25px;
 }
 
 .mobile-recipe__point__body{

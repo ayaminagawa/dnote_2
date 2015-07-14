@@ -1,0 +1,40 @@
+.item-contents__name a{
+  color: #EF8766;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.recipe__index__item{
+  height: 170px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.recipe__index__item-image{
+  height: 170px;
+  background-size: cover;
+}
+
+.recipe__index__item-contents{
+  height: 100%;
+  padding-left: 15px;
+}
+
+.item-contents__user{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+}
+
+.item-contents__user-image{
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.item-contents__user-name{
+  display: inline-block;
+}

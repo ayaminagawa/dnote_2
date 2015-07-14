@@ -1,0 +1,23 @@
+#recipe__index__box.clearfix.hidden-xs
+  .recipe__index__main
+    .recipe__index__top
+      .index-main__top__english
+        %p Recipe & Menu
+      .index-main__top__japanese
+        %p.u-white-1.c-circle.c-large.u-pink-2 レ
+        %p.u-white-1.c-circle.c-large.u-pink-2 シ
+        %p.u-white-1.c-circle.c-large.u-pink-2 ピ
+        %p.u-white-1.c-circle.c-large.u-yellow-2 献
+        %p.u-white-1.c-circle.c-large.u-yellow-2 立
+        %p.c-circle.c-large.u-beige-2 一
+        %p.c-circle.c-large.u-beige-2 覧
+    .recipe__index__tab.clearfix
+      .recipe__index__tab-menu
+        献立
+      .recipe__index__tab-recipe
+        レシピ
+    .recipe__index__items.clearfix
+      = render @menus
+      = render @recipes
+  .recipe__index__side
+    =render 'layouts/side_block'

@@ -1,0 +1,14 @@
+.recipe__index__item
+  = link_to recipe_path(recipe) do
+    .recipe__index__item-image.col-md-5{style: "background-image: url('#{recipe.image.url(:original)}');"}
+  .recipe__index__item-contents.col-md-7
+    .item-contents__name
+      = link_to recipe.name, recipe_path(recipe)
+    .item-contents__description
+      = recipe.description
+    .item-contents__category-name
+      .item-contents__category
+      .item-contents__user
+        .item-contents__user-image.c-circle{style: "background-image: url('#{recipe.user.image.url(:original)}');"}
+        .item-contents__user-name
+          = link_to recipe.user.name, user_path(recipe.user)
