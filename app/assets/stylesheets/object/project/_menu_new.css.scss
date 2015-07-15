@@ -1,0 +1,59 @@
+//レイアウト
+
+#menu__new__box{
+  margin-right: 100px;
+  margin-left: 100px;
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+#mobile-menu__new__box{
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+
+//細かい設定
+
+.menu__new__top{
+  background-image: url('bg_check.png');
+  background-repeat: repeat;
+  height: 50px;
+}
+
+.menu__new__contents{
+  padding: 15px 35px 40px 35px;
+}
+
+.menu__new__title{
+  border-bottom :3px solid #E2D8C2;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 70%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.menu__new__name-1, .menu__new__descroption-1, .menu__new__category-title{
+  margin-top: 20px;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+}
+
+.menu__new__submit{
+  text-align: center;
+}
+
+//モバイル
+
+.mobile-menu__new__contents{
+  padding: 10px 10px 20px 10px;
+}

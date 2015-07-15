@@ -11,18 +11,19 @@
         %p.c-circle.c-large.u-yellow-2
           = link_to image_tag("pen_green.png", class: "header-top__menu__item__pencil"), new_menu_path
         = link_to '献立をのせる', new_menu_path
-      %li.header-top__menu__item
+      %li.header-top__menu__item.header-top__menu__item--login
         %p.c-circle.c-large.u-green-2
-          = link_to image_tag("key.png", class: "header-top__menu__item__key"), new_user_path
-        = link_to 'ログイン', new_user_path
+          = image_tag("key.png", class: "header-top__menu__item__key")
+        =link_to 'ログイン', new_user_registration_path(:u_n => 1)
 
     //モバイル
     #sp-header-top__menu.visible-xs
-      .sp-header-top__menu__logo.col-xs-5= link_to image_tag("dnote-sp-logo.png" , class: "logo", alt: "dnote", height: "40px"), about_path
-      %p.sp-header-top__menu__logo.col-xs-5
+      .sp-header-top__menu__logo.col-xs-4= link_to image_tag("dnote-sp-logo.png" , class: "logo", alt: "dnote", height: "40px"), about_path
+      %p.sp-header-top__menu__logo.col-xs-6
         糖尿病のおいしい生活
       .sp-header-top__menu__sidebar.col-xs-2
         = button_tag '<i class="fa fa-bars"></i>'.html_safe, :class => "c-btn c-btn--sidebar"
 
+=render 'layouts/login'
 
 

@@ -70,7 +70,6 @@
 }
 
 .index-main__recipe{
-  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -89,7 +88,8 @@
 }
 
 .index-main__recipe--user{
-  float: right;
+  position: absolute;
+  right: 0;
 }
 
 .index-main__top__link{
@@ -104,10 +104,6 @@
 .ranking-item__top img{
   height: 40px;
   width: 40px;
-}
-
-.ranking-item__user-name{
-  float: right;
 }
 
 .index-main__contents__item{
@@ -130,6 +126,10 @@
   line-height: 70px;
 }
 
+.index-main__contents__description{
+  display: relative;
+}
+
 
 //モバイル
 
@@ -141,6 +141,7 @@
 .index__top img{
   max-width: 100%;
   height: auto;
+  width: 100%;
 }
 
 .mobile-index-main__top{
@@ -154,6 +155,7 @@
 
 .mobile-index-main__top__link{
   color: #5F5C54;
+  font-size: 11px;
 }
 
 .mobile-index-main__top__japanese{

@@ -17,4 +17,12 @@ class Menu < ActiveRecord::Base
   validates_attachment :image,
   content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
   size: { less_than: 2.megabytes }
+
+  def main_recipe
+    self.recipes.select{|recipe| recipe.recipe_select == 1}.first
+  end
+
+  def side_recipes
+    self.recipes.select{|recipe| recipe.recipe_select == 2}.compact
+  end
 end

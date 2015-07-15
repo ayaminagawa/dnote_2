@@ -1,4 +1,4 @@
-.recipe__new__top.u-mt30.hidden-xs
+.recipe__new__top.u-mt30
 = form_for(@recipe) do |f|
   .recipe__new__contents.u-mb30.hidden-xs
     .recipe__new__title
@@ -72,11 +72,11 @@
       .recipe__new__descroption-2
         = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 100%;height: 70px;"
     .recipe__new__image-ingredient.clearfix.u-pt10
-      .recipe__new__image.col-md-5
+      .recipe__new__image
         写真
         = f.file_field :image
-        = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
-      .recipe__new__ingredient.col-md-7.u-mt10
+        = image_tag("no_image.png", :class => "imgView", :size => "250x200") 
+      .recipe__new__ingredient.u-mt10
         .recipe__new__ingredient-people.col-xs-6
           材料の人数<br>
           = f.text_field :people, value:'2', style:"width: 70px;"
@@ -90,12 +90,13 @@
           = f.text_field :sugar, class:'', style:"width: 85px;"
           g
         %ul.recipe__new__ingredent-ul.clearfix
+          <br>
           = f.fields_for :ingredients, @ingredients do |ingredient|
             = render 'recipes/fields_ingredient',{:f => ingredient}
           .ingredient__add.u-pt10
             = link_to_add_fields "＋", f, :ingredients
             材料を追加する
-    .recipe__new__procedure.u-pt10.clearfix
+    .recipe__new__procedure.u-pt10.clearfix.u-pb20
       .procedure__top
         作り方
       %ul
@@ -104,11 +105,11 @@
         .procedure__add
           = link_to_add_fields "+", f, :procedures, id: "add-proc"
           作り方を追加する
-    .recipe__new__point.u-pt10
+    .recipe__new__point
       .recipe__new__point-title
         レシピのポイント
       = f.text_area :tip, class:'edit-field', placeholder:'レシピのポイントを入力', style: "font-size: 1.25rem;width: 100%;height: 100px;"
-    .recipe__new__category
+    .recipe__new__category.u-pt10
       .recipe__new__category-1
         .recipe__new__category-title
           レシピのカテゴリー①
@@ -121,42 +122,43 @@
         .recipe__new__category-title
           レシピのカテゴリー②
         .recipe__new__category-button.u-pb20.clearfix
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "1", {:checked => true}
-            野菜のおかず
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "2"
-            お肉のおかず
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "3"
-            魚介のおかず
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "4"
-            ごはんもの
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "5"
-            パスタ・グラタン
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "6"
-            麺
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "7"
-            サラダ
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "8"
-            スープ・汁物
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "9"
-            お弁当
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "11"
-            お菓子・デザート
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "12"
-            パン
-          .category-button__item.col-xs-6
-            = f.radio_button :kind, "13"
-            大豆のおかず
+          .col
+            .category-button__item.col-xs-6.category-button__item--col
+              = f.radio_button :kind, "1", {:checked => true}
+              野菜のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "2"
+              お肉のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "3"
+              魚介のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "4"
+              ごはんもの
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "5"
+              パスタ・グラタン
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "6"
+              麺
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "7"
+              サラダ
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "8"
+              スープ・汁物
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "9"
+              お弁当
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "11"
+              お菓子・デザート
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "12"
+              パン
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "13"
+              大豆のおかず
       .recipe__new__category-3
         .recipe__new__category-title
           レシピのカテゴリー③

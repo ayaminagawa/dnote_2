@@ -1,0 +1,42 @@
+.signup-modal.remodal
+  .gutters.row
+    -if user_signed_in?
+      .modal-inner
+        .modal-title
+          ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      .modal-inner
+        .modal-title
+          ログイン
+        .modal-head
+          %i
+          すでにユーザー登録されている方
+        = link_to "ログイン", new_user_session_path
+        .facebook-btn-container
+          .facebool_btn= link_to "Facebookでログイン", user_omniauth_authorize_path(:facebook)
+          .twitter_btn= link_to "Twitterでログイン",  user_omniauth_authorize_path(:twitter)
+    -if user_signed_in? && current_user.permission == nil
+      .modal-inner
+        .modal-title
+          マイページ
+        = link_to "マイページへ移動", current_user
+    - elsif user_signed_in? && current_user.permission != nil
+      .modal-inner
+        .modal-title
+          マイページ
+        = link_to "マイページへ移動", current_user
+    - else
+      .modal-inner
+        .modal-title
+          新規登録
+        .modal-head
+          %i
+          ユーザー登録されていない方
+        .button-container
+          = link_to "ユーザー登録をする", new_user_registration_path(:u_n => 1)
+        .button-container
+          = link_to "管理栄養士のユーザー登録をする",new_user_registration_path(:u_n => 0)
+        .facebook-btn-container
+          .facebook_btn= link_to "Facebookで新規登録", user_omniauth_authorize_path(:facebook)
+          .twitter_btn= link_to "Twitterで新規登録",  user_omniauth_authorize_path(:twitter)

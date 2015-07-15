@@ -1,0 +1,73 @@
+.menu__new__top.u-mt30
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= devise_error_messages!
+  .menu__new__contents.u-mb30.hidden-xs
+    .menu__new__title
+      献立を作る
+    .menu__new__name
+      .menu__new__name-1
+        献立のタイトルを入力
+      .menu__new__name-2
+        = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
+    .menu__new__descroption-category
+      .menu__new__description.col-md-6
+        .menu__new__descroption-1
+          献立のポイント
+        .menu__new__descroption-2
+          = f.text_area :point, class:'', placeholder:'献立のポイントを入力', style:"width: 100%;height: 70px;"
+      .menu__new__category.col-md-6
+        .menu__new__category-title
+          献立のカテゴリー
+        .menu__new__category-button.u-pb20.u-bold
+          = f.fields_for :category_selects, @category_selects do |f|
+            = f.check_box :category_number2 
+            糖質制限食<br>
+            = f.check_box :category_number3
+            HbA1c、血糖値の安定<br>
+            = f.check_box :category_number4
+            味に自信あり<br>
+            = f.check_box :category_number5
+            すぐできるメニュー<br>
+            = f.check_box :category_number6
+            その他
+    .menu__new__recipes
+      .menu__new__main-recipe
+      .menu_new__sub-recipes      
+    .menu__new__submit
+      = f.submit "レシピを公開する", name: 'save'
+      = f.submit "レシピを下書き保存する", name: 'pre_save'
+  .mobile-menu__new__contents.u-mb30.visible-xs
+    .menu__new__title
+      献立を作る
+    .menu__new__name
+      .menu__new__name-1
+        献立のタイトルを入力
+      .menu__new__name-2
+        = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 100%;height: 45px;"
+    .menu__new__descroption-category
+      .menu__new__description
+        .menu__new__descroption-1
+          献立のポイント
+        .menu__new__descroption-2
+          = f.text_area :point, class:'', placeholder:'献立のポイントを入力', style:"width: 100%;height: 70px;"
+      .menu__new__category
+        .menu__new__category-title
+          献立のカテゴリー
+        .menu__new__category-button.u-pb20.u-bold
+          = f.fields_for :category_selects, @category_selects do |f|
+            = f.check_box :category_number2 
+            糖質制限食<br>
+            = f.check_box :category_number3
+            HbA1c、血糖値の安定<br>
+            = f.check_box :category_number4
+            味に自信あり<br>
+            = f.check_box :category_number5
+            すぐできるメニュー<br>
+            = f.check_box :category_number6
+            その他
+    .menu__new__recipes
+      .menu__new__main-recipe
+      .menu_new__sub-recipes      
+    .menu__new__submit
+      = f.submit "レシピを公開する", name: 'save'
+      = f.submit "レシピを下書き保存する", name: 'pre_save'

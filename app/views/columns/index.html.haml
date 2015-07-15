@@ -1,0 +1,43 @@
+#column__index__box.hidden-xs
+  .column__index__top.u-mt30
+  .column__index__contents.u-mb30.hidden-xs
+    .column__index__title
+      お役立ちコラム一覧
+    %ul.column__index__main.clearfix
+      - @columns.each do |column|
+        %li.column__index__li.col-md-6
+          .column__index__user-date.u-mt15
+            .column__index__user-image{style: "background-image: url('#{column.user.image.url(:original)}');"}
+            .column__index__user-name
+              = link_to column.user.name, user_path(column.user)
+            .column__index__date
+              = column.created_at.strftime("%Y/%m/%d")
+          .column__index__image.u-pt10
+          .column__index__article-title.u-pt10
+            = link_to column.title, column
+          .column__index__body.u-pt10
+            = column.body
+#mobile-column__indes__box.clearfix.visible-xs
+  .mobile-column__index__top.u-pb10
+    .index-main__top.clearfix
+      .index-main__top__english
+        %p Column
+      .mobile-index-main__top__japanese
+        %p.u-white-1.c-circle.c-mobile.u-pink-2 コ
+        %p.u-white-1.c-circle.c-mobile.u-yellow-2 ラ
+        %p.u-white-1.c-circle.c-mobile.u-green-2 ム
+        %p.c-circle.c-mobile.u-grey-2 一
+        %p.c-circle.c-mobile.u-grey-2 覧
+  %ul.mobile-column__index__contents.u-white-2.clearfix
+    - @columns.each do |column|
+      .mobile-column__index__li.u-pb10.clearfix.u-pt10
+        .mobile-column__index__image.col-xs-4
+        .mobile-column__index__main.col-xs-8
+          .mobile-column__index__title.u-bold
+            = link_to column.title, column
+          .mobiile-column__index__body.u-pt5.u-pb5
+            = column.body[0..29]
+          .mobile-column__index__user
+            .mobile-column__index__user-image{style: "background-image: url('#{column.user.image.url(:original)}');"}
+            .mobile-column__index__user-name
+              = link_to column.user.name, user_path(column.user)

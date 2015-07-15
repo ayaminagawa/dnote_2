@@ -13,3 +13,17 @@ $(function(){
   });
 
 });
+
+
+//ログインのモーダル表示
+$(function(){
+  $('.header-top__menu__item--login').click(function(){
+    $('.signup-modal').show();
+  });
+})
+
+$(function(){
+  $('#close-modal').click(function(){
+    $('.signup-modal').hide();
+  });
+});

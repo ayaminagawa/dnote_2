@@ -5,13 +5,13 @@
 }
 
 .recipe__index__item{
-  height: 170px;
+  height: 250px;
   margin-bottom: 20px;
   position: relative;
 }
 
 .recipe__index__item-image{
-  height: 170px;
+  height: 250px;
   background-size: cover;
 }
 
@@ -37,4 +37,49 @@
 
 .item-contents__user-name{
   display: inline-block;
+}
+
+
+//モバイル
+
+.mobile-recipe__index__top-button{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mobiile-recipe__top-button-item{
+  display: inline-block;
+  height: 40px;
+  width: 150px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #8E7360;
+  color: #FFFFFF;
+}
+
+.mobile-menu__index__main-name{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.mobile-menu__index__main-description, .mobile-menu__index__main-user-name a{
+  font-size: 12px;
+}
+
+.mobile-menu__index__li{
+  border-bottom :1px solid #E2D8C2;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: relative;
+}
+
+.mobile-menu__index__image{
+  height: 150px;
+  background-size: cover;
+}
+
+.mobile-menu__index__main-user-name{
+  position: absolute;
+  right: 15px;
 }

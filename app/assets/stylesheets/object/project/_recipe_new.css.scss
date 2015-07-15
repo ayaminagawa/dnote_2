@@ -32,7 +32,7 @@
 }
 
 .recipe__new__title{
-  border-bottom :5px solid #E2D8C2;
+  border-bottom :3px solid #E2D8C2;
   font-size: 20px;
   font-weight: bold;
   display: block;
@@ -60,7 +60,7 @@
 //モバイル
 
 .mobile-recipe__new__contents{
-  padding: 5px 15px 20px 15px;
+  padding: 5px 0px 20px 0px;
 }
 
 .mobile-recipe__new__title{
@@ -71,6 +71,7 @@
   width: 100%;
   height: 50px;
   line-height: 50px;
+  padding: 0px 15px 0px 15px;
 }
 
 .procedure__top{
@@ -83,4 +84,17 @@
 
 .recipe__new__category-button{
   font-weight: bold;
+}
+
+.recipe__new__name, .recipe__new__descroption, .recipe__new__image, .recipe__new__procedure,  .recipe__new__point, .recipe__new__category{
+  padding: 0px 15px 0px 15px;
+  font-size: 12px;
+}
+
+.recipe__new__ingredient{
+  font-size: 12px;
+}
+
+.category-button__item--col{
+  padding-left: -15px;
 }

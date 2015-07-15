@@ -1,8 +1,8 @@
-#index
-  .container
-    .index__top.hidden-xs= image_tag "top.png"
-    .index__top.visible-xs= image_tag "sp_top.png"
-    .contents-inner.hidden-xs
+#index.clearfix
+  .index__top.hidden-xs= image_tag "top.png"
+  .index__top.visible-xs= image_tag "sp_top.png"
+  .contents-inner.hidden-xs
+    .container
       %ul.index__main.hidden-xs
         %li.index__main__item.hidden-xs
           = render 'about/todays_menu'
@@ -13,13 +13,13 @@
         %li.index__main__item.hidden-xs
           =render 'about/recipe_category'
       =render 'layouts/side_block' 
-    #mobile-contents-inner.visible-xs
-      %ul.mobile-index__main.visible-xs
-        %li.mobile-index__main__item.visible-xs
-          = render 'about/todays_menu'
-        %li.mobile-index__main__item.visible-xs
-          = render 'about/ranking'
-        %li.mobile-index__main__item.visible-xs
-          = render 'about/column'
-        %li.mobile-index__main__item.visible-xs
-          =render 'about/recipe_category'
+  #mobile-contents-inner.visible-xs
+    %ul.mobile-index__main.visible-xs
+      %li.mobile-index__main__item.visible-xs
+        = render 'about/todays_menu'
+      %li.mobile-index__main__item.visible-xs
+        = render 'about/ranking'
+      %li.mobile-index__main__item.visible-xs
+        = render 'about/column'
+      %li.mobile-index__main__item.visible-xs
+        =render 'about/recipe_category'

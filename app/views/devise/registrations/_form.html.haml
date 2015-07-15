@@ -1,0 +1,77 @@
+.user__new__top.u-mt30
+= form_for(@user) do |f|
+  .user__new__contents.u-mb30.hidden-xs
+    .user__new__title
+      新規会員登録
+    .user__new__image-main.clearfix
+      .user__new__image.col-md-3
+        = f.file_field :image
+        = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+      .user__new__main.col-md-9
+        .user__new__name.clearfix
+          .user__new__1
+            ユーザー名：
+          .user__new__2
+            = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+        .user__new__sex.clearfix
+          .user__new__1
+            性別：
+          .user__new__2
+            = f.radio_button :gender, "1" 
+            男
+            = f.radio_button :gender, "2" 
+            女
+        .user__new__email.clearfix
+          .user__new__1
+            メールアドレス：
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password.clearfix
+          .user__new__1
+            パスワード：
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+        .user__new__password-comfirmation.clearfix
+          .user__new__1
+            パスワード確認：
+          .user__new__2
+            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
+    .user__new__submit
+      = f.submit "会員登録する", name: 'save'
+  .mobile-user__new__contents.u-mb30.visible-xs
+    .user__new__title
+      新規会員登録
+    .mobile-user__new__main.clearfix
+      .user__new__name
+        .user__new__1
+          ユーザー名
+        .user__new__2.user__new__2--border
+          = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+      .user__new__sex
+        .user__new__1
+          性別
+        .user__new__2
+          = f.radio_button :gender, "1" 
+          男
+          = f.radio_button :gender, "2" 
+          女
+      .user__new__image
+        = f.file_field :image
+        = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+      .user__new__email
+        .user__new__1
+          メールアドレス
+        .user__new__2
+          = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+      .user__new__password
+        .user__new__1
+          パスワード
+        .user__new__2
+          = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+      .user__new__password-comfirmation
+        .user__new__1
+          パスワード確認
+        .user__new__2
+          = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
+    .user__new__submit.u-mt10
+      = f.submit "会員登録する", name: 'save'

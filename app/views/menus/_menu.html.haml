@@ -1,14 +1,40 @@
-.recipe__index__item
-  = link_to menu_path(menu) do
-    .recipe__index__item-image.col-md-5{style: "background-image: url('#{menu.image.url(:original)}');"}
-  .recipe__index__item-contents.col-md-7
-    .item-contents__name
-      = link_to menu.name, menu_path(menu)
-    .item-contents__description
+.row.u-mt15.hidden-xs
+  .index-main__contents__image.col-md-6
+    = link_to menu_path(menu) do
+      .index-main__picture{style:"background-image: url(#{menu.image.url(:original)});"}
+  .index-main__contents__description.col-md-6
+    .index-main__recipe.index-main__recipe--name
+      = link_to menu_path(menu) do
+        %i.fa.fa-caret-right
+        = menu.name
+    %p.index-main__recipe.u-lighter
       = menu.point
-    .item-contents__category-name
-      .item-contents__category
-      .item-contents__user
+    .index-main__recipe
+      %ul
+        %li.index-main__recipe__li
+          .index-main__recipe__select.c-circle.c-small.u-pink-2.u-white-1 主
+          .index-main__recipe__name
+            =link_to menu.main_recipe.name, recipe_path(menu.main_recipe)
+        - menu.side_recipes.each do |recipe|
+          %li.index-main__recipe__li
+            .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
+            .index-main__recipe__name
+              =link_to recipe.name, recipe_path(recipe)
+    .index-main__recipe--user
+      = link_to user_path(menu.user) do
+        by
         .item-contents__user-image.c-circle{style: "background-image: url('#{menu.user.image.url(:original)}');"}
-        .item-contents__user-name
-          = link_to menu.user.name, user_path(menu.user)
+        = menu.user.name
+.row.mobile-menu__index__li.visible-xs.clearfix
+  .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{menu.image.url(:original)});"}
+  .mobile-menu__index__main.col-xs-7
+    .mobile-menu__index__main-name
+      =link_to menu.name, menu_path(menu)
+    .mobile-menu__index__main-description
+      =menu.point
+    .mobile-menu__index__main-calory-name
+      .mobile-menu__index__main-calory
+      .mobile-menu__index__main-user-name 
+        =link_to user_path(menu.user) do
+          by
+          = menu.user.name
