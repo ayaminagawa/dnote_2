@@ -1,6 +1,10 @@
 .menu__new__top.u-mt30
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-= devise_error_messages!
+= form_for(@menu) do |f| 
+  - if @menu.errors.any? 
+    %ul
+      - @menu.errors.full_messages.each do |msg| 
+        %li
+          = msg 
   .menu__new__contents.u-mb30.hidden-xs
     .menu__new__title
       献立を作る

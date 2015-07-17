@@ -25,8 +25,11 @@
 
 //ヘッダーのカテゴリー別のボタン
 .c-btn--category{
-  padding-top: 10%;
   color: white;
+  background-color: $dark-brown;
+  margin: 7px 0px 7px 20px;
+  height: 28px;
+  line-height: 28px;
 }
 
 //ヘッダーの検索ボタン
@@ -34,7 +37,7 @@
   width: 26px;
   height: 26px;
   border: 0;
-  background-color: #3B170B;
+  background-color: $dark-brown;
 }
 
 //モバイルのサイドバーのボタン
@@ -42,4 +45,11 @@
   width: 30px;
   height: 25px;
   background-color: #FFFFFF;
+}
+
+//PCのログインボタン
+.c-btn--login{
+  width: 160px;
+  height: 40px;
+  line-height: 40px;
 }

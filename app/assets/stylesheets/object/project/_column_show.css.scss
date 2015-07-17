@@ -1,0 +1,190 @@
+//レイアウト
+
+#column__show__box{
+  margin-right: 100px;
+  margin-left: 100px;
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+#mobile-column__show__box{
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color:  #FFFFFF;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+.column__show__flag-cover{
+  width: 10%;
+}
+
+.column__show__head{
+  width: 90%;
+}
+
+.recipe_category__box{
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-bottom: 50px;
+}
+
+
+//細かい設定
+
+.column__show__top{
+  background-image: url('bg_check.png');
+  background-repeat: repeat;
+  height: 50px;
+}
+
+.column__show__contents{
+  padding: 15px 35px 40px 35px;
+}
+
+.column__show__title{
+  border-bottom :3px solid $beige;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 70%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.column__show__flag{
+  background-color: #000000;
+  color: #FFFFFF;
+  height: 60px;
+  font-size: 18px;
+  width: 72px;
+  float: left;
+  text-align: center;
+}
+
+.column__angle-1{
+  height: 0;
+  border: 18px solid transparent;
+  border-top: 18px solid #000000;
+  border-left: 18px solid #000000;
+  float: left;
+}
+
+.column__angle-2{
+  height: 0;
+  border: 18px solid transparent;
+  border-top: 18px solid #000000;
+  border-right: 18px solid #000000;
+  float: left;
+}
+
+.column__show__flag--font{
+  font-size: 25px;
+}
+
+
+.column__show__head{
+  float: left;
+}
+
+.column__show__column-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.column__show__nutritionist{
+  position: relative;
+}
+
+.column__show__nutritionist-image{
+  height: 48px;
+  width: 48px;
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.column__show__nutritionist-name{
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+}
+
+.nutritionist{
+  font-size: 12px;
+}
+
+.column__show__nutritionist-top{
+  margin-top: 30px;
+  border-top: 1px solid $beige;
+  border-left: 1px solid $beige;
+  border-right: 4px solid $beige;
+  border-bottom: 4px solid $beige;
+}
+
+.column__show__nutritionist-top-image{
+  height: 200px;
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.column__show__nutritionist-top-main{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.column__show__nutritionist-top-name{
+  border-bottom: 3px dotted $grey;
+  width: 300px;
+}
+
+.nutritionist-top-nutritionist{
+  display: inline-block;
+  color: $pink;
+  font-size: 17px;
+}
+
+.nutritionist-top-name{
+  display: inline-block;
+  font-size: 20px;
+}
+
+.column__show__columns{
+  background-color: #F7F5EE;
+  margin-top: 30px;
+}
+
+.column__show__columns-title{
+  background-color: #C3BAA7;
+  margin: 30px 30px 10px 30px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  border-radius: 13px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+}
+
+.column__show__items{
+  margin: 5px 5px 5px 5px; 
+  padding: 5px 5px 5px 5px;
+}
+
+.column__show__item-cover{
+  background-color: #F7F5EE;
+}
+
+.column__show__item{
+  margin: 5px 5px 5px 5px; 
+  padding: 5px 5px 5px 5px;
+  background-color: #FFFFFF;
+}
+
+.column__show__item-title{
+  font-size: 16px;
+}

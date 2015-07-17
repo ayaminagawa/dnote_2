@@ -1,0 +1,64 @@
+#column__show__box.hidden-xs
+  .column__show__top.u-mt30
+  .column__show__contents.u-mb30.hidden-xs
+    .column__show__title
+      お役立ちコラム
+    .column__show__title-nutritionist.clearfix
+      .column__show__flag-cover.col-md-1
+        .column__show__flag
+          = @column.created_at.strftime("%Y")
+          <br>
+          .column__show__flag--font
+            = @column.created_at.strftime("%m")
+        .column__angle-1
+        .column__angle-2  
+      .column__show__head.col-md-11
+        .column__show__column-title.u-pt10
+          = @column.title
+        .column__show__nutritionist
+          .column__show__nutritionist-image{style: "background-image: url('#{@column.user.image.url(:original)}');"}
+          .column__show__nutritionist-name.u-pl10
+            .nutritionist.u-grey-1
+              管理栄養士
+            = @column.user.name
+    .column__show__image
+    .column__show__body.u-pt10
+      = @column.body
+    .column__show__nutritionist-top.clearfix
+      .column_show__nutritionist-top-image-cover.col-md-3
+        .column__show__nutritionist-top-image.c-circle{style: "background-image: url('#{@column.user.image.url(:original)}');"}
+      .column__show__nutritionist-top-main.col-md-9
+        .column__show__nutritionist-top-name
+          .nutritionist-top-nutritionist
+            管理栄養士
+          .nutritionist-top-name
+            = @column.user.name
+        .column__show__nutritionist-top-description
+          = @column.user.nutritionist_description
+    .column__show__columns.clearfix
+      .column__show__columns-title
+        \\  その他のコラム  /
+      %ul.column__show__items.clearfix
+        - @columns.each do |column|
+          %li.column__show__item-cover.col-md-4
+            .column__show__item
+              .column__show__item-title
+                = link_to column.title, column_path(column)
+              .column__show__item-image.u-pt10
+              .column__show__item-body.u-pt10
+                = column.body[0..40]
+                …
+.recipe_category__box
+  = render 'about/recipe_category'
+#mobile-column__indes__box.clearfix.visible-xs
+  .mobile-column__show__top.u-pb10
+    .show-main__top.clearfix
+      .show-main__top__english
+        %p Column
+      .mobile-show-main__top__japanese
+        %p.u-white-1.c-circle.c-mobile.u-pink-2 コ
+        %p.u-white-1.c-circle.c-mobile.u-yellow-2 ラ
+        %p.u-white-1.c-circle.c-mobile.u-green-2 ム
+        %p.c-circle.c-mobile.u-grey-2 一
+        %p.c-circle.c-mobile.u-grey-2 覧
+  %ul.mobile-column__show__contents.u-white-2.clearfix

@@ -11,7 +11,7 @@
 }
 
 .header-top__menu__item a{
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .header-top__menu__item__pencil{
@@ -39,6 +39,8 @@
 #header-nav__block{
   text-align: center;
   height: 3em;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 .header-nav__button, .header-nav__search, .header-nav__category, {
@@ -78,11 +80,23 @@ a:focus {
 
 .header-nav__category a{
   display: block;
-  height: 3em;
+}
+
+.header-nav__category__content--line{
+  border-bottom: 1px solid #FFFFFF;
 }
 
 #category-dropdown-box{
   display:none;
+  position: absolute;
+  background-color: #DAA024;
+  right: 0;
+}
+
+.header-nav__category__content a{
+  color: #FFFFFF;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 

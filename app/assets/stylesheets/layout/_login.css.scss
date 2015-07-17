@@ -1,0 +1,42 @@
+.signup-modal{
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+.signup-modal__box{
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  padding: 50px 0;
+  border-radius: 10px;
+  width: 600px;
+  height: 350px;
+  text-align: center;
+}
+
+.modal-title{
+  font-size: 20px;
+  color: $grey;
+  padding-bottom: 8px;
+}
+
+.modal-inner__left{
+  height: 100%;
+  border-right: 1px solid $grey;
+}
+
+.modal-inner__btn a{
+  color: #FFFFFF;
+  font-size: 13px;
+}
+
+.modal-inner__btn{
+  margin-bottom: 2px;
+}

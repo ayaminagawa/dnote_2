@@ -7,6 +7,7 @@ class ColumnsController < ApplicationController
   def show
     @id = params[:id]
     @column = Column.find(@id)
+    @columns = Column.limit(3)
   end
 
   def new

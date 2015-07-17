@@ -1,5 +1,5 @@
 .user__new__top.u-mt30
-= form_for(@user) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   .user__new__contents.u-mb30.hidden-xs
     .user__new__title
       新規会員登録

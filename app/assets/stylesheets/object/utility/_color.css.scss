@@ -13,25 +13,25 @@
 }
 
 .u-pink-1{
-  color: #EF8766;
+  color: $pink;
 }
 
 .u-brown{
-  color: #815D47;
+  color: $brown;
 }
 
 //背景カラー(-2)
 
 .u-pink-2{
-  background-color: #EF8766;
+  background-color: $pink;
 }
 
 .u-yellow-2{
-  background-color: #F5B42A;
+  background-color: $yellow;
 }
 
 .u-green-2{
-  background-color: #3C9547;
+  background-color: $green;
 }
 
 .u-beige-2{
@@ -45,6 +45,15 @@
 .u-black-2{
   background-color: #000000;
 }
+
+.u-facebook-2{
+  background-color: #3b5998;
+}
+
+.u-twitter-2{
+  background-color: #4295FA;
+}
+
 
 //太字
 

@@ -16,7 +16,8 @@
           .column__index__article-title.u-pt10
             = link_to column.title, column
           .column__index__body.u-pt10
-            = column.body
+            = column.body[0..68]
+            …
 #mobile-column__indes__box.clearfix.visible-xs
   .mobile-column__index__top.u-pb10
     .index-main__top.clearfix
@@ -37,6 +38,7 @@
             = link_to column.title, column
           .mobiile-column__index__body.u-pt5.u-pb5
             = column.body[0..29]
+            …
           .mobile-column__index__user
             .mobile-column__index__user-image{style: "background-image: url('#{column.user.image.url(:original)}');"}
             .mobile-column__index__user-name
