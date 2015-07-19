@@ -23,18 +23,16 @@
             .menu__show__main-kcal
               %i.fa.fa-fire
               合計
-              kcal
+              kcal(１人あたり)
             = link_to menu_path(@menu) do
               .menu__show__main-user-name
                 = @menu.user.name
-              .menu__show__main-user-image.c-circle{style:"background-image: url(#{@menu.image.url(:original)});"}
-          .menu__show__main-image-ingredient.clearfix
-            %ul.menu__show__main-images
-              %li.menu__show__main-image.col-md-6{style:"background-image: url(#{@main_recipe.image.url(:original)});"}
-              - @side_recipes.each do |side_recipe|
-                %li.menu__show__main-image.col-md-6{style:"background-image: url(#{side_recipe.image.url(:original)});"}
-            / .menu__show__main-ingredient.col-md-6
-          %ul.menu__show__main-recipes
+              .menu__show__main-user-image.c-circle{style:"background-image: url(#{@menu.user.image.url(:original)});"}
+          .menu__show__main-image-ingredient.clearfix.u-pt30
+            .menu__show__main-images.col-md-5
+              .menu__show__main-image{style:"background-image: url(#{@menu.image.url(:original)});"}
+            .menu__show__main-ingredient.col-md-7
+          %ul.menu__show__main-recipes.u-pt30
             %li.menu__show__main-recipe.clearfix.u-mt10
               = link_to recipe_path(@main_recipe) do
                 .menu__show__main-recipe-image.col-md-4{style:"background-image: url(#{@main_recipe.image.url(:original)});"}
@@ -44,7 +42,9 @@
                 .menu__show__recipe-contents-kcal
                   %i.fa.fa-fire
                   = @main_recipe.calorie
-                  kcal
+                  kcal,　糖質
+                  = @main_recipe.sugar
+                  g(1人あたり)
                 .menu__show__recipe-contents-description
                   = @main_recipe.description
             - @side_recipes.each do |side_recipe|
@@ -57,7 +57,9 @@
                   .menu__show__recipe-contents-kcal
                     %i.fa.fa-fire
                     = side_recipe.calorie
-                    kcal
+                    kcal,　糖質
+                    = side_recipe.sugar
+                    g(1人あたり)
                   .menu__show__recipe-contents-description
                     = side_recipe.description
   .menu__show__side_block
@@ -76,11 +78,12 @@
       %i.fa.fa-fire
       合計
       kcal
-    .mobile-recipe__show__category.col-xs-4
-    .mobile-recipe__show__name.col-xs-3
+    .mobile-recipe__show__category.col-xs-3
+    .mobile-recipe__show__name.col-xs-4
+      .mobile-menu__show__main-user-image.c-circle{style:"background-image: url(#{@menu.user.image.url(:original)});"}
       = @menu.user.name 
   .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @menu.point
-  %ul.mobile-menu__show__recipes.clearfix
+  %ul.mobile-menu__show__recipes.clearfix.u-pt30
     %li.mobile-menu__show__recipe.clearfix.u-pt10.u-pb10
       = link_to recipe_path(@main_recipe) do
         .mobile-menu__show__main-recipe-image.col-xs-5{style:"background-image: url(#{@main_recipe.image.url(:original)});"}

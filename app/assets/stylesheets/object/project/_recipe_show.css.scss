@@ -87,12 +87,6 @@
   color: #000000;
 }
 
-.recipe__index__items-title{
-  font-size: 17px;
-  color: $pink;
-  padding-bottom: 10px; 
-}
-
 .recipe__index__item{
   padding-left: 10px;
   padding-right: 10px;
@@ -110,6 +104,18 @@
 .recipe__index__tab{
   position: relative;
   top: 5px;
+}
+
+.recipe__show__image{
+  height: 250px;
+  background-size: cover;
+}
+
+.mobile-recipe__show__main-user-image{
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  float: left;
 }
 
 
@@ -196,5 +202,13 @@
 .mobile-recipe__show__image{
   height: 250px;
   background-size: cover;
+}
+
+.ingredient-name, .ingredient-quantity{
+  font-size: 13px;
+}
+
+.mobile-recipe__point__body{
+  padding: 5px 5px 5px 5px;
 }
 

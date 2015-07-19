@@ -23,7 +23,7 @@
       menu: '', // set as an array for multiple menus
       menu_width: 260,
       menu_id: "mobile-nav",
-      button_content: 'MENU',
+      button_content: '<i class="fa fa-bars"></i>',
       prepend_button_to: '',
       menu_bar: ''
     },

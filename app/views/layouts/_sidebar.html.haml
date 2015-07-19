@@ -1,6 +1,47 @@
-%nav.main-nav.visible-xs
+%nav#main-nav.visible-xs
   .sidebar#slidemenu_contents
-    #slidemenu_list
-      .col-xs-8
-        .user-name
-        .account-img
+    #slidemenu_list.sidemenu-account
+      .sidebar__top
+        - if user_signed_in?
+          .sidebar__top__image.c-circle{style: "background-image: url(#{current_user.image.url(:original)});"}
+          .sidebar__top__user-name.u-pb20
+            = current_user.name
+            さん
+          .sidebar__top__recipe-new.c-btn.c-sidebar--recipe.u-mb15
+            = link_to 'レシピをのせる', new_recipe_path
+          .sidebar__top__menu-new.c-btn.c-sidebar--menu.u-mb30
+            = link_to '献立をのせる', new_menu_path
+        -else
+          .sidebar__top__image
+          .sidebar__top__user-name
+            ゲストさん
+      .sidebar__search
+        = form_tag recipes_path, :method => 'get' do
+          = text_field_tag :search, params[:search] , class: "search-bar-2", placeholder: "レシピ名で探す"
+          = button_tag '検索'.html_safe, :type => "submit", :class => "c-btn"
+      %ul.sidebar__menu
+        %li.sidebar__menu__li--title
+          %i.fa.fa-bars
+          メニュー
+        %li.sidebar__menu__li
+          = link_to 'おすすめ献立', menus_path
+        %li.sidebar__menu__li
+          = link_to '今月の人気のレシピ', recipes_path
+        %li.sidebar__menu__li
+          = link_to '栄養士コラム', columns_path
+        %li.sidebar__menu__li
+      %ul.sidebar__category
+        %li.sidebar__category__li--title
+          %i.fa.fa-cutlery
+          カテゴリから探す
+        %li.sidebar__category__li
+          = link_to 'カロリー表示あり', calories_path
+        - Recipe.categories.each do |key, value|
+          %li.sidebar__category__li
+            = link_to categories_path(:r_category => key) do
+              = value
+       
+
+
+
+

@@ -10,11 +10,12 @@
       .item-contents__category-name
         .item-contents__category
         .item-contents__user
-          .item-contents__user-image.c-circle{style: "background-image: url('#{recipe.user.image.url(:original)}');"}
+          .item-contents__user-image.c-circle{style: "background-image: url(#{recipe.user.image.url(:original)});"}
           .item-contents__user-name
             = link_to recipe.user.name, user_path(recipe.user)
   .row.mobile-menu__index__li.visible-xs.clearfix
-    .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{recipe.image.url(:original)});"}
+    = link_to recipe_path(recipe) do
+      .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{recipe.image.url(:original)});"}
     .mobile-menu__index__main.col-xs-7
       .mobile-menu__index__main-name
         =link_to recipe.name, recipe_path(recipe)

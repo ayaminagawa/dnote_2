@@ -21,7 +21,7 @@
         キャッチコピーを入力
       .recipe__new__descroption-2
         = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 60%;height: 70px;"
-    .recipe__new__image-ingredient.clearfix.u-pt10
+    .recipe__new__image-ingredient.clearfix.u-pt30
       .recipe__new__image.col-md-5.u-bold
         写真
         = f.file_field :image
@@ -50,7 +50,7 @@
           .ingredient__add.u-pt10
             = link_to_add_fields "＋", f, :ingredients
             材料を追加する
-    .recipe__new__procedure.u-pt10.clearfix.u-bold
+    .recipe__new__procedure.u-pt30.clearfix.u-bold
       作り方
       %ul
         = f.fields_for :procedures, @procedures do |procedure|
@@ -58,14 +58,86 @@
         .procedure__add
           = link_to_add_fields "+", f, :procedures, id: "add-proc"
           作り方を追加する
-    .recipe__new__point.u-pt10
+    .recipe__new__point.u-pt30
       .recipe__new__point-title.u-bold
         レシピのポイント
       = f.text_area :tip, class:'edit-field', placeholder:'レシピのポイントを入力', style: "font-size: 1.25rem;width: 70%;height: 100px;"
-    .recipe__new__category
+    .recipe__new__category.u-pt30
+      .recipe__new__category-1.col-md-2
+        .recipe__new__category-title
+          レシピのカテゴリー①
+        .recipe__new__category-button.u-pb20
+          = f.radio_button :recipe_select, "1", {:checked => true}
+          主菜<br>
+          = f.radio_button :recipe_select, "2"
+          副菜
+      .recipe__new__category-2.col-md-4
+        .recipe__new__category-title
+          レシピのカテゴリー②
+        .recipe__new__category-button.u-pb20.clearfix
+          .col
+            .category-button__item.col-xs-6.category-button__item--col
+              = f.radio_button :kind, "1", {:checked => true}
+              野菜のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "2"
+              お肉のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "3"
+              魚介のおかず
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "4"
+              ごはんもの
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "5"
+              パスタ・グラタン
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "6"
+              麺
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "7"
+              サラダ
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "8"
+              スープ・汁物
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "9"
+              お弁当
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "11"
+              お菓子・デザート
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "12"
+              パン
+            .category-button__item.col-xs-6
+              = f.radio_button :kind, "13"
+              大豆のおかず
+      .recipe__new__category-3.col-md-3
+        .recipe__new__category-title
+          レシピのカテゴリー③
+        .recipe__new__category-button.u-pb20
+          = f.fields_for :category_selects, @category_selects do |f|
+            = f.check_box :category_number2 
+            糖質制限食<br>
+            = f.check_box :category_number3
+            HbA1c、血糖値の安定<br>
+            = f.check_box :category_number4
+            味に自信あり<br>
+            = f.check_box :category_number5
+            すぐできるメニュー<br>
+            = f.check_box :category_number6
+            その他
+      .recipe__new__category-4.col-md-3
+        .recipe__new__category-title
+          レシピのカテゴリー④
+        .recipe__new__category-button.u-pb20
+          - RecipeFeeling.feelings.each do |index, recipe_feeling|
+            = check_box_tag "recipe[recipe_feelings_attributes][#{index}][feeling]", index, @recipe.recipe_feelings.map(&:feeling).include?(index)
+            = RecipeFeeling.feelings[index]
+            <br>
     .recipe__new__submit
-      = f.submit "レシピを公開する", name: 'save'
-      = f.submit "レシピを下書き保存する", name: 'pre_save'
+      = f.submit "レシピを公開する", name: 'save', class: 'c-submit'
+      = f.submit "レシピを下書き保存する", name: 'pre_save', class: 'c-submit'
   .mobile-recipe__new__contents.u-mb30.visible-xs
     .mobile-recipe__new__title
       = image_tag ('user_new_03.png')

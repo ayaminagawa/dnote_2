@@ -1,3 +1,47 @@
-.main-nav{
+#main-nav{
   position: relative;
 }
+
+.sidebar__top__image{
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+}
+
+.sidebar__top{
+  background-image: url('sp_user_show_05.png');
+  background-size: cover;
+  text-align: center;
+}
+
+.sidebar__top__recipe-new a, .sidebar__top__menu-new a{
+  color: #FFFFFF;
+}
+
+.sidebar__search{
+  background-color: #D2C7AD;
+}
+
+.sidebar__menu__li--title, .sidebar__category__li--title{
+  background-color: #FFFFFF;
+  color: $brown;
+  font-weight: bold;
+  height: 3em;
+  line-height: 3em;
+  border-bottom: 1px solid #D2CABB;
+  padding-left: 10px;
+}
+
+.sidebar__menu__li, .sidebar__category__li{
+  background-color: #ECE8D8;
+}
+
+.sidebar__menu__li a, .sidebar__category__li a{
+  color: $brown;
+  font-weight: bold;
+  height: 3em;
+  line-height: 3em;
+  border-bottom: 1px solid #D2CABB;
+  padding-left: 10px;
+}
+

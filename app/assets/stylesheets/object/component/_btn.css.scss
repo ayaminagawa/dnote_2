@@ -24,6 +24,39 @@
 }
 
 
+//モバイルのサイドバーのレシピ、献立newボタン
+.c-sidebar--recipe{
+  background-color: $pink;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  border-bottom: 2px solid #8E4F3B;
+  padding: 5px 15px 5px 15px;
+}
+
+.c-sidebar--menu{
+  background-color: $yellow;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  border-bottom: 2px solid #CB8D21;
+  padding: 5px 15px 5px 15px;
+}
+
+
+
+//submitボタン
+.c-submit{
+  background-color: $pink;
+  color: #FFFFFF;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  border-bottom: 2px solid #8E4F3B;
+  padding: 10px 20px 10px 20px;
+}
+
+
 //フォームでの必須ボタン
 .c-essential{
   background-color: #D84E26;

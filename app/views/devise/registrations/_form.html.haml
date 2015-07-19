@@ -100,7 +100,7 @@
                 = check_box_tag :select
                 自分でカロリーを設定する
       .user__new__submit
-        = f.submit "会員登録する", name: 'save'
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
     .mobile-user__new__contents.u-mb30.visible-xs
       .user__new__title
         新規会員登録
@@ -246,7 +246,7 @@
           .user__new__2
             = f.text_area :nutritionist_description, class:'edit-field', placeholder:'自己紹介文を入力', style:'width: 80%;height: 100px;'
       .user__new__submit
-        = f.submit "会員登録する", name: 'save'
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
     .mobile-user__new__contents.u-mb30.visible-xs
       .user__new__title
         管理栄養士新規会員登録

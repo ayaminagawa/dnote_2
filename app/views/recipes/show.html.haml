@@ -19,13 +19,15 @@
               .recipe__show__kcal
                 %i.fa.fa-fire
                 = @recipe.calorie
-                kcal
+                kcal, 糖質
+                = @recipe.sugar
+                g(1人あたり)
               .recipe__show__user-name
                 .menu__show__main-user
                   = link_to @recipe.user.name, user_path(@recipe.user)
                 .menu__show__main-user-image.c-circle{style:"background-image: url(#{@recipe.user.image.url(:original)});"}
             .recipe__show__image-ingredient.u-mt30.clearfix
-              .recipe__show__image.col-md-5{style:"background-image: url('%{@recipe.image.url}');"}
+              .recipe__show__image.col-md-5{style:"background-image: url(#{@recipe.image.url});"}
               %ul.recipe__show__ingredient.col-md-7
                 %li.ingredient__top.clearfix.u-ls-06
                   .ingredirnt__top__title.col-md-9
@@ -88,7 +90,7 @@
       %p.u-white-1.c-circle.c-large.u-pink-2 レ
       %p.u-white-1.c-circle.c-large.u-yellow-2 シ
       %p.u-white-1.c-circle.c-large.u-green-2 ピ
-  .mobile-recipe__show__image.visible-xs{style:"background-image: url('%{@recipe.image.url}');"}
+  .mobile-recipe__show__image.visible-xs{style:"background-image: url(#{@recipe.image.url});"}
   .mobile-recipe__show__title.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.name
   .mobile-recipe__show__kcal-category-name.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.clearfix
     .mobile-recipe__show__kcal.u-pink-1.col-xs-5
@@ -96,11 +98,14 @@
       合計
       = @recipe.calorie
       kcal
+      <br>
+      (1人あたり)
     .mobile-recipe__show__category.col-xs-4
     .mobile-recipe__show__name.col-xs-4
+      .mobile-recipe__show__main-user-image.c-circle{style:"background-image: url(#{@recipe.user.image.url(:original)});"}
       = link_to @recipe.user.name, user_path(@recipe.user) 
   .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.description
-  %ul.mobile-recipe__show__ingredient.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
+  %ul.mobile-recipe__show__ingredient.visible-xs.u-white-2.u-pr10.u-pl10.u-pt30
     %li.ingredient__top.clearfix.u-ls-06
       .ingredirnt__top__title.col-xs-9 買い物リスト
       .ingredient__top__people.col-xs-3
@@ -112,7 +117,7 @@
           = ingredient.name
         .ingredient-quantity.col-xs-5
           = ingredient.volume
-  %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.u-pb10
+  %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt30.u-pb10
     - @procedures.each_with_index do | procedure, index |
       %li.mobile-procedure__list.clearfix.u-pt10
         .mobile-procedure__list__number.c-circle.c-small.u-green-2.u-white-1.u-mr5
@@ -122,15 +127,15 @@
           .mobile-procedure__list__image.col-xs-5{style:"background-image: url('<%= procedure.image.url(:original) %>');"}
         - else
           .mobile-procedure__list__body.u-mb15.col-xs-10= procedure.body
-  .mobile-recipe__show__point.visible-xs.u-white-2.u-pr10.u-pl10.clearfix
+  .mobile-recipe__show__point.visible-xs.u-white-2.u-pr10.u-pl10.clearfix.u-pt30
     .mobile-recipe__point__title
       .mobile-recipe__show__baloon.u-white-1.u-black-2
         \\　コツ・ポイント　/
       .mobile-recipe__show__angle
         ▼
-      .mobile-recipe__point__body.u-mr10.u-ml10.u-pb15.clearfix
+      .mobile-recipe__point__body.clearfix
         = @recipe.tip
-  .mobile-recipe__show__tsukurepo.visible-xs.u-white-2.u-pr10.u-pl10.clearfix
+  .mobile-recipe__show__tsukurepo.visible-xs.u-white-2.u-pr10.u-pl10.clearfix.u-pt30
     .mobile-recipe__show__english
       %p Tsukutta_button
     .mobile-recipe__show__japanese.col-md-10.clearfix

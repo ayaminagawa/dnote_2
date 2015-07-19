@@ -5,6 +5,9 @@ $(function(){
     return false;
   });
 
+  $('#close-category').click(function(){
+    $('#category-dropdown-box').hide();
+  });
 
   //ログインのモーダル表示
   $('.header-top__menu__item--login').click(function(){

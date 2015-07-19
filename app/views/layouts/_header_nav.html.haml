@@ -10,7 +10,7 @@
           レシピを探す 
         = form_tag recipes_path, :method => 'get' do 
           = text_field_tag :search, params[:search] , class: "search-bar", placeholder: "レシピ名で探す"
-          = button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class => "c-btn c-btn--search"
+          = button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class => "c-btn c-btn--search u-white-1"
       %li.header-nav__category.col-md-2
         %a.c-btn.c-btn--category#category-dropdown-switch
           <i class="fa fa-chevron-down"></i>カテゴリー別
