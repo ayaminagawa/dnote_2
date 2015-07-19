@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @id = params[:id]
     @main_recipes = Recipe.where(:user_id => @id, :recipe_select => "1")
     @sub_recipes = Recipe.where(:user_id => @id, :recipe_select => "2" )
-
+    @recipes = Recipe.where(:user_id => @id)
 
     @menus = Menu.find(:all, :conditions => { :user_id => @id})
     @made_reports = MadeReport.find(:all, :conditions => { :user_id => @id})

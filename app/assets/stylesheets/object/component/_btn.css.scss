@@ -23,6 +23,16 @@
   }
 }
 
+
+//フォームでの必須ボタン
+.c-essential{
+  background-color: #D84E26;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 0px 5px 0px 5px;
+  margin-bottom: 3px;
+}
+
 //ヘッダーのカテゴリー別のボタン
 .c-btn--category{
   color: white;

@@ -10,12 +10,16 @@
         %p.c-circle.c-large.u-beige-2 一
         %p.c-circle.c-large.u-beige-2 覧
     .recipe__index__items.clearfix
-      = render @recipes
+      .recipe__index__items-title
+        = Recipe.kinds[@recipe_kind]
+      .recipe__index__item-recipe.u-pl10
+        - @kinds.each do |kind| 
+          = render 'recipes/recipe', recipe: kind
   .recipe__index__side
     =render 'layouts/side_block'
 #mobile-recipe__index__box.clearfix.visible-xs
   .mobile-recipe__index__top
-    .index-main__top.clearfix
+    .index-main__top.clearfix.u-pb10
       .index-main__top__english
         %p Recipe
       .mobile-index-main__top__japanese
@@ -24,9 +28,9 @@
         %p.u-white-1.c-circle.c-mobile.u-pink-2 ピ
         %p.c-circle.c-mobile.u-grey-2 一
         %p.c-circle.c-mobile.u-grey-2 覧
-    .mobile-recipe__index__top-button
-      .mobiile-recipe__top-button-item
-        レシピ
   %ul.mobile-recipe__index__contents.u-white-2
-    =render @recipes
+    .recipe__index__items-title
+      = Recipe.kinds[@recipe_kind]
+    - @kinds.each do |kind| 
+      = render 'recipes/recipe', recipe: kind
 

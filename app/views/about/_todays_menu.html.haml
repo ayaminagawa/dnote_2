@@ -46,11 +46,11 @@
           .index-main__recipe__select.c-circle.c-small.u-pink-2.u-white-1 主
           .index-main__recipe__name
             =link_to @main_recipe.name, recipe_path(@main_recipe)
-            - @side_recipes.each do |recipe|
-              %li.index-main__recipe__li
-                .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
-                .index-main__recipe__name
-                  = link_to recipe.name, recipe_path(recipe)
+        - @side_recipes.each do |recipe|
+          %li.index-main__recipe__li
+            .index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
+            .index-main__recipe__name
+              = link_to recipe.name, recipe_path(recipe)
           %p.mobile-index-main__recipe.u-lighter.u-dark-grey-1.u-pr10.u-pl10
             = @todays_menu.point
 

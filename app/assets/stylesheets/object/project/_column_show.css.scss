@@ -9,15 +9,6 @@
     -moz-border-radius: 20px;
 }
 
-#mobile-column__show__box{
-  margin-right: 20px;
-  margin-left: 20px;
-  background-color:  #FFFFFF;
-  border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-}
-
 .column__show__flag-cover{
   width: 10%;
 }
@@ -188,3 +179,100 @@
 .column__show__item-title{
   font-size: 16px;
 }
+
+
+
+//モバイル
+
+
+.show-main__top__english{
+  border-bottom :1px solid #E2D8C2;
+  color: #817F7F;
+}
+
+.mobile-show-main__top__japanese p{
+  display: inline-block;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.moblile-column__show__title{
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.moblile-column__show__user{
+  text-align: right;
+}
+
+.mobile-column__show__user-image{
+  float: right;
+  width: 28px;
+  height: 28px;
+  background-size: cover;
+}
+
+.mobile-column__show__user-name{
+  float: right;
+  font-size: 13px;
+}
+
+.moblile-column__nutritionit-name-nutritionist{
+  color: $pink;
+  font-size: 11px;
+  display: inline-block;
+}
+
+.moblile-column__nutritionit-name-user{
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+.mobile-recipe__show__baloon-position{
+  position: relative;
+  top: 24px;
+}
+
+.mobile-column__show__angle{
+  font-size: 25px;
+  position: relative;
+  top: 9px;
+  color: #000000;
+  height: 25px;
+}
+
+.moblile-column__show__nutritionit-image{
+  width: 75px;
+  height: 75px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.moblile-column__show__nutritionit-main{
+  float: left;
+  width: 72%;
+}
+
+.moblile-column__nutritionit-name{
+  height: 30px;
+  border-bottom: 2px dotted $grey;
+  line-height: 30px;
+  margin-top: 20px;
+}
+
+.mobile-column__show__item-title a{
+  font-size: 12px;
+  height: 66px;
+}
+
+.mobile-column__show__item-user a{
+  font-size: 11px;
+  color: $pink;
+}
+
+
+

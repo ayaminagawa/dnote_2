@@ -11,7 +11,7 @@
 
 //細かい設定
 
-.recipe__show__name-favorite a{
+.recipe__show__name a{
   color: #EF8766;
   font-size: 25px;
   font-weight: bold;
@@ -24,9 +24,13 @@
 }
 
 .recipe__show__user-name{
-  border-bottom: 1px solid #000000;
   float: right;
 }
+
+.menu__show__main-user{
+  float: right;
+}
+
 
 .ingredient__top{
   background-color: #E2D1B6;
@@ -83,6 +87,32 @@
   color: #000000;
 }
 
+.recipe__index__items-title{
+  font-size: 17px;
+  color: $pink;
+  padding-bottom: 10px; 
+}
+
+.recipe__index__item{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.contents-inner__cover--recipe-index{
+  padding: 10px 10px 10px 10px;
+}
+
+.contents-inner__cover--tab{
+  padding: 5px 5px 0px 5px;
+  display: inline-block;
+}
+
+.recipe__index__tab{
+  position: relative;
+  top: 5px;
+}
+
+
 
 //つくれぽ
 
@@ -128,6 +158,8 @@
 .mobile-procedure__list__number{
   line-height: 25px;
   text-align: center;
+  display: inline-block;
+  float: left;
 }
 
 .mobile-recipe__point__title{
@@ -153,3 +185,16 @@
 .mobile-recipe__point__body{
   background-color: #F7ECD3;
 }
+
+.recipe__index__items-title{
+  font-size: 15px;
+  color: $pink;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.mobile-recipe__show__image{
+  height: 250px;
+  background-size: cover;
+}
+

@@ -1,0 +1,288 @@
+//レイアウト
+
+#user__show__box{
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+
+//トップの部分
+
+.user__show__top{
+  background-image: url('sp_user_show_05.png');
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: 100% 100%;
+  height: 200px;
+  padding-top: 25px;
+}
+
+.user__show__top-image{
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  margin-left: 25px;
+}
+
+.user__show__top-name{
+  position: relative;
+  bottom: -125px;
+}
+
+.user__show__top-name-user{
+  display: inline-block;
+  font-size: 20px;
+}
+
+.user__show__top-name-p{
+  display: inline-block;
+}
+
+.user__show__top-button{
+  width: 75px;
+  height: 75px;
+  text-align: center;
+  padding-top: 5px;
+  display: inline-block;
+  position: relative; 
+  bottom: -80px;
+  margin-left: 30px;
+  padding-left: 5px;
+}
+
+.user__show__top-button a{
+  color: #FFFFFF;
+}
+
+
+//タブの部分
+
+.user__show__tab-menu-2, .user__show__tab-recipe-2, .user__show__tab-favorite-menu-2, .user__show__tab-favorite-recipe-2, .user__show__tab-tsukurepo{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user__show__tab-menu, .user__show__tab-recipe{
+  border: 2px solid $pink;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  margin-right: 5px;
+  height: 60px;
+  line-height: 27px;
+  background-color: #FFFFFF;
+  color: $pink;
+}
+
+.user__show__tab-favorite-menu, .user__show__tab-favorite-recipe{
+  border: 2px solid $yellow;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  background-color: #FFFFFF;
+  color: $yellow; 
+  margin-right: 5px;
+  height: 60px;
+  line-height: 27px;
+}
+
+.user__show__tab-tsukurepo{
+  border: 2px solid $green;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  background-color: #FFFFFF;
+  color: $green;
+  margin-right: 5px;
+}
+
+//タブのjQuery部分
+
+.main{
+  display: none;
+}
+
+.main.active{
+  display: block;
+}
+
+.step-list.active.user__show__tab-menu, .step-list.active.user__show__tab-recipe{
+  display: block;
+  background-color: $pink; 
+  color: #FFFFFF;
+}
+
+.step-list.active.user__show__tab-favorite-menu, .step-list.active.user__show__tab-favorite-recipe{
+  display: block;
+  background-color: $yellow; 
+  color: #FFFFFF; 
+}
+
+.step-list.active.user__show__tab-tsukurepo{
+  display: block;
+  background-color: $green; 
+  color: #FFFFFF; 
+}
+
+
+//メインコンテンツ
+
+.user__show__main-cover{
+  background-image: url('bg_check.png');
+  background-repeat: repeat;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  top: -4px;
+}
+
+.user__show__main{
+  background-color: #FFFFFF;
+  padding: 15px 10px 15px 10px;
+}
+
+.user__show__recipe-image{
+  height: 200px;
+}
+
+.index-main__picture{
+  height: 200px;
+}
+
+
+//モバイル
+
+.mobile-user__show__top{
+  background-image: url('sp_user_show_05.png');
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: 100% 100%;
+  height: 100px;
+  padding-top: 25px;
+}
+
+.mobile-user__show__top-image{
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+}
+
+.mobile-user__show__top-name-p{
+  font-size: 11px;
+}
+
+.mobile-user__show__top-name{
+  position: relative;
+  bottom: -37px;
+}
+
+
+//モバイルのタブ部分
+
+.mobile-user__show__tab-menu-2, .mobile-user__show__tab-recipe-2, .mobile-user__show__tab-tsukurepo{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mobile-user__show__tab-menu-1, .mobile-user__show__tab-recipe-1{
+  font-size: 11px;
+}
+
+.mobile-user__show__tab-menu{
+  border: 2px solid $pink;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  height: 45px;
+  line-height: 20px;
+  background-color: #FFFFFF;
+  color: $pink;
+}
+
+.mobile-user__show__tab-recipe{
+  border: 2px solid $yellow;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  background-color: #FFFFFF;
+  color: $yellow; 
+  height: 45px;
+  line-height: 20px;
+}
+
+.mobile-user__show__tab-tsukurepo{
+  border: 2px solid $green;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  text-align: center;
+  height: 45px;
+  line-height: 21px;
+  background-color: #FFFFFF;
+  color: $green;
+}
+
+.mobile-user__show__main{
+  background-color: #FFFFFF;
+}
+
+//モバイルのメインコンテンツ
+
+.mobile-index-main__picture{
+  height: 120px;
+  background-size: cover;
+}
+
+.mobile-index-main__recipe__select{
+  text-align: center;
+  line-height: 25px;
+  display: inline-block;
+}
+
+.mobile-index-main__recipe__name{
+  display: inline-block;
+}
+
+.mobile-index-main__recipe__name a{
+  font-size: 12px;
+}
+
+.mobile-index-main__recipe--name a{
+  font-size: 15px;
+}
+
+//モバイルのタブのjQuery部分
+
+.main{
+  display: none;
+}
+
+.main.active{
+  display: block;
+}
+
+.step-list.active.mobile-user__show__tab-menu{
+  display: block;
+  background-color: $pink; 
+  color: #FFFFFF;
+}
+
+.step-list.active.mobile-user__show__tab-recipe{
+  display: block;
+  background-color: $yellow; 
+  color: #FFFFFF; 
+}
+
+.step-list.active.mobile-user__show__tab-tsukurepo{
+  display: block;
+  background-color: $green; 
+  color: #FFFFFF; 
+}
+
+

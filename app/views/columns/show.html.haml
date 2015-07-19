@@ -50,7 +50,7 @@
                 …
 .recipe_category__box
   = render 'about/recipe_category'
-#mobile-column__indes__box.clearfix.visible-xs
+#mobile-column__show__box.clearfix.visible-xs
   .mobile-column__show__top.u-pb10
     .show-main__top.clearfix
       .show-main__top__english
@@ -59,6 +59,51 @@
         %p.u-white-1.c-circle.c-mobile.u-pink-2 コ
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 ラ
         %p.u-white-1.c-circle.c-mobile.u-green-2 ム
-        %p.c-circle.c-mobile.u-grey-2 一
-        %p.c-circle.c-mobile.u-grey-2 覧
-  %ul.mobile-column__show__contents.u-white-2.clearfix
+  .mobile-column__show__contents.u-white-2.clearfix
+    .moblile-column__show__image
+    .moblile-column__show__title
+      = @column.title
+    .moblile-column__show__user.clearfix
+      .mobile-column__show__user-name
+        = @column.user.name
+      .mobile-column__show__user-image.c-circle{style: "background-image: url('#{@column.user.image.url(:original)}');"}
+    .moblile-column__show__body.u-pt10
+      = @column.body
+    .moblile-column__show__nutritionit
+      .mobile-recipe__point__title
+        .mobile-recipe__show__baloon.mobile-recipe__show__baloon-position.u-white-1.u-black-2
+          \\　管理栄養士プロフィール　/
+        .mobile-column__show__angle
+          ▼
+        .mobile-recipe__point__body.u-mr10.u-ml10.u-pb15.clearfix.u-mb15
+          .moblile-column__show__nutritionit-image.c-circle.clearfix{style: "background-image: url('#{@column.user.image.url(:original)}');"}
+          .moblile-column__show__nutritionit-main
+            .moblile-column__nutritionit-name.clearfix
+              .col
+                .moblile-column__nutritionit-name-nutritionist.col-xs-5
+                  管理栄養士
+                .moblile-column__nutritionit-name-user.col-xs-7
+                  = @column.user.name
+            .moblile-column__nutritionit-description
+              = @column.user.nutritionist_description
+  .moblile-column__show__columns.mobile-column__show__top.u-pb10.u-mt30
+    .show-main__top.clearfix
+      .show-main__top__english.col-xs-8
+        %p More Columns
+      .mobile-index-main__top__link.col-xs-4
+        = link_to 'コラム一覧へ', columns_path
+      .mobile-show-main__top__japanese.col-xs-12
+        %p.u-white-1.c-circle.c-mobile.u-pink-2 他
+        %p.u-white-1.c-circle.c-mobile.u-yellow-2 も
+        %p.u-white-1.c-circle.c-mobile.u-green-2 読
+        %p.u-white-1.c-circle.c-mobile.u-pink-2 む
+    %ul.column__show__items.clearfix.u-white-2
+      - @columns.each do |column|
+        %li.mobile-column__show__item.col-xs-4
+          .mobile-column__show__item-image
+          .mobile-column__show__item-title
+            = link_to column.title, column_path(column)
+          .mobile-column__show__item-user
+            = link_to column.user.name, user_path(column.user)
+      
+

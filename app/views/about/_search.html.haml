@@ -5,6 +5,6 @@
       %i.fa.fa-cutlery レシピ検索
   .index-side__contents
     .index-side__contents__search
-    = form_tag recipes_path, :method => 'get' do
-      = text_field_tag :search, params[:search] , class: "search-bar-2", placeholder: "レシピ名、材料名を入力"
-      = button_tag '検索する'.html_safe, :type => "submit", :class => "c-btn"
+      = form_tag recipes_path, :method => 'get' do
+        = text_field_tag :search, params[:search] , class: "search-bar-2", placeholder: "レシピ名、材料名を入力"
+        = button_tag '検索する'.html_safe, :type => "submit", :class => "c-btn"

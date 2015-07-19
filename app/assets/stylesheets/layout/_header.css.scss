@@ -39,11 +39,11 @@
 #header-nav__block{
   text-align: center;
   height: 3em;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-.header-nav__button, .header-nav__search, .header-nav__category, {
+.header-nav__button, .header-nav__category, {
   display: inline-block;
   color: #FFFFFF;
 }
@@ -103,7 +103,7 @@ a:focus {
 //ヘッダーモバイル
 
 #sp-header-top__menu{
-  background-color: #F5B42A;
+  background-color: $yellow;
   height: 40px;
   text-align: center;
 }

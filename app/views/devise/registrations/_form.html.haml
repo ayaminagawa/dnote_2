@@ -1,77 +1,293 @@
 .user__new__top.u-mt30
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  .user__new__contents.u-mb30.hidden-xs
-    .user__new__title
-      新規会員登録
-    .user__new__image-main.clearfix
-      .user__new__image.col-md-3
-        = f.file_field :image
-        = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
-      .user__new__main.col-md-9
-        .user__new__name.clearfix
+  - if params[:u_n] == "1"
+    = hidden_field_tag :u_n, 1
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        新規会員登録
+      .user__new__image-main.clearfix
+        .user__new__image.col-md-3
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__main.col-md-9
+          .user__new__name.clearfix
+            .user__new__1
+              ユーザー名：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+          .user__new__sex.clearfix
+            .user__new__1
+              性別：
+            .user__new__2
+              = f.radio_button :gender, "1" 
+              男
+              = f.radio_button :gender, "2" 
+              女
+          .user__new__email.clearfix
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+          .user__new__password-comfirmation.clearfix
+            .user__new__1
+              パスワード確認：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
+      .user__new__questionnaires
+        .user__new__questionnaires-title
+          \\  カロリー設定 　/
+        .user__new__questionnaires-main.u-pt30
+          %ul.user__new__questionnaire
+            %li.user-question.clearfix
+              .user-question-1.col-md-2
+                生年月日
+              .user-question-2.col-md-10
+                = text_field_tag :year
+                年
+                = text_field_tag :month
+                月
+                = text_field_tag :day
+                日
+            %li.user-question.clearfix
+              .user-question-1.col-md-2
+                身長
+              .user-question-2.col-md-10
+                = f.text_field :height, placeholder:'身長を入力', rows:'2'
+                cm
+            %li.user-question.clearfix
+              .user-question-1.col-md-2
+                体重
+              .user-question-2.col-md-10
+                = f.text_field :weight, placeholder:'体重を入力', rows:'2'
+                kg
+            %li.user-question.clearfix
+              .user-question-1.col-md-2
+                身体活動チェック
+              .user-question-2.col-md-10
+                = check_box_tag :exercise
+                低い (生活の大部分が座位で、静的な活動が中心の場合)
+                <br>
+                = check_box_tag :exercise
+                標準 (座位中心の仕事だが、職場内での移動や立位での作業・接客等、あるいは通勤・買物・家事・軽いスポーツ等のいずれかを含む場合)
+                <br>
+                = check_box_tag :exercise
+                高い (移動や立位の多い仕事への従事者。あるいは、スポーツなど余暇における運動習慣を持っている場合)
+            %li.user-question.clearfix
+              .user-question-1.col-md-2
+                献立作成時の
+                <br>
+                カロリー設定の選択
+              .user-question-2.col-md-10
+                = check_box_tag :select
+                現在の体重を維持するために必要なカロリー
+                <br>
+                = check_box_tag :select
+                標準体重を目標とした場合のカロリー
+                <br>
+                = check_box_tag :select
+                自分でカロリーを設定する
+      .user__new__submit
+        = f.submit "会員登録する", name: 'save'
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .user__new__title
+        新規会員登録
+      .mobile-user__new__main.clearfix
+        .user__new__name
           .user__new__1
-            ユーザー名：
-          .user__new__2
+            ユーザー名
+          .c-essential
+            必須
+          .user__new__2.user__new__2--border
             = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
-        .user__new__sex.clearfix
+        .user__new__sex
           .user__new__1
-            性別：
+            性別
           .user__new__2
             = f.radio_button :gender, "1" 
             男
             = f.radio_button :gender, "2" 
             女
-        .user__new__email.clearfix
+        .user__new__image
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__email
           .user__new__1
-            メールアドレス：
+            メールアドレス
+          .c-essential
+            必須
           .user__new__2
             = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
-        .user__new__password.clearfix
+        .user__new__password
           .user__new__1
-            パスワード：
+            パスワード
+          .c-essential
+            必須
           .user__new__2
-            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
-        .user__new__password-comfirmation.clearfix
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+        .user__new__password-comfirmation
           .user__new__1
-            パスワード確認：
+            パスワード確認
+          .c-essential
+            必須
           .user__new__2
-            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
-    .user__new__submit
-      = f.submit "会員登録する", name: 'save'
-  .mobile-user__new__contents.u-mb30.visible-xs
-    .user__new__title
-      新規会員登録
-    .mobile-user__new__main.clearfix
-      .user__new__name
-        .user__new__1
-          ユーザー名
-        .user__new__2.user__new__2--border
-          = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
-      .user__new__sex
-        .user__new__1
-          性別
-        .user__new__2
-          = f.radio_button :gender, "1" 
-          男
-          = f.radio_button :gender, "2" 
-          女
-      .user__new__image
-        = f.file_field :image
-        = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
-      .user__new__email
-        .user__new__1
-          メールアドレス
-        .user__new__2
-          = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
-      .user__new__password
-        .user__new__1
-          パスワード
-        .user__new__2
-          = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
-      .user__new__password-comfirmation
-        .user__new__1
-          パスワード確認
-        .user__new__2
-          = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
-    .user__new__submit.u-mt10
-      = f.submit "会員登録する", name: 'save'
+            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
+      .user__new__questionnaires
+        .user__new__questionnaires-title
+          \\  カロリー設定 　/
+        .user__new__questionnaires-main.u-pt30
+          %ul.user__new__questionnaire
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                生年月日
+              .user-question-2.col-xs-8
+                = text_field_tag :year
+                年
+                = text_field_tag :month
+                月
+                = text_field_tag :day
+                日
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                身長
+              .user-question-2.col-xs-8
+                = f.text_field :height, placeholder:'身長を入力', rows:'2'
+                cm
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                体重
+              .user-question-2.col-xs-8
+                = f.text_field :weight, placeholder:'体重を入力', rows:'2'
+                kg
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                身体活動チェック
+              .user-question-2.col-xs-8
+                = check_box_tag :exercise
+                低い (生活の大部分が座位で、静的な活動が中心の場合)
+                <br>
+                = check_box_tag :exercise
+                標準 (座位中心の仕事だが、職場内での移動や立位での作業・接客等、あるいは通勤・買物・家事・軽いスポーツ等のいずれかを含む場合)
+                <br>
+                = check_box_tag :exercise
+                高い (移動や立位の多い仕事への従事者。あるいは、スポーツなど余暇における運動習慣を持っている場合)
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                献立作成時の
+                <br>
+                カロリー設定の選択
+              .user-question-2.col-xs-8
+                = check_box_tag :select
+                現在の体重を維持するために必要なカロリー
+                <br>
+                = check_box_tag :select
+                標準体重を目標とした場合のカロリー
+                <br>
+                = check_box_tag :select
+                自分でカロリーを設定する
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save'
+  - else
+    - hidden_field_tag :u_n, 2
+    - f.hidden_field :permission, :value => 1
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        管理栄養士新規会員登録
+      .user__new__image-main.clearfix
+        .user__new__image.col-md-3
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__main.col-md-9
+          .user__new__name.clearfix
+            .user__new__1
+              ユーザー名：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+          .user__new__email.clearfix.u-pt10
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+          .user__new__password-comfirmation.clearfix
+            .user__new__1
+              パスワード確認：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
+        .user__new__nutritionist_description.clearfix
+          .user__new__1
+            自己紹介文：
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_area :nutritionist_description, class:'edit-field', placeholder:'自己紹介文を入力', style:'width: 80%;height: 100px;'
+      .user__new__submit
+        = f.submit "会員登録する", name: 'save'
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .user__new__title
+        管理栄養士新規会員登録
+      .mobile-user__new__main.clearfix
+        .user__new__name
+          .user__new__1
+            ユーザー名
+          .c-essential
+            必須
+          .user__new__2.user__new__2--border
+            = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+        .user__new__image.user__new__image__nutritionist
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__email
+          .user__new__1
+            メールアドレス
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password
+          .user__new__1
+            パスワード
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+        .user__new__password-comfirmation
+          .user__new__1
+            パスワード確認
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
+        .user__new__nutritionist_description.clearfix.u-pt20
+          .user__new__1
+            自己紹介文：
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_area :nutritionist_description, class:'edit-field', placeholder:'自己紹介文を入力', style:'width: 80%;height: 100px;'
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save'

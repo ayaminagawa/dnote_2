@@ -1,27 +1,28 @@
-.recipe__index__item.row.hidden-xs
-  = link_to recipe_path(recipe) do
-    .recipe__index__item-image.col-md-6{style: "background-image: url('#{recipe.image.url(:original)}');"}
-  .recipe__index__item-contents.col-md-6
-    .item-contents__name
-      = link_to recipe.name, recipe_path(recipe)
-    .item-contents__description
-      = recipe.description
-    .item-contents__category-name
-      .item-contents__category
-      .item-contents__user
-        .item-contents__user-image.c-circle{style: "background-image: url('#{recipe.user.image.url(:original)}');"}
-        .item-contents__user-name
-          = link_to recipe.user.name, user_path(recipe.user)
-.row.mobile-menu__index__li.visible-xs.clearfix
-  .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{recipe.image.url(:original)});"}
-  .mobile-menu__index__main.col-xs-7
-    .mobile-menu__index__main-name
-      =link_to recipe.name, recipe_path(recipe)
-    .mobile-menu__index__main-description
-      =recipe.description
-    .mobile-menu__index__main-calory-name
-      .mobile-menu__index__main-calory
-      .mobile-menu__index__main-user-name 
-        =link_to user_path(recipe.user) do
-          by
-          = recipe.user.name
+- if recipe.pre_save != 1
+  .recipe__index__item.row.hidden-xs
+    = link_to recipe_path(recipe) do
+      .recipe__index__item-image.col-md-6{style: "background-image: url('#{recipe.image.url(:original)}');"}
+    .recipe__index__item-contents.col-md-6
+      .item-contents__name
+        = link_to recipe.name, recipe_path(recipe)
+      .item-contents__description
+        = recipe.description
+      .item-contents__category-name
+        .item-contents__category
+        .item-contents__user
+          .item-contents__user-image.c-circle{style: "background-image: url('#{recipe.user.image.url(:original)}');"}
+          .item-contents__user-name
+            = link_to recipe.user.name, user_path(recipe.user)
+  .row.mobile-menu__index__li.visible-xs.clearfix
+    .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{recipe.image.url(:original)});"}
+    .mobile-menu__index__main.col-xs-7
+      .mobile-menu__index__main-name
+        =link_to recipe.name, recipe_path(recipe)
+      .mobile-menu__index__main-description
+        =recipe.description
+      .mobile-menu__index__main-calory-name
+        .mobile-menu__index__main-calory
+        .mobile-menu__index__main-user-name 
+          =link_to user_path(recipe.user) do
+            by
+            = recipe.user.name

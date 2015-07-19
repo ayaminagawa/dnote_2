@@ -1,0 +1,8 @@
+%li.col-md-3
+  .fields
+    .field
+      -@side_recipes.each do |side_recipe|
+        = f.radio_button :recipe_id, side_recipe.id, {:checked => true}
+        = side_recipe.name
+        .menu_new__sub-recipes-image{style:"background-image: url(%{side_recipe.image.url});"}
+    = link_to_remove_fields "削除", f

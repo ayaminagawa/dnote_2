@@ -7,15 +7,18 @@
           = msg 
   .menu__new__contents.u-mb30.hidden-xs
     .menu__new__title
+      = image_tag ('user_new_03.png')
       献立を作る
-    .menu__new__name
-      .menu__new__name-1
+    .menu__new__name.col-md-12
+      .menu__new__name-1.u-bold
         献立のタイトルを入力
+      .c-essential
+        必須
       .menu__new__name-2
         = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
     .menu__new__descroption-category
       .menu__new__description.col-md-6
-        .menu__new__descroption-1
+        .menu__new__descroption-1.u-bold
           献立のポイント
         .menu__new__descroption-2
           = f.text_area :point, class:'', placeholder:'献立のポイントを入力', style:"width: 100%;height: 70px;"
@@ -36,16 +39,35 @@
             その他
     .menu__new__recipes
       .menu__new__main-recipe
-      .menu_new__sub-recipes      
+        .menu__new__main-recipe-title.u-bold
+          主菜の選択
+        .c-essential
+          必須
+        %ul.clearfix
+          -@main_recipes.each do |main_recipe|
+            %li.col-md-3
+              = radio_button_tag "menu[menu_recipes_attributes][#{@main_menu_recipe_id}][recipe_id]", main_recipe.id , {:checked => true}
+              = main_recipe.name
+              .menu__new__main-recipe-image{style:"background-image: url(%{main_recipe.image.url});"}
+      .menu_new__sub-recipes.clearfix
+        = f.fields_for :menu_recipes, @menu_recipes do |f_sub|
+          - if f_sub.object.recipe.try('sub?') 
+            %ul.clearfix
+              = render 'fields_menu_recipe', {:f => f_sub}
+        %i.fa.fa-plus-square-o.fa-2x
+        = link_to_add_fields "副菜を追加する", f, :menu_recipes
     .menu__new__submit
       = f.submit "レシピを公開する", name: 'save'
       = f.submit "レシピを下書き保存する", name: 'pre_save'
   .mobile-menu__new__contents.u-mb30.visible-xs
     .menu__new__title
+      = image_tag ('user_new_03.png')
       献立を作る
     .menu__new__name
       .menu__new__name-1
         献立のタイトルを入力
+      .c-essential
+        必須
       .menu__new__name-2
         = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 100%;height: 45px;"
     .menu__new__descroption-category
@@ -71,7 +93,23 @@
             その他
     .menu__new__recipes
       .menu__new__main-recipe
-      .menu_new__sub-recipes      
+        .menu__new__main-recipe-title.u-bold
+          主菜の選択
+        .c-essential
+          必須
+        %ul.clearfix
+          -@main_recipes.each do |main_recipe|
+            %li
+              = radio_button_tag "menu[menu_recipes_attributes][#{@main_menu_recipe_id}][recipe_id]", main_recipe.id , {:checked => true}
+              = main_recipe.name
+              .mobile-menu__new__main-recipe-image{style:"background-image: url(%{main_recipe.image.url});"}
+      .menu_new__sub-recipes
+        = f.fields_for :menu_recipes, @menu_recipes do |f_sub|
+          - if f_sub.object.recipe.try('sub?') 
+            %ul.clearfix
+              = render 'fields_menu_recipe', {:f => f_sub}
+        %i.fa.fa-plus-square-o.fa-2x
+        = link_to_add_fields "副菜を追加する", f, :menu_recipes      
     .menu__new__submit
       = f.submit "レシピを公開する", name: 'save'
       = f.submit "レシピを下書き保存する", name: 'pre_save'

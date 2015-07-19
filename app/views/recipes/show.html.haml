@@ -1,14 +1,18 @@
 #recipe__show.letter-spacing.clearfix.hidden-xs
   
   #recipe__show__main-contents
-    .contents-inner.contents-inner__cover
+    .contents-inner.contents-inner__cover.clearfix
       .contents-inner__white.hidden-xs.clearfix
         .recipe__show__main.hidden-xs
           .recipe__show__top.clearfix
-            .recipe__show__name-favorite.u-ls-2
-              = link_to @recipe.name, recipe_path(@recipe)
-              .button#save-btn
-
+            .recipe__show__name-favorite.u-ls-2.clearfix
+              .recipe__show__name.col-md-9
+                = link_to @recipe.name, recipe_path(@recipe)
+              .recipe__show__edit.col-md-3
+                -if current_user?(@recipe.user)
+                  = link_to edit_recipe_path do
+                    .fa.fa-caret-right 
+                    レシピを編集する
             .recipe__show__description.u-ls-2
               = @recipe.description
             .recipe__show__kcal-user-name.u-ls-2.clearfix
@@ -17,14 +21,16 @@
                 = @recipe.calorie
                 kcal
               .recipe__show__user-name
-                = link_to @recipe.user.name, user_path(@recipe.user)
-            .recipe__show__image-ingredient.clearfix
-              .recipe__show__image.col-md-6{style:"background-image: url('%{@recipe.image.url}');"}
-              %ul.recipe__show__ingredient.col-md-6
+                .menu__show__main-user
+                  = link_to @recipe.user.name, user_path(@recipe.user)
+                .menu__show__main-user-image.c-circle{style:"background-image: url(#{@recipe.user.image.url(:original)});"}
+            .recipe__show__image-ingredient.u-mt30.clearfix
+              .recipe__show__image.col-md-5{style:"background-image: url('%{@recipe.image.url}');"}
+              %ul.recipe__show__ingredient.col-md-7
                 %li.ingredient__top.clearfix.u-ls-06
                   .ingredirnt__top__title.col-md-9
                     材料
-                  .ingredient__top__people.col-md-2
+                  .ingredient__top__people.col-md-3
                     = @recipe.people
                     人分
                 - @ingredients.each do |ingredient|
@@ -75,7 +81,7 @@
                   = made_report.user.name
   =render 'layouts/side_block'
 #mobile-recipe__show__main.visible-xs
-  .mobile-recipe__show__top.visible-xs.u-pr10.u-pl10
+  .mobile-recipe__show__top.visible-xs.u-pr10.u-pl10.u-pb10
     .mobile-recipe__show__english
       %p Recipe
     .mobile-recipe__show__japanese.col-md-10
@@ -90,26 +96,26 @@
       合計
       = @recipe.calorie
       kcal
-    .mobile-recipe__show__category.col-xs-5
-    .mobile-recipe__show__name.col-xs-2
-      = @recipe.user.name 
+    .mobile-recipe__show__category.col-xs-4
+    .mobile-recipe__show__name.col-xs-4
+      = link_to @recipe.user.name, user_path(@recipe.user) 
   .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.description
   %ul.mobile-recipe__show__ingredient.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
     %li.ingredient__top.clearfix.u-ls-06
       .ingredirnt__top__title.col-xs-9 買い物リスト
-      .ingredient__top__people.col-xs-2
+      .ingredient__top__people.col-xs-3
         = @recipe.people
         人分
     - @ingredients.each do |ingredient|
       %li.ingredient__list.clearfix.u-ls-0
-        .ingredient-name.col-xs-8.u-bold
+        .ingredient-name.col-xs-7.u-bold
           = ingredient.name
-        .ingredient-quantity.col-xs-4
+        .ingredient-quantity.col-xs-5
           = ingredient.volume
-  %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
+  %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.u-pb10
     - @procedures.each_with_index do | procedure, index |
       %li.mobile-procedure__list.clearfix.u-pt10
-        .mobile-procedure__list__number.c-circle.c-small.u-green-2.u-white-1.col-xs-2.u-mr5
+        .mobile-procedure__list__number.c-circle.c-small.u-green-2.u-white-1.u-mr5
           = 1 + index
         - if procedure.image_file_name != nil 
           .mobile-procedure__list__body.u-mb15.col-xs-5= procedure.body

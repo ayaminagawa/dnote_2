@@ -1,4 +1,4 @@
-.index-main
+.index-main.hidden-xs
   .index-main__top.clearfix
     .index-main__top__english
       %p Column
@@ -14,9 +14,11 @@
         %i.fa.fa-caret-right
         一覧を見る
   .index-main__contents__cover.clearfix
-    .index-main__contents.clearfix
-      .index-main__contents__recipe.col-md-6
-        
-      .index-main__contents__column.col-md-6
-
+    %ul.index-main__contents.clearfix
+      - @columns.each do |column|
+        %li.index-main__content.col-md-4
+          = link_to column.title, column_path(column) 
+          = link_to user_path(column.user) do
+            by 
+            column.user.name
 

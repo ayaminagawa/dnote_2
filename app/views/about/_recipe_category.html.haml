@@ -10,10 +10,27 @@
       %p.c-circle.c-large.u-beige-2 テ
       %p.c-circle.c-large.u-beige-2 ゴ
       %p.c-circle.c-large.u-beige-2 リ
-    
   %ul.index-main__contents--recipe-category
     - Recipe.arr.each do |key, image, name|
-      %li.index-main__contents--recipe-category__item.u-mt10
+      %li.index-main__contents--recipe-category__item.col-md-3.u-mt10
+        = link_to kinds_path(:r_kind => key) do
+          = image_tag image 
+          = name
+.mobile-index-main.visible-xs
+  .mobile-index-main__top
+    .mobile-index-main__top__english
+      %p Category
+    .mobile-index-main__top__japanese
+      %p.u-white-1.c-circle.c-mobile.u-green-2 レ
+      %p.u-white-1.c-circle.c-mobile.u-green-2 シ
+      %p.u-white-1.c-circle.c-mobile.u-green-2 ピ
+      %p.c-circle.c-mobile.u-beige-2 カ
+      %p.c-circle.c-mobile.u-beige-2 テ
+      %p.c-circle.c-mobile.u-beige-2 ゴ
+      %p.c-circle.c-mobile.u-beige-2 リ
+  %ul.mobile-index-main__contents--recipe-category
+    - Recipe.arr.each do |key, image, name|
+      %li.mobile-index-main__contents--recipe-category__item.col-xs-6.u-mt10
         = link_to kinds_path(:r_kind => key) do
           = image_tag image 
           = name
