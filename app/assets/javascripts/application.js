@@ -121,4 +121,25 @@ $(function(){
     });
 });
 
+$(function(){
+  // スマートフォン用、メインメニューのオフキャンバス
+  $("body").mobile_menu({
+    menu: ['#main-nav #slidemenu_contents' ], //オフキャンバスに含めるobj
+    menu_width: 250,  //メニューの横幅
+    prepend_button_to: '#menu-btn',  //トリガーになるobjを指定
+    button_content:'<i class="icon-bars"></i><br>メニュー' 
+  });
+
+  // 献立ページ、レシピページ、保存と保存後の切り替え
+  $("#save-btn").on('click', function(){
+    if ( $(this).hasClass('menu-saved')) {
+      $(this).removeClass("menu-saved");
+      $('.save-btn-text', this).text('保存');
+    }else {
+      $(this).addClass("menu-saved");
+      $('.save-btn-text', this).text('削除');
+    }
+  });
+});
+
 

@@ -1,5 +1,6 @@
 .user__new__top.u-mt30
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
   - if params[:u_n] == "1"
     = hidden_field_tag :u_n, 1
     .user__new__contents.u-mb30.hidden-xs
