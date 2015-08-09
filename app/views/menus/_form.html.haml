@@ -1,5 +1,5 @@
 .menu__new__top.u-mt30
-= form_for(@menu) do |f| 
+= form_for(@menu) do |f|
   - if @menu.errors.any? 
     %ul
       - @menu.errors.full_messages.each do |msg| 
@@ -9,35 +9,44 @@
     .menu__new__title
       = image_tag ('user_new_03.png')
       献立を作る
-    .menu__new__name.col-md-12
+    .menu__new__name.col-sm-12
       .menu__new__name-1.u-bold
         献立のタイトルを入力
       .c-essential
         必須
       .menu__new__name-2
         = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
-    .menu__new__descroption-category
-      .menu__new__description.col-md-6
+    .menu__new__descroption-category.clearfix
+      .menu__new__description.col-sm-6
+        .menu__new__descroption-1.u-bold
+          写真
+        .menu__new__descroption-2.imgInput.u-pt50
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
+      .menu__new__description.col-sm-6.u-pt30
         .menu__new__descroption-1.u-bold
           献立のポイント
+        .menu_new__description-count
+          .character 残り
+          .count 60
+          .character 文字
         .menu__new__descroption-2
           = f.text_area :point, class:'', placeholder:'献立のポイントを入力', style:"width: 100%;height: 70px;"
-      .menu__new__category.col-md-6
         .menu__new__category-title
           献立のカテゴリー
         .menu__new__category-button.u-pb20.u-bold
           = f.fields_for :category_selects, @category_selects do |f|
-            = f.check_box :category_number2 
+            = check_box_tag 'recipe[category_selects_attributes][2][category]', "2", false
             糖質制限食<br>
-            = f.check_box :category_number3
+            = check_box_tag 'recipe[category_selects_attributes][3][category]', "3", false
             HbA1c、血糖値の安定<br>
-            = f.check_box :category_number4
+            = check_box_tag 'recipe[category_selects_attributes][4][category]', "4", false
             味に自信あり<br>
-            = f.check_box :category_number5
+            = check_box_tag 'recipe[category_selects_attributes][5][category]', "5", false
             すぐできるメニュー<br>
-            = f.check_box :category_number6
+            = check_box_tag 'recipe[category_selects_attributes][6][category]', "6", false
             その他
-    .menu__new__recipes
+    .menu__new__recipes.u-pt50
       .menu__new__main-recipe
         .menu__new__main-recipe-title.u-bold
           主菜の選択
@@ -45,10 +54,10 @@
           必須
         %ul.clearfix
           -@main_recipes.each do |main_recipe|
-            %li.col-md-3
+            %li.col-sm-3
               = radio_button_tag "menu[menu_recipes_attributes][#{@main_menu_recipe_id}][recipe_id]", main_recipe.id , {:checked => true}
               = main_recipe.name
-              .menu__new__main-recipe-image{style:"background-image: url(%{main_recipe.image.url});"}
+              .menu__new__main-recipe-image{style: "background-image: url('#{main_recipe.image.url(:original)}');"}
       .menu_new__sub-recipes.clearfix
         = f.fields_for :menu_recipes, @menu_recipes do |f_sub|
           - if f_sub.object.recipe.try('sub?') 
@@ -57,8 +66,10 @@
         %i.fa.fa-plus-square-o.fa-2x
         = link_to_add_fields "副菜を追加する", f, :menu_recipes
     .menu__new__submit
-      = f.submit "レシピを公開する", name: 'save', class: 'c-submit'
-      = f.submit "レシピを下書き保存する", name: 'pre_save', class: 'c-submit'
+      = f.submit "献立を公開する", class: 'c-submit'
+
+/モバイル
+= form_for(@menu) do |f|
   .mobile-menu__new__contents.u-mb30.visible-xs
     .menu__new__title
       = image_tag ('user_new_03.png')
@@ -70,10 +81,19 @@
         必須
       .menu__new__name-2
         = f.text_field :name, class:'', placeholder:'献立のタイトルを入力', rows:'10', style:"width: 100%;height: 45px;"
+    .menu__new__descroption-1.u-bold
+      写真
+    .menu__new__descroption-2.imgInput
+      = f.file_field :image
+      = image_tag("no_image.png", :class => "imgView", :style => "width: 100%; height: 200px;") 
     .menu__new__descroption-category
       .menu__new__description
         .menu__new__descroption-1
           献立のポイント
+        .menu_new__description-count
+          残り
+          .count 60
+          文字
         .menu__new__descroption-2
           = f.text_area :point, class:'', placeholder:'献立のポイントを入力', style:"width: 100%;height: 70px;"
       .menu__new__category
@@ -81,17 +101,17 @@
           献立のカテゴリー
         .menu__new__category-button.u-pb20.u-bold
           = f.fields_for :category_selects, @category_selects do |f|
-            = f.check_box :category_number2 
+            = check_box_tag 'recipe[category_selects_attributes][2][category]', "2", false
             糖質制限食<br>
-            = f.check_box :category_number3
+            = check_box_tag 'recipe[category_selects_attributes][3][category]', "3", false
             HbA1c、血糖値の安定<br>
-            = f.check_box :category_number4
+            = check_box_tag 'recipe[category_selects_attributes][4][category]', "4", false
             味に自信あり<br>
-            = f.check_box :category_number5
+            = check_box_tag 'recipe[category_selects_attributes][5][category]', "5", false
             すぐできるメニュー<br>
-            = f.check_box :category_number6
+            = check_box_tag 'recipe[category_selects_attributes][6][category]', "6", false
             その他
-    .menu__new__recipes
+    .menu__new__recipes.u-pt30
       .menu__new__main-recipe
         .menu__new__main-recipe-title.u-bold
           主菜の選択
@@ -102,7 +122,7 @@
             %li
               = radio_button_tag "menu[menu_recipes_attributes][#{@main_menu_recipe_id}][recipe_id]", main_recipe.id , {:checked => true}
               = main_recipe.name
-              .mobile-menu__new__main-recipe-image{style:"background-image: url(%{main_recipe.image.url});"}
+              .mobile-menu__new__main-recipe-image{style: "background-image: url('#{main_recipe.image.url(:original)}');"}
       .menu_new__sub-recipes
         = f.fields_for :menu_recipes, @menu_recipes do |f_sub|
           - if f_sub.object.recipe.try('sub?') 
@@ -110,6 +130,5 @@
               = render 'fields_menu_recipe', {:f => f_sub}
         %i.fa.fa-plus-square-o.fa-2x
         = link_to_add_fields "副菜を追加する", f, :menu_recipes      
-    .menu__new__submit
-      = f.submit "レシピを公開する", name: 'save'
-      = f.submit "レシピを下書き保存する", name: 'pre_save'
+    .menu__new__submit.u-pt30
+      = f.submit "献立を公開する", class: 'c-submit' 

@@ -5,7 +5,7 @@
       お役立ちコラム一覧
     %ul.column__index__main.clearfix
       - @columns.each do |column|
-        %li.column__index__li.col-md-6
+        %li.column__index__li.col-sm-6.u-pt10
           .column__index__user-date.u-mt15
             .column__index__user-image{style: "background-image: url('#{column.user.image.url(:original)}');"}
             .column__index__user-name
@@ -19,11 +19,11 @@
             = column.body[0..68]
             …
 #mobile-column__indes__box.clearfix.visible-xs
-  .mobile-column__index__top.u-pb10
+  .mobile-column__index__top.u-pb10.u-pt10
     .index-main__top.clearfix
-      .index-main__top__english
+      .index-main__top__english.u-pl10
         %p Column
-      .mobile-index-main__top__japanese
+      .mobile-index-main__top__japanese.u-pl10
         %p.u-white-1.c-circle.c-mobile.u-pink-2 コ
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 ラ
         %p.u-white-1.c-circle.c-mobile.u-green-2 ム

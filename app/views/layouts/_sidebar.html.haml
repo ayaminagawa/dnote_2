@@ -3,20 +3,24 @@
     #slidemenu_list.sidemenu-account
       .sidebar__top
         - if user_signed_in?
-          .sidebar__top__image.c-circle{style: "background-image: url(#{current_user.image.url(:original)});"}
+          .sidebar__top__image__box.clearfix
+            .sidebar__top__image.col-xs-8.col-xs-offset-4.c-circle{style: "background-image: url(#{current_user.image.url(:original)});"}
           .sidebar__top__user-name.u-pb20
             = current_user.name
             さん
           .sidebar__top__recipe-new.c-btn.c-sidebar--recipe.u-mb15
             = link_to 'レシピをのせる', new_recipe_path
-          .sidebar__top__menu-new.c-btn.c-sidebar--menu.u-mb30
+          .sidebar__top__menu-new.c-btn.c-sidebar--menu.u-mb15
             = link_to '献立をのせる', new_menu_path
+          .sidebar__top__recipe-new.c-btn.c-sidebar--recipe.u-mb15.header-top__menu__item--login.u-white-1
+            マイページ
         -else
-          .sidebar__top__image
-          .sidebar__top__user-name
+          .sidebar__top__user-name.u-pt10.u-bold.u-mb15
             ゲストさん
+          .sidebar__top__recipe-new.c-btn.c-sidebar--recipe.u-mb15.header-top__menu__item--login
+            ログインする
       .sidebar__search
-        = form_tag recipes_path, :method => 'get' do
+        = form_tag search_path, :method => 'get' do
           = text_field_tag :search, params[:search] , class: "search-bar-2", placeholder: "レシピ名で探す"
           = button_tag '検索'.html_safe, :type => "submit", :class => "c-btn"
       %ul.sidebar__menu
@@ -24,9 +28,9 @@
           %i.fa.fa-bars
           メニュー
         %li.sidebar__menu__li
-          = link_to 'おすすめ献立', menus_path
+          = link_to '献立一覧', menus_path
         %li.sidebar__menu__li
-          = link_to '今月の人気のレシピ', recipes_path
+          = link_to 'レシピ一覧', recipes_path
         %li.sidebar__menu__li
           = link_to '栄養士コラム', columns_path
         %li.sidebar__menu__li
@@ -39,6 +43,13 @@
         - Recipe.categories.each do |key, value|
           %li.sidebar__category__li
             = link_to categories_path(:r_category => key) do
+              = value
+        %li.sidebar__category__li--title
+          %i.fa.fa-cutlery
+          レシピカテゴリから探す
+        - Recipe.kinds.each do |key, value|
+          %li.sidebar__category__li
+            = link_to kinds_path(:r_kind => key) do
               = value
        
 

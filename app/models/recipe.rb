@@ -18,7 +18,7 @@ class Recipe < ActiveRecord::Base
   has_many :category_selects, :class_name => "CategorySelect", :dependent => :destroy
   accepts_nested_attributes_for :category_selects
   
-  has_attached_file :image, styles: { original: "1920x1680#", thumb: "100x100>" }, default_url: "/system/missing/:style/missing.jpg"
+  has_attached_file :image, styles: { original: "1920x1680#", thumb: "100x100>" }, default_url: "assets/images/no_image.png"
 
   validates_attachment :image,
   content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
@@ -114,8 +114,8 @@ class Recipe < ActiveRecord::Base
       [ "2", "category-icon/oniku.png", "お肉のおかず" ],
       [ "3", "category-icon/gyokai.png", "魚介のおかず" ],
       [ "4", "category-icon/gohanmono.png", "ごはんもの" ],
-      [ "5", "category-icon/gyokai.png", "パスタ・グラタン" ],
-      [ "6", "category-icon/pasta.png", "麺類" ],
+      [ "5", "category-icon/pasta.png", "パスタ・グラタン" ],
+      [ "6", "category-icon/men.png", "麺類" ],
       [ "7", "category-icon/salada.png", "サラダ" ],
       [ "8", "category-icon/soup.png", "スープ・汁物" ],
       [ "9", "category-icon/obento.png", "お弁当" ],

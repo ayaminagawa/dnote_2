@@ -1,16 +1,17 @@
 #main-nav{
   position: relative;
+  display: none;
 }
 
 .sidebar__top__image{
-  height: 100px;
-  width: 100px;
-  background-size: cover;
+  width: 80px;
+  height: 80px;
+  @include background-resize;
 }
 
 .sidebar__top{
   background-image: url('sp_user_show_05.png');
-  background-size: cover;
+  @include background-resize;
   text-align: center;
 }
 

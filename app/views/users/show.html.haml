@@ -1,12 +1,12 @@
-#user__show__box.hidden-xs
+#user__show__box.hidden-xs.container
   .user__show__top
-    .user__show__top-image-cover.col-md-3
+    .user__show__top-image-cover.col-sm-3
       .user__show__top-image{style: "background-image: url('#{@user.image.url(:original)}');"}
-    .user__show__top-name.col-md-6.u-white-1
+    .user__show__top-name.col-sm-5.u-white-1
       .user__show__top-name-user= @user.name
       .user__show__top-name-p さんのマイキッチン
-    .user__show__top-buttons.col-md-3
-      -if user_signed_in?
+    .user__show__top-buttons.col-sm-4
+      -if @user == current_user
         .user__show__top-button.c-circle.u-pink-2
           =link_to new_recipe_path do
             %i.fa.fa-pencil-square-o.fa-2x
@@ -15,35 +15,30 @@
           =link_to new_menu_path do
             %i.fa.fa-cutlery.fa-2x
             <br>献立を<br>作る
-      -else
-        .user__show__top-button.c-circle.u-pink-2
-          %div.u-white-1.header-top__menu__item--login
-            %i.fa.fa-pencil-square-o.fa-2x
-            <br>レシピを<br>のせる
-        .user__show__top-button.c-circle.u-yellow-2
-          %div.u-white-1.header-top__menu__item--login
-            %i.fa.fa-cutlery.fa-2x
-            <br>献立を<br>作る
+        .user__show__top-button.c-circle.u-green-2
+          =link_to edit_user_registration_path(@user) do
+            %i.fa.fa-pencil.fa-2x
+            <br>ユーザー<br>編集
   %ul.user__show__tab.crearfix.u-pt30.clearfix
-    %li.user__show__tab-menu.step-list.active.col-md-2.col-md-offset-1
+    %li.user__show__tab-menu.step-list.active.col-sm-2.col-sm-offset-1
       .user__show__tab-menu-1 投稿した
       .user__show__tab-menu-2 献立
-    %li.user__show__tab-recipe.step-list.col-md-2
+    %li.user__show__tab-recipe.step-list.col-sm-2
       .user__show__tab-recipe-1 投稿した
       .user__show__tab-recipe-2 レシピ
-    %li.user__show__tab-favorite-menu.step-list.col-md-2
+    %li.user__show__tab-favorite-menu.step-list.col-sm-2
       .user__show__tab-favorite-menu-1 お気に入りの
       .user__show__tab-favorite-menu-2 献立
-    %li.user__show__tab-favorite-recipe.step-list.col-md-2
+    %li.user__show__tab-favorite-recipe.step-list.col-sm-2
       .user__show__tab-favorite-recipe-1 お気に入りの
       .user__show__tab-favorite-recipe-2 レシピ
-    %li.user__show__tab-tsukurepo.step-list.col-md-2 作ったレシピ
+    %li.user__show__tab-tsukurepo.step-list.col-sm-2 作ったレシピ
   .user__show__main-cover
     .user__show__main.clearfix
       %ul.user__show__main-ul
         .user__show__main-menu.main.active
           - @menus.each do |menu|
-            %li.col-md-4
+            %li.col-sm-4
               .index-main__recipe.index-main__recipe--name
                 = link_to menu.name, menu_path(menu)
               = link_to menu_path(menu) do
@@ -64,57 +59,63 @@
                         =link_to recipe.name, recipe_path(recipe)
         .user__show__main-recipe.main
           - @recipes.each do |recipe|
-            %li.col-md-4
+            %li.col-sm-4
               .user__show__recipe-title
-                = recipe.name
-              .user__show__recipe-image{style: "background-image: url('#{recipe.image.url(:original)}');"}
-              .user__show__recipe-description
-                = recipe.description
+                =link_to recipe.name, recipe_path(recipe)
+                - if recipe.pre_save == 1
+                  (下書き中、未公開)
+              =link_to recipe_path(recipe) do
+                .user__show__recipe-image{style: "background-image: url('#{recipe.image.url(:original)}');"}
         .user__show__main-favorite-menu.main
         .user__show__main-favorite-recipe.main
           - @favorite_recipes.each do |favorite_recipe|
-            %li.col-md-4
+            %li.col-sm-4
               .user__show__recipe-title
-                = favorite_recipe.name
-              .user__show__recipe-image{style: "background-image: url('#{favorite_recipe.image.url(:original)}');"}
+                =link_to favorite_recipe.name, recipe_path(favorite_recipe)
+              =link_to recipe_path(favorite_recipe) do
+                .user__show__recipe-image{style: "background-image: url('#{favorite_recipe.image.url(:original)}');"}
               .user__show__recipe-description
                 = favorite_recipe.description
         .user__show__main-tsukurepo.main
           - @made_reports.each do |made_report|
-            %li.col-md-4
-              .user__show__recipe-image{style: "background-image: url('#{favorite_recipe.image.url(:original)}');"}
+            %li.col-sm-4
+              .user__show__recipe-image{style: "background-image: url('#{made_report.image.url(:original)}');"}
               .user__show__recipe-description
-                = favorite_recipe.message
+                = made_report.message
 .recipe_category__box.hidden-xs.clearfix
   = render 'about/recipe_category'
 #mobile-user__show__box.visible-xs
   .mobile-column__show__top.u-pb10
-    .show-main__top.clearfix
-      .show-main__top__english
+    .show-main__top.clearfix.u-pt10
+      .show-main__top__english.u-pl10
         %p My Kichen
-      .mobile-show-main__top__japanese
+      .mobile-show-main__top__japanese.u-pl10
         %p.u-white-1.c-circle.c-mobile.u-pink-2 マ
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 イ
         %p.u-white-1.c-circle.c-mobile.u-green-2 キ
         %p.u-white-1.c-circle.c-mobile.u-pink-2 ッ
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 チ
         %p.u-white-1.c-circle.c-mobile.u-green-2 ン
+        .u-right.u-pt10
+          =link_to edit_user_registration_path(@user) do
+            %i.fa.fa-pencil
+            ユーザー編集する
   .mobile-user__show__top.clearfix
     .mobile-user__show__top-image-cover.col-xs-4
-      .mobile-user__show__top-image{style: "background-image: url('#{@user.image.url(:original)}');"}
+      .mobile-user__show__top-image.c-circle{style: "background-image: url('#{@user.image.url(:original)}');"}
     .mobile-user__show__top-name.col-xs-8.u-white-1
       .mobile-user__show__top-name-user= @user.name
-      .mobile-user__show__top-name-p さんのマイキッチン
+      さんのマイキッチン
   %ul.mobile-user__show__tab.crearfix.u-pt30.clearfix
-    %li.mobile-user__show__tab-menu.step-list.active.col-xs-4
+    %li.mobile-user__show__tab-menu.mobile-step-list.active.col-xs-4
       .mobile-user__show__tab-menu-1 投稿した
       .mobile-user__show__tab-menu-2 献立
-    %li.mobile-user__show__tab-recipe.step-list.col-xs-4
+    %li.mobile-user__show__tab-recipe.mobile-step-list.col-xs-4
       .mobile-user__show__tab-recipe-1 投稿した
       .mobile-user__show__tab-recipe-2 レシピ
-    %li.mobile-user__show__tab-tsukurepo.step-list.col-xs-4 作ったレシピ
+    %li.mobile-user__show__tab-tsukurepo.mobile-step-list.col-xs-4 作ったレシピ
   %ul.mobile-user__show__main.crearfix.u-pt10.clearfix
-    .mobile-user__show__main-menu.main.active
+    .mobile-user__show__main-menu.mobile-main.active
       - @menus.each do |menu|
         %li.col-xs-6
           = link_to menu_path(menu) do
@@ -132,19 +133,20 @@
                   .mobile-index-main__recipe__select.c-circle.c-small.u-yellow-2.u-white-1 副
                   .mobile-index-main__recipe__name
                     =link_to recipe.name, recipe_path(recipe)
-    .mobile-user__show__main-recipe.main
+    .mobile-user__show__main-recipe.mobile-main
       - @recipes.each do |recipe|
         %li.col-xs-6
           .mobile-user__show__recipe-title
-            = recipe.name
-          .mobile-user__show__recipe-image{style: "background-image: url('#{recipe.image.url(:original)}');"}
-          .mobile-user__show__recipe-description
-            = recipe.description
-    .mobile-user__show__main-tsukurepo.main
+            =link_to recipe.name, recipe_path(recipe)
+            - if recipe.pre_save == 1
+              (下書き中、未公開)
+          = link_to recipe_path(recipe) do
+            .mobile-user__show__recipe-image{style: "background-image: url('#{recipe.image.url(:original)}');"}
+    .mobile-user__show__main-tsukurepo.mobile-main
       - @made_reports.each do |made_report|
         %li.col-xs-6
-          .mobile-user__show__recipe-image{style: "background-image: url('#{favorite_recipe.image.url(:original)}');"}
+          .mobile-user__show__recipe-image{style: "background-image: url('#{made_report.image.url(:original)}');"}
           .mobile-user__show__recipe-description
-            = favorite_recipe.message
+            = made_report.message
 
 

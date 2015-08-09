@@ -19,14 +19,6 @@ $(function(){
   });
 
 
-  //サイドバー表示ボタン
-  $("body").mobile_menu({
-    menu: ['#main-nav #slidemenu_contents' ], //オフキャンバスに含めるobj
-    menu_width: 250,  //メニューの横幅
-    prepend_button_to: '.sp-header-top__menu__sidebar'  //トリガーになるobjを指定
-  });
-
-
   //マイページ、カテゴリーページのタブの切り替え
   $('.step-list').click(function(){
     $index = $(this).index();
@@ -35,4 +27,14 @@ $(function(){
     $('.main').removeClass('active');
     $('.main').eq($index).addClass('active');
   });
+
+  //モバイル版タブの切り替え
+  $('.mobile-step-list').click(function(){
+    $index = $(this).index();
+    $('.mobile-step-list').removeClass('active');
+    $(this).addClass('active');
+    $('.mobile-main').removeClass('active');
+    $('.mobile-main').eq($index).addClass('active');
+  });
 });
+

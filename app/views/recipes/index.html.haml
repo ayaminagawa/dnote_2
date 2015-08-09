@@ -1,4 +1,4 @@
-#recipe__index__box.clearfix.hidden-xs
+#recipe__index__box.clearfix.hidden-xs.container
   .recipe__index__main
     .recipe__index__top
       .index-main__top__english
@@ -16,17 +16,14 @@
 #mobile-recipe__index__box.clearfix.visible-xs
   .mobile-recipe__index__top
     .index-main__top.clearfix
-      .index-main__top__english
+      .index-main__top__english.u-pl10.u-pt10
         %p Recipe
-      .mobile-index-main__top__japanese
+      .mobile-index-main__top__japanese.u-pl10
         %p.u-white-1.c-circle.c-mobile.u-pink-2 レ
         %p.u-white-1.c-circle.c-mobile.u-pink-2 シ
         %p.u-white-1.c-circle.c-mobile.u-pink-2 ピ
         %p.c-circle.c-mobile.u-grey-2 一
         %p.c-circle.c-mobile.u-grey-2 覧
-    .mobile-recipe__index__top-button
-      .mobiile-recipe__top-button-item
-        レシピ
-  %ul.mobile-recipe__index__contents.u-white-2
+  %ul.mobile-recipe__index__contents.u-white-2.u-mt10
     =render @recipes
 

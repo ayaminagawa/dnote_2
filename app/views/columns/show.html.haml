@@ -4,7 +4,7 @@
     .column__show__title
       お役立ちコラム
     .column__show__title-nutritionist.clearfix
-      .column__show__flag-cover.col-md-1
+      .column__show__flag-cover.col-sm-1
         .column__show__flag
           = @column.created_at.strftime("%Y")
           <br>
@@ -12,7 +12,7 @@
             = @column.created_at.strftime("%m")
         .column__angle-1
         .column__angle-2  
-      .column__show__head.col-md-11
+      .column__show__head.col-sm-11
         .column__show__column-title.u-pt10
           = @column.title
         .column__show__nutritionist
@@ -22,12 +22,12 @@
               管理栄養士
             = @column.user.name
     .column__show__image
-    .column__show__body.u-pt10
+    .column__show__body.u-pt20.u-pr20.u-pl20
       = @column.body
     .column__show__nutritionist-top.clearfix
-      .column_show__nutritionist-top-image-cover.col-md-3
+      .column_show__nutritionist-top-image-cover.col-sm-3
         .column__show__nutritionist-top-image.c-circle{style: "background-image: url('#{@column.user.image.url(:original)}');"}
-      .column__show__nutritionist-top-main.col-md-9
+      .column__show__nutritionist-top-main.col-sm-9
         .column__show__nutritionist-top-name
           .nutritionist-top-nutritionist
             管理栄養士
@@ -40,7 +40,7 @@
         \\  その他のコラム  /
       %ul.column__show__items.clearfix
         - @columns.each do |column|
-          %li.column__show__item-cover.col-md-4
+          %li.column__show__item-cover.col-sm-4
             .column__show__item
               .column__show__item-title
                 = link_to column.title, column_path(column)
@@ -48,20 +48,20 @@
               .column__show__item-body.u-pt10
                 = column.body[0..40]
                 …
-.recipe_category__box
+.recipe_category__box.hidden-xs
   = render 'about/recipe_category'
 #mobile-column__show__box.clearfix.visible-xs
-  .mobile-column__show__top.u-pb10
+  .mobile-column__show__top.u-pb10.u-pt10
     .show-main__top.clearfix
-      .show-main__top__english
+      .show-main__top__english.u-pl10
         %p Column
-      .mobile-show-main__top__japanese
+      .mobile-show-main__top__japanese.u-pl10
         %p.u-white-1.c-circle.c-mobile.u-pink-2 コ
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 ラ
         %p.u-white-1.c-circle.c-mobile.u-green-2 ム
-  .mobile-column__show__contents.u-white-2.clearfix
+  .mobile-column__show__contents.u-white-2.clearfix.u-pr10.u-pl10
     .moblile-column__show__image
-    .moblile-column__show__title
+    .moblile-column__show__title.u-pt10
       = @column.title
     .moblile-column__show__user.clearfix
       .mobile-column__show__user-name
@@ -76,13 +76,13 @@
         .mobile-column__show__angle
           ▼
         .mobile-recipe__point__body.u-mr10.u-ml10.u-pb15.clearfix.u-mb15
-          .moblile-column__show__nutritionit-image.c-circle.clearfix{style: "background-image: url('#{@column.user.image.url(:original)}');"}
-          .moblile-column__show__nutritionit-main
+          .moblile-column__show__nutritionit-image.c-circle.col-xs-5.clearfix{style: "background-image: url('#{@column.user.image.url(:original)}');"}
+          .moblile-column__show__nutritionit-main.col-xs-7
             .moblile-column__nutritionit-name.clearfix
               .col
-                .moblile-column__nutritionit-name-nutritionist.col-xs-5
+                .moblile-column__nutritionit-name-nutritionist
                   管理栄養士
-                .moblile-column__nutritionit-name-user.col-xs-7
+                .moblile-column__nutritionit-name-user
                   = @column.user.name
             .moblile-column__nutritionit-description
               = @column.user.nutritionist_description
@@ -97,7 +97,7 @@
         %p.u-white-1.c-circle.c-mobile.u-yellow-2 も
         %p.u-white-1.c-circle.c-mobile.u-green-2 読
         %p.u-white-1.c-circle.c-mobile.u-pink-2 む
-    %ul.column__show__items.clearfix.u-white-2
+    %ul.column__show__items.clearfix.u-white-2.u-pt10
       - @columns.each do |column|
         %li.mobile-column__show__item.col-xs-4
           .mobile-column__show__item-image

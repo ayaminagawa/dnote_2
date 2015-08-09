@@ -1,20 +1,20 @@
 %header#header-nav
-  .header-nav-inner
+  .header-nav-inner.container
     %ul#header-nav__block.hidden-xs
-      %li.header-nav__button.col-md-1.col-md-offset-1= link_to 'HOME', root_path
-      %li.header-nav__button.col-md-1= link_to 'レシピ一覧', recipes_path
-      %li.header-nav__button.col-md-1= link_to '献立', menus_path
-      %li.header-nav__button.col-md-1= link_to 'コラム', columns_path
-      %li.header-nav__search.col-md-3>
+      %li.header-nav__button= link_to 'HOME', root_path
+      %li.header-nav__button= link_to 'レシピ一覧', recipes_path
+      %li.header-nav__button= link_to '献立', menus_path
+      %li.header-nav__button= link_to 'コラム', columns_path
+      %li.header-nav__search>
         %p.u-white-1<>
           レシピを探す 
-        = form_tag recipes_path, :method => 'get' do 
+        = form_tag search_path, :method => 'get' do 
           = text_field_tag :search, params[:search] , class: "search-bar", placeholder: "レシピ名で探す"
           = button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class => "c-btn c-btn--search u-white-1"
-      %li.header-nav__category.col-md-2
+      %li.header-nav__category
         %a.c-btn.c-btn--category#category-dropdown-switch
           <i class="fa fa-chevron-down"></i>カテゴリー別
-        %ul#category-dropdown-box.col-md-11
+        %ul#category-dropdown-box
           %li.header-nav__category__content.header-nav__category__content--line=link_to 'カロリー表示あり', calories_path
           - Recipe.categories.each do |key, value|
             %li.header-nav__category__content.header-nav__category__content--line=link_to value, categories_path(:r_category => key)

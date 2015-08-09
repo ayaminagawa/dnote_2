@@ -4,7 +4,6 @@
     %meta{:charset => "utf-8"}
     %title
       dnote_2
-    %meta{:viewport =>""}    
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application' 
     %script{:src => "//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"}
@@ -13,11 +12,13 @@
     = csrf_meta_tags
   %body#body
     = render 'shared/google_analytics'
-    #contents#close-category
+    #contents#close-category#sb-site
       = render 'layouts/header_top'
       = render 'layouts/header_nav'
-      = render 'layouts/sidebar'
       = yield
       = render 'layouts/footer'
+    .sb-slidebar.sb-right
+      = render 'layouts/sidebar'
+
 
 

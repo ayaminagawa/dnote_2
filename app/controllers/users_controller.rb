@@ -40,8 +40,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    file = params[:user][:image]
-    @user.set_image(file)
+    # file = params[:user][:image]
+    # @user.set_image(file)
 
     respond_to do |format|
       if @user.save

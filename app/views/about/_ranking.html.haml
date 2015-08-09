@@ -2,14 +2,14 @@
   .index-main__top.clearfix
     .index-main__top__english
       %p Ranking
-    .index-main__top__japanese.col-md-9
+    .index-main__top__japanese.col-sm-9
       %p.u-white-1.c-circle.c-large.u-yellow-2 人
       %p.u-white-1.c-circle.c-large.u-yellow-2 気
       %p.u-white-1.c-circle.c-large.u-yellow-2 の
       %p.c-circle.c-large.u-beige-2 レ
       %p.c-circle.c-large.u-beige-2 シ
       %p.c-circle.c-large.u-beige-2 ピ
-    .index-main__top__link.index-main__top--ranking.col-md-3
+    .index-main__top__link.index-main__top--ranking.col-sm-3
       = @d.month
       月ランキング
   %ul.index-main__contents__cover.clearfix
@@ -17,7 +17,7 @@
       - i = 0
       - @favorite_recipes.each do |favorite_recipe|
         - i += 1
-        %li.index-main__contents__item.col-md-4.u-pr10.u-pl10
+        %li.index-main__contents__item.col-sm-4.u-pr10.u-pl10
           .ranking-item__top.u-pink-1
             =image_tag "crown.png"
             = i
@@ -36,13 +36,12 @@
 
 .mobile-index-main.visible-xs
   .mobile-index-main__top.clearfix
-    .index-main__top__english.col-xs-8
+    .index-main__top__english.col-xs-7
       %p Ranking
-    .mobile-index-main__top__link.col-xs-4
-      = link_to new_recipe_path do
-        = @d.month
-        月ランキング
-  .mobile-index-main__top__japanese.col-md-10.u-pb10
+    .mobile-index-main__top__link.col-xs-5
+      = @d.month
+      月ランキング
+  .mobile-index-main__top__japanese.u-pb10
     %p.u-white-1.c-circle.c-mobile.u-yellow-2 人
     %p.u-white-1.c-circle.c-mobile.u-yellow-2 気
     %p.u-white-1.c-circle.c-mobile.u-yellow-2 の

@@ -1,10 +1,11 @@
 .index-side.hidden-xs
   .index-side__title
-    = image_tag 'side_title.png'
+    .index-side__image.u-mr10.u-ml10
+      = image_tag 'side_title.png'
     .index-side__title__font.u-white-1
-      %i.fa.fa-cutlery レシピ検索
+      %i.fa.fa-cutlery レシピ献立検索
   .index-side__contents
     .index-side__contents__search
-      = form_tag recipes_path, :method => 'get' do
+      = form_tag search_path, :method => 'get' do
         = text_field_tag :search, params[:search] , class: "search-bar-2", placeholder: "レシピ名、材料名を入力"
         = button_tag '検索する'.html_safe, :type => "submit", :class => "c-btn"

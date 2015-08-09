@@ -12,12 +12,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
+    if @permission == "1" || @pemission == "2"
+      params[:u_n] = "0"
+    else
+      params[:u_n] = "1"
+    end
   end
 
   def create
     @user = User.new(user_params)
-    file = params[:user][:image]
-    @user.set_image(file)
+    @user.birth_year = params[:user][:birth_year].to_i
+    @user.birth_month = params[:user][:birth_month].to_i
+    @user.birth_day = params[:user][:birth_day].to_i
+    @user.save
 
     # respond_to do |format|
       if @user.save
@@ -60,15 +67,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:name, :image, :gender, :email, :password, :password_confirmation, :nuntritionist_description, :permission, :height, :weight)
+      u.permit(:name, :image, :gender, :email, :password, :password_confirmation, :nuntritionist_description, :permission, :height, :weight, :active_level, :calorie_setting)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name, :image, :gender, :email, :password, :password_confirmation, :current_password, :nuntritionist_description, :permission, :height, :weight)
+      u.permit(:name, :image, :gender, :email, :password, :password_confirmation, :current_password, :nuntritionist_description, :permission, :height, :weight, :active_level, :calorie_setting)
     end
   end
 
   def user_params
-    params.require(:user).permit(:name, :image, :gender, :email, :password, :password_confirmation, :height, :weight)
+    params.require(:user).permit(:name, :image, :gender, :email, :password, :password_confirmation, :height, :weight, :active_level, :calorie_setting, :permission)
   end
 
 

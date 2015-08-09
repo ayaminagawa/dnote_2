@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702061936) do
+ActiveRecord::Schema.define(version: 20150802120854) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(version: 20150702061936) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "select_flag"
-    t.integer  "main"
-    t.integer  "side1"
-    t.integer  "side2"
   end
 
   add_index "menu_recipes", ["recipe_id", "menu_id"], name: "index_menu_recipes_on_recipe_id_and_menu_id", unique: true, using: :btree
@@ -212,7 +209,6 @@ ActiveRecord::Schema.define(version: 20150702061936) do
     t.integer  "people"
     t.integer  "pre_save"
     t.integer  "sugar"
-    t.integer  "feeling"
   end
 
   create_table "users", force: true do |t|
@@ -240,8 +236,14 @@ ActiveRecord::Schema.define(version: 20150702061936) do
     t.string   "password_digest"
     t.string   "nutritionist_description"
     t.string   "permission"
-    t.integer  "height",                   default: 1
-    t.integer  "weight",                   default: 1
+    t.integer  "height"
+    t.integer  "weight"
+    t.integer  "active_level"
+    t.integer  "calorie_setting"
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.integer  "self_setting_calorie"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

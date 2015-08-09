@@ -12,7 +12,7 @@ class Menu < ActiveRecord::Base
   accepts_nested_attributes_for :menu_recipes, :allow_destroy => true
 
 
-  has_attached_file :image, styles: { original: "1920x1680#",medium: "300x300>", thumb: "100x100>" }, default_url: "/system/missing/:style/missing.jpg"
+  has_attached_file :image, styles: { original: "1920x1680#",medium: "300x300>", thumb: "100x100>" }, default_url: "assets/images/no_image.png"
 
   validates_attachment :image,
   content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
@@ -25,4 +25,13 @@ class Menu < ActiveRecord::Base
   def side_recipes
     self.recipes.select{|recipe| recipe.recipe_select == 2}.compact
   end
+
+  def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Menu.where(['name LIKE ? or point LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      Menu.all #全て表示。
+    end
+  end
+
 end

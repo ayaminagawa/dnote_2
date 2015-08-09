@@ -10,6 +10,8 @@
 @import "foundation/lib/_html5reset";
 @import "foundation/lib/_base";
 @import "foundation/lib/custom-bootstrap";
+@import "foundation/lib/sidebars";
+
 
 // -----------------------------------------------------------------
 // Project
@@ -47,6 +49,7 @@
 
 @import "object/project/_column_index.css.scss";
 @import "object/project/_column_show.css.scss";
+@import "object/project/_column_new.css.scss";
 @import "object/project/_recipe_show.css.scss";
 @import "object/project/_recipe_new.css.scss";
 @import "object/project/_recipe_index.css.scss";
@@ -55,6 +58,8 @@
 @import "object/project/_menu_new.css.scss";
 @import "object/project/_user_new.css.scss";
 @import "object/project/_user_show.css.scss";
+@import "object/project/_favorite.css.scss";
+@import "object/project/_made_report.css.scss";
 
 
 // -----------------------------------------------------------------

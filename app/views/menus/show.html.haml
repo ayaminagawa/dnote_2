@@ -1,13 +1,13 @@
-.menu__show__box.clearfix.hidden-xs
+.menu__show__box.clearfix.hidden-xs.container
   #menu__show.clearfix
     .menu__show__title  
       .index-main__top.clearfix
         .index-main__top__english
           %p Menu
-        .index-main__top__japanese.col-md-9
+        .index-main__top__japanese.col-sm-9
           %p.u-white-1.c-circle.c-large.u-pink-2 献
           %p.u-white-1.c-circle.c-large.u-yellow-2 立
-        .index-main__top__link.col-md-3
+        .index-main__top__link.col-sm-3
           -if current_user?(@menu.user)
             = link_to edit_menu_path do
               .fa.fa-caret-right 
@@ -29,14 +29,14 @@
                 = @menu.user.name
               .menu__show__main-user-image.c-circle{style:"background-image: url(#{@menu.user.image.url(:original)});"}
           .menu__show__main-image-ingredient.clearfix.u-pt30
-            .menu__show__main-images.col-md-5
+            .menu__show__main-images.col-sm-5
               .menu__show__main-image{style:"background-image: url(#{@menu.image.url(:original)});"}
-            .menu__show__main-ingredient.col-md-7
+            .menu__show__main-ingredient.col-sm-7
           %ul.menu__show__main-recipes.u-pt30
             %li.menu__show__main-recipe.clearfix.u-mt10
               = link_to recipe_path(@main_recipe) do
-                .menu__show__main-recipe-image.col-md-4{style:"background-image: url(#{@main_recipe.image.url(:original)});"}
-              .menu__show__main-recipe-contents.col-md-8
+                .menu__show__main-recipe-image.col-sm-4{style:"background-image: url(#{@main_recipe.image.url(:original)});"}
+              .menu__show__main-recipe-contents.col-sm-8
                 .menu__show__recipe-contents-title
                   = link_to @main_recipe.name, recipe_path(@main_recipe)
                 .menu__show__recipe-contents-kcal
@@ -50,8 +50,8 @@
             - @side_recipes.each do |side_recipe|
               %li.menu__show__main-recipe.clearfix.u-mt10
                 = link_to recipe_path(side_recipe) do
-                  .menu__show__main-recipe-image.col-md-4{style:"background-image: url(#{side_recipe.image.url(:original)});"}
-                .menu__show__main-recipe-contents.col-md-8
+                  .menu__show__main-recipe-image.col-sm-4{style:"background-image: url(#{side_recipe.image.url(:original)});"}
+                .menu__show__main-recipe-contents.col-sm-8
                   .menu__show__recipe-contents-title
                     = link_to side_recipe.name, recipe_path(side_recipe)
                   .menu__show__recipe-contents-kcal
@@ -65,23 +65,25 @@
   .menu__show__side_block
     =render 'layouts/side_block'
 .mobile-menu__show__box.visible-xs
-  .mobile-recipe__show__top.u-pr10.u-pl10
+  .mobile-recipe__show__top.u-pr10.u-pl10.u-pt10
     .mobile-recipe__show__english
       %p Menu
-    .mobile-recipe__show__japanese.col-md-10
+    .mobile-recipe__show__japanese
       %p.u-white-1.c-circle.c-large.u-pink-2 献
       %p.u-white-1.c-circle.c-large.u-yellow-2 立
-  .mobile-recipe__show__image.visible-xs{style:"background-image: url(#{@menu.image.url});"}
+  .mobile-recipe__show__image.visible-xs.u-mt10{style:"background-image: url(#{@menu.image.url});"}
   .mobile-recipe__show__title.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @menu.name
   .mobile-recipe__show__kcal-category-name.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.clearfix
-    .mobile-recipe__show__kcal.u-pink-1.col-xs-5
+    .mobile-recipe__show__kcal.u-pink-1
       %i.fa.fa-fire
       合計
       kcal
-    .mobile-recipe__show__category.col-xs-3
-    .mobile-recipe__show__name.col-xs-4
-      .mobile-menu__show__main-user-image.c-circle{style:"background-image: url(#{@menu.user.image.url(:original)});"}
-      = @menu.user.name 
+      <br>
+      (1人あたり)
+    .mobile-recipe__show__name
+      .mobile-recipe__show__main-user-image.c-circle{style:"background-image: url(#{@menu.user.image.url(:original)});"}
+      .mobile-recipe__show__main-user-name
+        = @menu.user.name 
   .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @menu.point
   %ul.mobile-menu__show__recipes.clearfix.u-pt30
     %li.mobile-menu__show__recipe.clearfix.u-pt10.u-pb10

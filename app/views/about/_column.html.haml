@@ -2,21 +2,21 @@
   .index-main__top.clearfix
     .index-main__top__english
       %p Column
-    .index-main__top__japanese.col-md-10
+    .index-main__top__japanese.col-sm-10
       %p.u-white-1.c-circle.c-large.u-pink-2 栄
       %p.u-white-1.c-circle.c-large.u-pink-2 養
       %p.u-white-1.c-circle.c-large.u-pink-2 士
       %p.c-circle.c-large.u-beige-2 コ
       %p.c-circle.c-large.u-beige-2 ラ
       %p.c-circle.c-large.u-beige-2 ム
-    .index-main__top__link.col-md-2
+    .index-main__top__link.col-sm-2
       = link_to columns_path do
         %i.fa.fa-caret-right
         一覧を見る
   .index-main__contents__cover.clearfix
     %ul.index-main__contents.clearfix
       - @columns.each do |column|
-        %li.index-main__content.col-md-4
+        %li.index-main__content.col-sm-4
           = link_to column.title, column_path(column) 
           = link_to user_path(column.user) do
             by 

@@ -17,53 +17,59 @@
       .recipe__new__name-2
         = f.text_field :name, class:'', placeholder:'レシピのタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
     .recipe__new__descroption
-      .recipe__new__descroption-1.u-bold
+      .recipe__new__descroption-1.u-bold.u-left
         キャッチコピーを入力
+      .recipe_new__description-count
+        .character 残り
+        .count 60
+        .character 文字
       .recipe__new__descroption-2
-        = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 60%;height: 70px;"
-    .recipe__new__image-ingredient.clearfix.u-pt30
-      .recipe__new__image.col-md-5.u-bold
+        = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 100%;height: 70px;"
+    .recipe__new__image-ingredient.clearfix.u-pt50
+      .recipe__new__image.col-sm-5.imgInput.u-bold
         写真
         = f.file_field :image
         = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
-      .recipe__new__ingredient.col-md-7
-        .recipe__new__ingredient-people.col-md-6.u-bold
+      .recipe__new__ingredient.col-sm-7
+        .recipe__new__ingredient-people.col-sm-6.u-bold
           材料の人数
-          = f.text_field :people, value:'2', style:"width: 70px;"
+          = f.select :people, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"]], :selected => "2"
           人分
-        .recipe__new__ingredient-calorie.col-md-6.u-bold
+        .recipe__new__ingredient-calorie.col-sm-6.u-bold
           １人分のカロリー
           = f.text_field :calorie, class:'', style:"width: 70px;"
           kcal
-        .recipe__new__ingredient-sugar.col-md-6.col-md-offset-6.u-bold
+        .recipe__new__ingredient-sugar.col-sm-6.col-sm-offset-6.u-bold
           １人分の糖質量
           = f.text_field :sugar, class:'', style:"width: 85px;"
           g
         %ul.recipe__new__ingredent-ul.clearfix
           %li.recipe__new__ingredent-li.u-pb10.u-pt10.clearfix
-            .ingredient-li__item.col-md-7.u-bold
+            .ingredient-li__item.col-sm-7.u-bold
               材料
-            .ingredient-li__quantity.col-md-5.u-bold
+            .ingredient-li__quantity.col-sm-5.u-bold
               分量
           = f.fields_for :ingredients, @ingredients do |ingredient|
             = render 'recipes/fields_ingredient',{:f => ingredient}
           .ingredient__add.u-pt10
-            = link_to_add_fields "＋", f, :ingredients
-            材料を追加する
-    .recipe__new__procedure.u-pt30.clearfix.u-bold
+            .plus-button
+              %i.fa.fa-plus-square-o.fa-2x
+              = link_to_add_fields "材料を追加する", f, :ingredients  
+    .recipe__new__procedure.u-pt50.clearfix.u-bold
       作り方
       %ul
         = f.fields_for :procedures, @procedures do |procedure|
           = render 'fields_procedure', {:f => procedure}
         .procedure__add
-          = link_to_add_fields "+", f, :procedures, id: "add-proc"
-          作り方を追加する
-    .recipe__new__point.u-pt30
+          .plus-button
+            %i.fa.fa-plus-square-o.fa-2x
+            = link_to_add_fields "作り方を追加する", f, :procedures, id: "add-proc"
+    .recipe__new__point.u-pt50
       .recipe__new__point-title.u-bold
         レシピのポイント
       = f.text_area :tip, class:'edit-field', placeholder:'レシピのポイントを入力', style: "font-size: 1.25rem;width: 70%;height: 100px;"
-    .recipe__new__category.u-pt30
-      .recipe__new__category-1.col-md-2
+    .recipe__new__category.clearfix.u-pt50.u-pb15
+      .recipe__new__category-1.col-sm-2
         .recipe__new__category-title
           レシピのカテゴリー①
         .recipe__new__category-button.u-pb20
@@ -71,7 +77,7 @@
           主菜<br>
           = f.radio_button :recipe_select, "2"
           副菜
-      .recipe__new__category-2.col-md-4
+      .recipe__new__category-2.col-sm-4
         .recipe__new__category-title
           レシピのカテゴリー②
         .recipe__new__category-button.u-pb20.clearfix
@@ -112,22 +118,22 @@
             .category-button__item.col-xs-6
               = f.radio_button :kind, "13"
               大豆のおかず
-      .recipe__new__category-3.col-md-3
+      .recipe__new__category-3.col-sm-3
         .recipe__new__category-title
           レシピのカテゴリー③
         .recipe__new__category-button.u-pb20
           = f.fields_for :category_selects, @category_selects do |f|
-            = f.check_box :category_number2 
+            = check_box_tag 'recipe[category_selects_attributes][2][category]', "2", false
             糖質制限食<br>
-            = f.check_box :category_number3
+            = check_box_tag 'recipe[category_selects_attributes][3][category]', "3", false
             HbA1c、血糖値の安定<br>
-            = f.check_box :category_number4
+            = check_box_tag 'recipe[category_selects_attributes][4][category]', "4", false
             味に自信あり<br>
-            = f.check_box :category_number5
+            = check_box_tag 'recipe[category_selects_attributes][5][category]', "5", false
             すぐできるメニュー<br>
-            = f.check_box :category_number6
+            = check_box_tag 'recipe[category_selects_attributes][6][category]', "6", false
             その他
-      .recipe__new__category-4.col-md-3
+      .recipe__new__category-4.col-sm-3
         .recipe__new__category-title
           レシピのカテゴリー④
         .recipe__new__category-button.u-pb20
@@ -138,28 +144,35 @@
     .recipe__new__submit
       = f.submit "レシピを公開する", name: 'save', class: 'c-submit'
       = f.submit "レシピを下書き保存する", name: 'pre_save', class: 'c-submit'
-  .mobile-recipe__new__contents.u-mb30.visible-xs
+
+/ モバイル
+= form_for(@recipe) do |f|
+  .mobile-recipe__new__contents.u-mb30.visible-xs.clearfix
     .mobile-recipe__new__title
       = image_tag ('user_new_03.png')
       レシピをのせる
-    .recipe__new__name
+    .mobile-recipe__new__name
       .recipe__new__name-1
         レシピのタイトルを入力
       .c-essential
         必須
       .recipe__new__name-2
         = f.text_field :name, class:'', placeholder:'レシピのタイトルを入力', rows:'10', style:"width: 100%;height: 45px;"
-    .recipe__new__descroption
-      .recipe__new__descroption-1
+    .mobile-recipe__new__descroption
+      .recipe__new__descroption-1.u-left
         キャッチコピーを入力
+      .recipe_new__description-count
+        .character 残り
+        .count 60
+        .character 文字
       .recipe__new__descroption-2
         = f.text_area :description, class:'', placeholder:'キャッチコピーを入力', style:"width: 100%;height: 70px;"
-    .recipe__new__image-ingredient.clearfix.u-pt10
-      .recipe__new__image
+    .mobile-recipe__new__image-ingredient.clearfix.u-pt10
+      .recipe__new__image.imgInput
         写真
         = f.file_field :image
         = image_tag("no_image.png", :class => "imgView", :size => "250x200") 
-      .recipe__new__ingredient.u-mt10
+      .recipe__new__ingredient.u-mt10.u-pt10
         .recipe__new__ingredient-people.col-xs-6
           材料の人数<br>
           = f.text_field :people, value:'2', style:"width: 70px;"
@@ -172,27 +185,29 @@
           １人分の糖質量<br>
           = f.text_field :sugar, class:'', style:"width: 85px;"
           g
-        %ul.recipe__new__ingredent-ul.clearfix
+        %ul.recipe__new__ingredent-ul.clearfix.u-pl10
           <br>
           = f.fields_for :ingredients, @ingredients do |ingredient|
             = render 'recipes/fields_ingredient',{:f => ingredient}
           .ingredient__add.u-pt10
-            = link_to_add_fields "＋", f, :ingredients
-            材料を追加する
-    .recipe__new__procedure.u-pt10.clearfix.u-pb20
+            .plus-button
+              %i.fa.fa-plus-square-o.fa-2x
+              = link_to_add_fields "材料を追加する", f, :ingredients   
+    .mobile-recipe__new__procedure.u-pt10.clearfix.u-pb20
       .procedure__top
         作り方
       %ul
         = f.fields_for :procedures, @procedures do |procedure|
           = render 'fields_procedure', {:f => procedure}
         .procedure__add
-          = link_to_add_fields "+", f, :procedures, id: "add-proc"
-          作り方を追加する
-    .recipe__new__point
+          .plus-button
+            %i.fa.fa-plus-square-o.fa-2x
+            = link_to_add_fields "作り方を追加する", f, :procedures, id: "add-proc"
+    .mobile-recipe__new__point.u-pt10
       .recipe__new__point-title
         レシピのポイント
       = f.text_area :tip, class:'edit-field', placeholder:'レシピのポイントを入力', style: "font-size: 1.25rem;width: 100%;height: 100px;"
-    .recipe__new__category.u-pt10
+    .mobile-recipe__new__category.u-mt30
       .recipe__new__category-1
         .recipe__new__category-title
           レシピのカテゴリー①
@@ -201,7 +216,7 @@
           主菜<br>
           = f.radio_button :recipe_select, "2"
           副菜
-      .recipe__new__category-2
+      .mobile-recipe__new__category-2
         .recipe__new__category-title
           レシピのカテゴリー②
         .recipe__new__category-button.u-pb20.clearfix
@@ -242,22 +257,22 @@
             .category-button__item.col-xs-6
               = f.radio_button :kind, "13"
               大豆のおかず
-      .recipe__new__category-3
+      .mobile-recipe__new__category-3
         .recipe__new__category-title
           レシピのカテゴリー③
         .recipe__new__category-button.u-pb20
           = f.fields_for :category_selects, @category_selects do |f|
-            = f.check_box :category_number2 
+            = check_box_tag 'recipe[category_selects_attributes][2][category]', "2", false
             糖質制限食<br>
-            = f.check_box :category_number3
+            = check_box_tag 'recipe[category_selects_attributes][3][category]', "3", false
             HbA1c、血糖値の安定<br>
-            = f.check_box :category_number4
+            = check_box_tag 'recipe[category_selects_attributes][4][category]', "4", false
             味に自信あり<br>
-            = f.check_box :category_number5
+            = check_box_tag 'recipe[category_selects_attributes][5][category]', "5", false
             すぐできるメニュー<br>
-            = f.check_box :category_number6
+            = check_box_tag 'recipe[category_selects_attributes][6][category]', "6", false
             その他
-      .recipe__new__category-4
+      .mobile-recipe__new__category-4
         .recipe__new__category-title
           レシピのカテゴリー④
         .recipe__new__category-button.u-pb20
@@ -266,5 +281,5 @@
             = RecipeFeeling.feelings[index]
             <br>
     .recipe__new__submit
-      = f.submit "レシピを公開する", name: 'save'
-      = f.submit "レシピを下書き保存する", name: 'pre_save'
+      = f.submit "レシピを公開する", name: 'save', class: 'c-submit'
+      = f.submit "レシピを下書き保存する", name: 'pre_save', class: 'c-submit'

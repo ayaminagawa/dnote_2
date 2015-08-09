@@ -1,12 +1,8 @@
 //レイアウト
 
-.recipe__show__main{
-  float: left;
-}
-
 #recipe__show__main-contents{
   float: left;
-  width: 60%;
+  width: 75%;
 }
 
 //細かい設定
@@ -108,13 +104,13 @@
 
 .recipe__show__image{
   height: 250px;
-  background-size: cover;
+  @include background-resize;
 }
 
 .mobile-recipe__show__main-user-image{
   height: 30px;
   width: 30px;
-  background-size: cover;
+  @include background-resize;
   float: left;
 }
 
@@ -122,16 +118,18 @@
 
 //つくれぽ
 
-.recipe__show__tsukurepo-top{
-  margin-left: 100px;
-}
-
 .tsukurepo-li__date{
   font-size: 20px;
 }
 
 .tsukurepo-li__name{
   float: right;
+}
+
+.tsukurepo-li__image{
+  width: 100%;
+  height: 150px;
+  @include background-resize;
 }
 
 //モバイル
@@ -153,9 +151,20 @@
   font-weight: bold;
 }
 
+.mobile-recipe__show__kcal{
+  float: left;
+}
+
 .mobile-recipe__show__name{
   float: right;
 }
+
+.mobile-recipe__show__main-user-name, .mobile-recipe__show__main-user-image{
+  display: inline-block;
+  padding-left: 3px;
+  line-height: 30px;
+}
+
 
 .mobile-procedure__list{
   border-top :1px solid #E2D8C2;
@@ -201,7 +210,7 @@
 
 .mobile-recipe__show__image{
   height: 250px;
-  background-size: cover;
+  @include background-resize;
 }
 
 .ingredient-name, .ingredient-quantity{
@@ -210,5 +219,18 @@
 
 .mobile-recipe__point__body{
   padding: 5px 5px 5px 5px;
+}
+
+.ingredirnt__top__title, .ingredient-name{
+  float: left;
+}
+
+.ingredient__top__people, .ingredient-quantity{
+  float: right;
+}
+
+.mobile-procedure__list__image{
+  @include background-resize;
+  height: 100px;
 }
 

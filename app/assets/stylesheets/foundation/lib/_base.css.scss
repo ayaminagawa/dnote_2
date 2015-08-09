@@ -24,9 +24,7 @@ li {
 }
 
 #body {
-  background-image: url('bg_dot.png');
   background-repeat: repeat;
-  z-index: 0;
   letter-spacing:0.6pt;
 }
 
@@ -35,25 +33,20 @@ form{
 }
 
 .contents-inner{
-  margin-left: 100px;
   overflow: hidden;
   margin-top: 10px;
-  margin-bottom: 30px;
-  float: left;
+  margin-bottom: 80px;
 }
 
 .contents-inner__white{
   background-color: #FFFFFF;
-  margin: 10px 10px 10px 10px;
-  z-index: 1;
-  padding: 15px 15px 15px 15px;
+  margin: 10px;
+  padding: 15px;
 }
 
 .contents-inner__cover{
   background-image: url('bg_check.png');
   background-repeat: repeat;
-  z-index: 2;
-
 }
 
 .clearfix:after{

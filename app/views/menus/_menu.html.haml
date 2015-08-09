@@ -1,8 +1,8 @@
 .row.u-mt15.u-pb15.hidden-xs
-  .index-main__contents__image.col-md-6
+  .index-main__contents__image.col-sm-6
     = link_to menu_path(menu) do
-      .index-main__picture{style:"background-image: url(#{menu.image.url(:original)});"}
-  .index-main__contents__description.col-md-6
+      .menu-index-main__picture{style:"background-image: url(#{menu.image.url(:original)});"}
+  .index-main__contents__description.col-sm-6
     .index-main__recipe.index-main__recipe--name
       = link_to menu_path(menu) do
         %i.fa.fa-caret-right
@@ -25,16 +25,21 @@
         by
         .item-contents__user-image.c-circle{style: "background-image: url('#{menu.user.image.url(:original)}');"}
         = menu.user.name
-.row.mobile-menu__index__li.visible-xs.clearfix
-  .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{menu.image.url(:original)});"}
+.row.mobile-menu__index__li.visible-xs.clearfix.u-pr5.u-pt10.u-pb10
+  = link_to menu_path(menu) do
+    .mobile-menu__index__image.col-xs-5{style:"background-image: url(#{menu.image.url(:original)});"}
   .mobile-menu__index__main.col-xs-7
     .mobile-menu__index__main-name
       =link_to menu.name, menu_path(menu)
     .mobile-menu__index__main-description
-      =menu.point
+      =menu.point[0..30]
+      …
     .mobile-menu__index__main-calory-name
       .mobile-menu__index__main-calory
       .mobile-menu__index__main-user-name 
         =link_to user_path(menu.user) do
           by
-          = menu.user.name
+          .mobile-menu__index__main-user
+            = menu.user.name
+          .mobile-menu__index__main-user-image.c-circle{style: "background-image: url('#{menu.user.image.url(:original)}');"}
+          

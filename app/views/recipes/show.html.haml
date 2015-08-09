@@ -1,18 +1,34 @@
-#recipe__show.letter-spacing.clearfix.hidden-xs
-  
+#recipe__show.container.letter-spacing.clearfix.hidden-xs
   #recipe__show__main-contents
+    .menu__show__title  
+      .index-main__top.clearfix.u-pt30
+        .index-main__top__english
+          %p Recipe
+        .index-main__top__japanese.col-sm-9
+          %p.u-white-1.c-circle.c-large.u-pink-2 レ
+          %p.u-white-1.c-circle.c-large.u-yellow-2 シ
+          %p.u-white-1.c-circle.c-large.u-green-2 ピ
+        .index-main__top__link.col-sm-3
+          -if current_user?(@recipe.user)
+            = link_to edit_recipe_path do
+              .fa.fa-caret-right 
+              レシピを編集する
     .contents-inner.contents-inner__cover.clearfix
       .contents-inner__white.hidden-xs.clearfix
         .recipe__show__main.hidden-xs
           .recipe__show__top.clearfix
-            .recipe__show__name-favorite.u-ls-2.clearfix
-              .recipe__show__name.col-md-9
+            .recipe__show__name-favorite.u-ls-2.clearfix.u-pb10
+              .recipe__show__name.col-sm-8
                 = link_to @recipe.name, recipe_path(@recipe)
-              .recipe__show__edit.col-md-3
-                -if current_user?(@recipe.user)
-                  = link_to edit_recipe_path do
-                    .fa.fa-caret-right 
-                    レシピを編集する
+                - if @recipe.pre_save == 1
+                  (下書き中、未公開)
+              .recipe__show__edit.col-sm-4
+                #save-btn.col-sm-6
+                  %div{id: "recipe_#{@recipe.id}"}
+                    = render 'favorites/favorite_btn', recipe: @recipe
+                .made-report.col-sm-6
+                  .favorite-link.c-recipe#tsukurepo-show
+                    ♥  つくったボタン
             .recipe__show__description.u-ls-2
               = @recipe.description
             .recipe__show__kcal-user-name.u-ls-2.clearfix
@@ -27,25 +43,25 @@
                   = link_to @recipe.user.name, user_path(@recipe.user)
                 .menu__show__main-user-image.c-circle{style:"background-image: url(#{@recipe.user.image.url(:original)});"}
             .recipe__show__image-ingredient.u-mt30.clearfix
-              .recipe__show__image.col-md-5{style:"background-image: url(#{@recipe.image.url});"}
-              %ul.recipe__show__ingredient.col-md-7
+              .recipe__show__image.col-sm-5{style:"background-image: url(#{@recipe.image.url});"}
+              %ul.recipe__show__ingredient.col-sm-7
                 %li.ingredient__top.clearfix.u-ls-06
-                  .ingredirnt__top__title.col-md-9
+                  .ingredirnt__top__title.col-sm-9
                     材料
-                  .ingredient__top__people.col-md-3
+                  .ingredient__top__people.col-sm-3
                     = @recipe.people
                     人分
                 - @ingredients.each do |ingredient|
                   %li.ingredient__list.clearfix.u-ls-0
-                    .ingredient-name.col-md-8
+                    .ingredient-name.col-sm-8
                       = ingredient.name
-                    .ingredient-quantity.col-md-4
+                    .ingredient-quantity.col-sm-4
                       = ingredient.volume
             %ul.recipe__show__procedure.clearfix
               - @procedures.each_with_index do | procedure, index |
-                %li.procedure__list.col-md-4
+                %li.procedure__list.col-sm-4
                   - if procedure.image_file_name != nil 
-                    .procedure__list__image{style:"background-image: url('<%= procedure.image.url(:original) %>');"}
+                    .procedure__list__image{style:"background-image: url(#{procedure.image.url});"}
                   .procedure__list__contents
                     .procedure__list__number.c-circle.c-procedure.u-green-2.u-white-1
                       = 1 + index
@@ -62,7 +78,7 @@
     .recipe__show__tsukurepo-top.clearfix.hidden-xs
       .index-main__top__english
         %p Tsukutta_button
-      .index-main__top__japanese.col-md-10.clearfix
+      .index-main__top__japanese.clearfix
         %p.u-white-1.c-circle.c-large.u-pink-2 作
         %p.u-white-1.c-circle.c-large.u-pink-2 っ
         %p.u-white-1.c-circle.c-large.u-pink-2 た
@@ -73,49 +89,53 @@
         .contents-inner__white.hidden-xs.clearfix
           %ul.recipe__show__tsukurepo-ul.clearfix
             - @made_reports.each do |made_report|
-              %li.recipe__show__tsukurepo-li.col-md-4.u-pr10
+              %li.recipe__show__tsukurepo-li.col-sm-4.u-pr10
                 .tsukurepo-li__date.u-pink-1
                   = made_report.created_at.strftime("%Y/%m/%d")
-                .tsukurepo-li__image{style:"background-image: url('<%= made_report.image.url %>');"}
+                .tsukurepo-li__image{style:"background-image: url(#{made_report.image.url});"}
                 .tsukurepo-li__body
                   = made_report.message
                 .tsukurepo-li__name.u-pink-1
                   = made_report.user.name
   =render 'layouts/side_block'
+  =render 'made_reports/form'
 #mobile-recipe__show__main.visible-xs
-  .mobile-recipe__show__top.visible-xs.u-pr10.u-pl10.u-pb10
+  .mobile-recipe__show__top.visible-xs.u-pr10.u-pl10.u-pb10.u-pt10
     .mobile-recipe__show__english
       %p Recipe
-    .mobile-recipe__show__japanese.col-md-10
+    .mobile-recipe__show__japanese
       %p.u-white-1.c-circle.c-large.u-pink-2 レ
       %p.u-white-1.c-circle.c-large.u-yellow-2 シ
       %p.u-white-1.c-circle.c-large.u-green-2 ピ
   .mobile-recipe__show__image.visible-xs{style:"background-image: url(#{@recipe.image.url});"}
-  .mobile-recipe__show__title.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.name
+  .mobile-recipe__show__title.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10
+    = @recipe.name
+    - if @recipe.pre_save == 1
+      (下書き中、未公開)
   .mobile-recipe__show__kcal-category-name.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10.clearfix
-    .mobile-recipe__show__kcal.u-pink-1.col-xs-5
+    .mobile-recipe__show__kcal.u-pink-1
       %i.fa.fa-fire
       合計
       = @recipe.calorie
       kcal
       <br>
       (1人あたり)
-    .mobile-recipe__show__category.col-xs-4
-    .mobile-recipe__show__name.col-xs-4
+    .mobile-recipe__show__name
       .mobile-recipe__show__main-user-image.c-circle{style:"background-image: url(#{@recipe.user.image.url(:original)});"}
-      = link_to @recipe.user.name, user_path(@recipe.user) 
+      .mobile-recipe__show__main-user-name
+        = link_to @recipe.user.name, user_path(@recipe.user) 
   .mobile-recipe__show__description.visible-xs.u-white-2.u-pr10.u-pl10.u-pt10= @recipe.description
   %ul.mobile-recipe__show__ingredient.visible-xs.u-white-2.u-pr10.u-pl10.u-pt30
-    %li.ingredient__top.clearfix.u-ls-06
-      .ingredirnt__top__title.col-xs-9 買い物リスト
-      .ingredient__top__people.col-xs-3
+    %li.ingredient__top.clearfix.u-ls-06.u-pr10
+      .ingredirnt__top__title 買い物リスト
+      .ingredient__top__people
         = @recipe.people
         人分
     - @ingredients.each do |ingredient|
-      %li.ingredient__list.clearfix.u-ls-0
-        .ingredient-name.col-xs-7.u-bold
+      %li.ingredient__list.clearfix.u-ls-0.u-pr10
+        .ingredient-name.u-bold
           = ingredient.name
-        .ingredient-quantity.col-xs-5
+        .ingredient-quantity
           = ingredient.volume
   %ul.mobile-recipe__show__procedure.visible-xs.u-white-2.u-pr10.u-pl10.u-pt30.u-pb10
     - @procedures.each_with_index do | procedure, index |
@@ -124,7 +144,7 @@
           = 1 + index
         - if procedure.image_file_name != nil 
           .mobile-procedure__list__body.u-mb15.col-xs-5= procedure.body
-          .mobile-procedure__list__image.col-xs-5{style:"background-image: url('<%= procedure.image.url(:original) %>');"}
+          .mobile-procedure__list__image.col-xs-5{style:"background-image: url(#{procedure.image.url});"}
         - else
           .mobile-procedure__list__body.u-mb15.col-xs-10= procedure.body
   .mobile-recipe__show__point.visible-xs.u-white-2.u-pr10.u-pl10.clearfix.u-pt30
@@ -135,14 +155,3 @@
         ▼
       .mobile-recipe__point__body.clearfix
         = @recipe.tip
-  .mobile-recipe__show__tsukurepo.visible-xs.u-white-2.u-pr10.u-pl10.clearfix.u-pt30
-    .mobile-recipe__show__english
-      %p Tsukutta_button
-    .mobile-recipe__show__japanese.col-md-10.clearfix
-      %p.u-white-1.c-circle.c-large.u-pink-2 作
-      %p.u-white-1.c-circle.c-large.u-pink-2 っ
-      %p.u-white-1.c-circle.c-large.u-pink-2 た
-      %p.c-circle.c-large.u-beige-2 ボ
-      %p.c-circle.c-large.u-beige-2 タ
-      %p.c-circle.c-large.u-beige-2 ン
-

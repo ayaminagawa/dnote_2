@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require_tree .
 
+
 //プレビュー画像を表示
 $(function(){
   var setFileInput = $('.imgInput'),
@@ -46,35 +47,13 @@ $(function(){
       }
     });
   });
-});
 
-
-//材料、作り方のフォームの追加、削除
-function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").remove();
-}
-
-function add_fields(link, association, content) {
-  $fields = $("." + association).find(".fields")
-  // console.log($fields.filter(":last").find(".step-count").text());
-  var new_id = $fields[0] ? $fields.filter(":last").find(".step-count").text() : new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
-  // $(link).parents("." + association).find(".step-count").text(new_id + 1);
-}
-
-
-//エンターキーでsubmitされないように
-$(function() {
+  //エンターキーでsubmitされないように
   $(document).on("keypress", "input:not(.allow_submit)", function(event) {
     return event.which !== 13;
   });
-});
 
-
-//エンターキーで改行できるように
-$(function() {
+  //エンターキーで改行できるように
   $(document).on("keypress", "input:text", function (e) {
   // $("input:text").keypress(function(e) {
     if (e.which == 13) { // Enterキーの場合
@@ -100,46 +79,52 @@ $(function() {
     }
   });
 
+  //カウントダウンしてくれる
+  var countMax = 60;
+  $('textarea').bind('keydown keyup keypress change',function(){
+    var thisValueLength = $(this).val().length;
+    var countDown = (countMax)-(thisValueLength);
+    $('.count').html(countDown);
 
-//カウントダウンしてくれる
-$(function(){
-        var countMax = 60;
-        $('textarea').bind('keydown keyup keypress change',function(){
-            var thisValueLength = $(this).val().length;
-            var countDown = (countMax)-(thisValueLength);
-            $('.count').html(countDown);
-     
-            if(countDown < 0){
-                $('.count').css({color:'#ff0000',fontWeight:'bold'});
-            } else {
-                $('.count').css({color:'#000000',fontWeight:'normal'});
-            }
-        });
-        $(window).load(function(){
-            $('.count').html(countMax);
-        });
-    });
-});
-
-$(function(){
-  // スマートフォン用、メインメニューのオフキャンバス
-  $("body").mobile_menu({
-    menu: ['#main-nav #slidemenu_contents' ], //オフキャンバスに含めるobj
-    menu_width: 250,  //メニューの横幅
-    prepend_button_to: '#menu-btn',  //トリガーになるobjを指定
-    button_content:'<i class="icon-bars"></i><br>メニュー' 
+    if(countDown < 0){
+      $('.count').css({color:'#ff0000',fontWeight:'bold'});
+    } else {
+      $('.count').css({color:'#000000',fontWeight:'normal'});
+    }
   });
+  $(window).load(function(){
+    $('.count').html(countMax);
+  });
+
 
   // 献立ページ、レシピページ、保存と保存後の切り替え
   $("#save-btn").on('click', function(){
     if ( $(this).hasClass('menu-saved')) {
       $(this).removeClass("menu-saved");
-      $('.save-btn-text', this).text('保存');
+      $('.save-btn-text', this).text("★ レシピを保存");
     }else {
       $(this).addClass("menu-saved");
-      $('.save-btn-text', this).text('削除');
+      $('.save-btn-text', this).text("★ レシピを削除");
     }
   });
+
+
+  
 });
 
+
+//材料、作り方のフォームの追加、削除
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").remove();
+}
+
+function add_fields(link, association, content) {
+  $fields = $("." + association).find(".fields")
+  // console.log($fields.filter(":last").find(".step-count").text());
+  var new_id = $fields[0] ? $fields.filter(":last").find(".step-count").text() : new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+  // $(link).parents("." + association).find(".step-count").text(new_id + 1);
+}
 

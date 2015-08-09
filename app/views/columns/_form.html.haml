@@ -1,0 +1,30 @@
+.menu__new__top.u-mt30
+= form_for(@column) do |f|
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :permission, :value => 1
+  - if @column.errors.any? 
+    %ul
+      - @column.errors.full_messages.each do |msg| 
+        %li
+          = msg 
+  .menu__new__contents.u-mb30.hidden-xs
+    .menu__new__title
+      = image_tag ('user_new_03.png')
+      コラムを投稿する
+    .menu__new__name
+      .menu__new__name-1.u-bold
+        コラムのタイトルを入力
+      .c-essential
+        必須
+      .menu__new__name-2
+        = f.text_field :title, class:'', placeholder:'コラムのタイトルを入力', rows:'10', style:"width: 90%;height: 45px;"
+    .menu__new__descroption-category
+      .menu__new__description
+        .menu__new__descroption-1.u-bold
+          コラムの内容
+        .menu__new__descroption-2
+          %textarea{name: "body"}
+            %script
+              CKEDITOR.replace( 'body' );
+    .menu__new__submit.u-pt30
+      = f.submit "コラムのを掲載を申請する", class: 'c-submit'

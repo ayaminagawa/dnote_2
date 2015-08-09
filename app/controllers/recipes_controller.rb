@@ -4,8 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    # @recipes = Recipe.all
-    @recipes = Recipe.search(params[:search])
+    @recipes = Recipe.all
     @menus = Menu.all 
   end
 
@@ -16,38 +15,19 @@ class RecipesController < ApplicationController
 
   def recipe_categories
     @category = params[:r_category]
-    @category2 = CategorySelect.where(:category_number2 => "1", :menu_id => nil)
-    @menu_category2 = CategorySelect.where(:category_number2 => "1", :recipe_id => nil)
-    @category3 = CategorySelect.where(:category_number3 => "1", :menu_id => nil)
-    @menu_category3 = CategorySelect.where(:category_number3 => "1", :recipe_id => nil)
-    @category4 = CategorySelect.where(:category_number4 => "1", :menu_id => nil)
-    @menu_category4 = CategorySelect.where(:category_number4 => "1", :recipe_id => nil)
-    @category5 = CategorySelect.where(:category_number5 => "1", :menu_id => nil)
-    @menu_category5 = CategorySelect.where(:category_number5 => "1", :recipe_id => nil)
-    @category6 = CategorySelect.where(:category_number6 => "1", :menu_id => nil)
-    @menu_category6 = CategorySelect.where(:category_number6 => "1", :recipe_id => nil)
-    if @category == "2"
-      @categories = @category2.map{|category2|category2.recipe}
-      @menu_categories = @menu_category2.map{|menu_category2|menu_category2.menu}
-      elsif @category == "3"
-        @categories = @category3.map{|category3|category3.recipe}
-        @menu_categories = @menu_category3.map{|menu_category3|menu_category3.menu}
-      elsif @category == "4"
-        @categories = @category4.map{|category4|category4.recipe}
-        @menu_categories = @menu_category4.map{|menu_category4|menu_category4.menu}
-      elsif @category == "5"
-        @categories = @category5.map{|category5|category5.recipe}
-        @menu_categories = @menu_category5.map{|menu_category5|menu_category5.menu}  
-      elsif @category == "6"
-        @categories = @category6.map{|category6|category6.recipe}
-        @menu_categories = @menu_category6.map{|menu_category6|menu_category6.menu}               
-    end
+    @categories = CategorySelect.where(:category => @category, :menu_id => nil).map{|category|category.recipe}
+    @menu_categories = CategorySelect.where(:category => @category, :recipe_id => nil).map{|category|category.menu}
   end
 
   def calories
     # @calories = Recipe.find(:all, :conditions => { :category => 1 }) 
     # @menu_calories = Menu.find(:all, :conditions => { :category => 1 }) 
     @calories = Recipe.where.not(calorie: nil, pre_save: 1)
+  end
+
+  def search
+    @search_recipes = Recipe.search(params[:search])
+    @search_menus = Menu.search(params[:search])
   end
 
 
@@ -107,14 +87,16 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if params[:save]
+     @recipe.pre_save = 0
+    elsif params[:pre_save]
+     @recipe.pre_save = 1
+    end
+
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: 'Recipe was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
@@ -134,7 +116,7 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :description, :recipe_select, :tip, :image, :calorie, :kind, :people, :sugar, 
-        category_selects_attributes: [:id, :category_number2, :category_number3, :category_number4, :category_number5, :category_number6],
+        category_selects_attributes: [:id, :category],
         ingredients_attributes: [:id, :name, :volume], procedures_attributes: [:id, :body, :image], 
         recipe_feelings_attributes: [:id, :feeling],
         )

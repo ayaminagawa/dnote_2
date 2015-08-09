@@ -25,6 +25,7 @@
   background-image: url('bg_check.png');
   background-repeat: repeat;
   height: 50px;
+  border: 2px solid #FFFFFF;
 }
 
 .menu__new__contents{
@@ -54,9 +55,24 @@
 
 .menu__new__main-recipe-image, .menu_new__sub-recipes-image{
   height: 200px;
+  @include background-resize;
+  width: 100%;
 }
 
 .menu__new__name-1, .menu__new__main-recipe-title{
+  display: inline-block;
+}
+
+.menu__new__descroption-1{
+  float: left;
+}
+
+.menu_new__description-count{
+  float: right;
+  margin-top: 20px;
+}
+
+.character, .count{
   display: inline-block;
 }
 
@@ -68,4 +84,6 @@
 
 .mobile-menu__new__main-recipe-image{
   height: 160px;
+  width: 100%;
+  @include background-resize;
 }

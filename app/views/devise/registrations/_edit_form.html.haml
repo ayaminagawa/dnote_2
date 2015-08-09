@@ -1,0 +1,355 @@
+.user__new__top.u-mt30
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  - if params[:u_n] == "1"
+    = hidden_field_tag :u_n, 1
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        ユーザー編集
+      .user__new__image-main.clearfix
+        .user__new__image.col-sm-3.imgInput
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__main.col-sm-9
+          .user__new__name.clearfix
+            .user__new__1
+              ユーザー名：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+          .user__new__sex.clearfix
+            .user__new__1
+              性別：
+            .user__new__2
+              = f.radio_button :gender, "1" 
+              男
+              = f.radio_button :gender, "2" 
+              女
+          .user__new__email.clearfix
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+          .user__new__password-comfirmation.clearfix
+            .user__new__1
+              パスワード確認：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
+      .user__new__questionnaires
+        .user__new__questionnaires-title
+          \\  カロリー設定 　/
+        .user__new__questionnaires-main.u-pt30
+          %ul.user__new__questionnaire
+            %li.user-question.clearfix
+              .user-question-1.col-sm-2
+                生年月日
+              .user-question-2.col-sm-10
+                = f.select :birth_year, User.year_list, :selected => "1980"
+                = f.select :birth_month, User.month_list
+                = f.select :birth_day, User.day_list
+            %li.user-question.clearfix
+              .user-question-1.col-sm-2
+                身長
+              .user-question-2.col-sm-10
+                = f.text_field :height, placeholder:'身長を入力', rows:'2'
+                cm
+            %li.user-question.clearfix
+              .user-question-1.col-sm-2
+                体重
+              .user-question-2.col-sm-10
+                = f.text_field :weight, placeholder:'体重を入力', rows:'2'
+                kg
+            %li.user-question.clearfix
+              .user-question-1.col-sm-2
+                身体活動チェック
+              .user-question-2.col-sm-10
+                = f.radio_button :active_level, "25", class:"active_level"
+                低い
+                %br
+                (生活の大部分が座位で、静的な活動が中心の場合)
+                %br
+                = f.radio_button :active_level, "30", class:"active_level"
+                標準
+                %br
+                (座位中心の仕事だが、職場内での移動や立位での作業・接客等、あるいは通勤・買物・家事・軽いスポーツ等のいずれかを含む場合)
+                %br
+                = f.radio_button :active_level, "35", class:"active_level"
+                高い
+                %br
+                (移動や立位の多い仕事への従事者。あるいは、スポーツなど余暇における運動習慣を持っている場合)
+            %li.user-question.clearfix
+              .user-question-1.col-sm-2
+                献立作成時の
+                %br
+                カロリー設定の選択
+              .user-question-2.col-sm-10
+                = f.check_box :calorie_setting
+                現在の体重を維持するために必要なカロリー (あなたの現在の体重：
+                .user-current-weight kg)
+                .user-question-2__border.user-question-2__border--half
+                  .user-question-2_1 
+                  kcal(1食あたり)/
+                  .user-question-2_2 
+                  kcal(1日あたり)
+                  %br
+                = f.check_box :calorie_setting
+                標準体重を目標とした場合のカロリー (あなたの標準体重：
+                .user-standard-weight kg)
+                %br
+                ※標準体重(kg) = 身長(m) × 身長(m) × 22
+                .user-question-2__border.user-question-2__border--half
+                  .user-question-2_3 
+                  kcal(1食あたり)/
+                  .user-question-2_4 
+                  kcal(1日あたり)
+                  %br
+                = f.check_box :calorie_setting
+                自分でカロリーを設定する
+                .user-question-2__border
+                  = f.select :self_setting_calorie, User.calorie_list
+                  kcal(1食あたり)/kcal(1日あたり)
+                  %br
+                  ※設定可能な値は以下の理由にて制限しています。
+                  %br
+                  下限値：一般的に健康上、1日のカロリーは1200kcal以上が望ましいためです。
+                  %br
+                  上限値：一般的に１食あたり1200kcal以上での摂取は、体に負担がかかりやすく健康上あまり好ましくないため、１日の上限値は3600kcalとしています。
+                  %br
+      .user__new__submit
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
+  - else
+    = hidden_field_tag :u_n, 2
+    = f.hidden_field :permission, :value => 1
+
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        管理栄養士 ユーザー編集
+      .user__new__image-main.clearfix
+        .user__new__image.col-sm-3.imgInput
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__main.col-sm-9
+          .user__new__name.clearfix
+            .user__new__1
+              ユーザー名：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+          .user__new__email.clearfix.u-pt30
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix.u-pt30
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+          .user__new__password-comfirmation.clearfix.u-pt30
+            .user__new__1
+              パスワード確認：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 572px;height: 35px;"
+        .user__new__nutritionist_description.clearfix.col-sm-12.u-mt50
+          .user__new__1
+            自己紹介文：
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_area :nutritionist_description, class:'edit-field', placeholder:'自己紹介文を入力', style:'width: 80%;height: 100px;'
+      .user__new__submit.u-pt30
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  - if params[:u_n] == "1"
+    = hidden_field_tag :u_n, 1
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .user__new__title
+        ユーザー編集
+      .mobile-user__new__main.clearfix
+        .user__new__name
+          .user__new__1
+            ユーザー名
+          .c-essential
+            必須
+          .user__new__2.user__new__2--border
+            = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+        .user__new__sex
+          .user__new__1
+            性別
+          .user__new__2
+            = f.radio_button :gender, "1" 
+            男
+            = f.radio_button :gender, "2" 
+            女
+        .user__new__image.imgInput
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__email
+          .user__new__1
+            メールアドレス
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password
+          .user__new__1
+            パスワード
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+        .user__new__password-comfirmation
+          .user__new__1
+            パスワード確認
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
+      .user__new__questionnaires
+        .user__new__questionnaires-title
+          \\  カロリー設定 　/
+        .user__new__questionnaires-main.u-pt30
+          %ul.user__new__questionnaire
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                生年月日
+              .user-question-2.col-xs-8
+                = f.select :birth_year, User.year_list, :selected => "1980"
+                = f.select :birth_month, User.month_list
+                = f.select :birth_day, User.day_list
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                身長
+              .user-question-2.col-xs-8
+                = f.text_field :height, placeholder:'身長を入力', style:'width: 100%;'
+                cm
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                体重
+              .user-question-2.col-xs-8
+                = f.text_field :weight, placeholder:'体重を入力', style:'width: 100%;'
+                kg
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                身体活動チェック
+              .user-question-2.col-xs-8
+                = f.radio_button :active_level, "25", class:"active_level"
+                低い
+                .calorie_description
+                  (生活の大部分が座位で、静的な活動が中心の場合)
+                %br
+                = f.radio_button :active_level, "30", class:"active_level"
+                標準
+                .calorie_description
+                  (座位中心の仕事だが、職場内での移動や立位での作業・接客等、あるいは通勤・買物・家事・軽いスポーツ等のいずれかを含む場合)
+                %br
+                = f.radio_button :active_level, "35", class:"active_level"
+                高い
+                .calorie_description
+                  (移動や立位の多い仕事への従事者。あるいは、スポーツなど余暇における運動習慣を持っている場合)
+            %li.user-question.clearfix
+              .user-question-1.col-xs-4
+                献立作成時の
+                %br
+                カロリー設定の選択
+              .user-question-2.col-xs-8
+                = f.check_box :calorie_setting
+                現在の体重を維持するために必要なカロリー (あなたの現在の体重：
+                .user-current-weight kg)
+                .user-question-2__border
+                  .user-question-2_1 
+                  kcal(1食あたり)/
+                  .user-question-2_2 
+                  kcal(1日あたり)
+                  %br
+                = f.check_box :calorie_setting
+                標準体重を目標とした場合のカロリー (あなたの標準体重：
+                .user-standard-weight kg)
+                %br
+                ※標準体重(kg) = 身長(m) × 身長(m) × 22
+                .user-question-2__border
+                  .user-question-2_3 
+                  kcal(1食あたり)/
+                  .user-question-2_4 
+                  kcal(1日あたり)
+                  %br
+                = f.check_box :calorie_setting
+                自分でカロリーを設定する
+                .user-question-2__border
+                  = f.select :self_setting_calorie, User.calorie_list
+                  kcal(1食あたり)/kcal(1日あたり)
+                  .calorie_description
+                    ※設定可能な値は以下の理由にて制限しています。
+                  .calorie_description
+                    下限値：一般的に健康上、1日のカロリーは1200kcal以上が望ましいためです。
+                  .calorie_description
+                    上限値：一般的に１食あたり1200kcal以上での摂取は、体に負担がかかりやすく健康上あまり好ましくないため、１日の上限値は3600kcalとしています。
+                  %br
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save'
+  - else
+    = hidden_field_tag :u_n, 2
+    = f.hidden_field :permission, :value => 1
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .mobile-user__new__title
+        管理栄養士 ユーザー編集
+      .mobile-user__new__main.clearfix
+        .user__new__name
+          .user__new__1
+            ユーザー名
+          .c-essential
+            必須
+          .user__new__2.user__new__2--border
+            = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
+        .user__new__image.user__new__image__nutritionist.imgInput
+          = f.file_field :image
+          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+        .user__new__email
+          .user__new__1
+            メールアドレス
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password
+          .user__new__1
+            パスワード
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+        .user__new__password-comfirmation
+          .user__new__1
+            パスワード確認
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password_confirmation, placeholder:'パスワードをもう一度入力', style:"width: 200px;height: 35px;"
+        .user__new__nutritionist_description.clearfix.u-pt20
+          .user__new__1
+            自己紹介文：
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_area :nutritionist_description, class:'edit-field', placeholder:'自己紹介文を入力', style:'width: 100%;height: 100px;'
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save'

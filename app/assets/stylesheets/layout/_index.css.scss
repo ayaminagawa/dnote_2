@@ -1,11 +1,11 @@
 //トップページレイアウト
 .index__main{
-  width: 65%;
+  width: 75%;
   float: left;
 }
 
 .index__side{
-  width: 35%;
+  width: 25%;
   float: left;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .index-main__picture{
-  background-size: cover;
+  @include background-resize;
 }
 
 .mobile-ranking-item__image{
@@ -225,6 +225,8 @@
 .mobile-index-main__contents--recipe-category__item{
   background-color: #FFFFFF;
   border-right: 4px solid #E8E1CA;
+  height: 50px;
+  line-height: 50px;
 }
 
 .mobile-index-main__contents--recipe-category__item a{

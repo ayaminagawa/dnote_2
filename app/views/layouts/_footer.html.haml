@@ -1,9 +1,9 @@
-%footer#footer.u-pt50
-  .footer-inner
-    #fotter__logo.hidden-xs
+%footer#footer
+  .footer-inner.clearfix
+    #fotter__logo.hidden-xs.u-pt50
       = link_to image_tag("D-note_03_06.png" , class: "logo", alt: "dnote", height: "110px"), about_path
-    #footer__nav.hidden-xs.u-pt30
-      %ul.footer__nav__list
+    #footer__nav.hidden-xs.u-pt30.clearfix.col-sm-6.col-sm-offset-3
+      %ul.footer__nav__list.col-sm-4
         %li.footer__nav__list__content
           = link_to new_recipe_path do
             %i.fa.fa-caret-right
@@ -24,7 +24,7 @@
           = link_to security_information_path do
             %i.fa.fa-caret-right
             情報セキュリティ基本方針
-      %ul.footer__nav__list
+      %ul.footer__nav__list.col-sm-4
         %li.footer__nav__list__content
           = link_to recipes_path do
             %i.fa.fa-caret-right
@@ -37,7 +37,7 @@
           = link_to columns_path do
             %i.fa.fa-caret-right
             コラム一覧
-      %ul.footer__nav__list
+      %ul.footer__nav__list.col-sm-4
         %li.footer__nav__list__content
           = link_to calories_path do
             %i.fa.fa-caret-right
@@ -50,9 +50,9 @@
 
 
     //モバイル
-    #sp-fotter__logo.visible-xs
+    #sp-fotter__logo.visible-xs.u-pt10
       = link_to image_tag("sp-footer-logo.png" , class: "logo", alt: "dnote", height: "50px"), about_path
-    #sp-footer__nav.visible-xs
+    #sp-footer__nav.visible-xs.u-pt10
       %ul.sp-footer__nav__list
         %li.sp-footer__nav__list__content.col-xs-6
           = link_to '運営会社', company_path

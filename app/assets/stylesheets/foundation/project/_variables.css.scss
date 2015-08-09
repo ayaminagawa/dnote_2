@@ -8,3 +8,21 @@ $dark-brown: #3B170B;
 $brown: #8E7461;
 $grey: #8D8173;
 $beige: #E2D8C2;
+
+
+
+// ==========================================================================
+// Mixin
+// ==========================================================================
+@mixin antialias {
+  -webkit-font-smoothing: antialiased;
+     -moz-font-smoothing: antialiased;
+      -ms-font-smoothing: antialiased;
+       -o-font-smoothing: antialiased;
+          font-smoothing: antialiased;
+}
+
+@mixin background-resize {
+  background-size: cover;
+  background-position: center;
+}

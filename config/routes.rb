@@ -1,6 +1,10 @@
 Dnote2::Application.routes.draw do
 
   get "/nutritionist_show" ,to: "users#nutritionist_show"
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  get "/nutritionist_show" ,to: "users#nutritionist_show"
   
   get "contacts/new"
   post "contacts/create"
@@ -43,6 +47,7 @@ Dnote2::Application.routes.draw do
   get '/kinds', to:'recipes#recipe_kinds'
   get '/categories', to:'recipes#recipe_categories'
   get '/calories', to:'recipes#calories'
+  get '/search', to:'recipes#search'
 
   get '/menu_recipes', to:'menus#menu_recipes'
 

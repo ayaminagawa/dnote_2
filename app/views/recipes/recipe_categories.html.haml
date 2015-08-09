@@ -1,4 +1,4 @@
-#recipe__index__box.clearfix.hidden-xs
+#recipe__index__box.clearfix.hidden-xs.container
   .recipe__index__main
     .recipe__index__top
       .index-main__top__english
@@ -12,12 +12,10 @@
         %p.c-circle.c-large.u-beige-2 一
         %p.c-circle.c-large.u-beige-2 覧
     .recipe__index__tab.clearfix
-      .contents-inner__cover.contents-inner__cover--tab.step-list.active.clearfix
-        .recipe__index__tab-recipe
-          レシピ
-      .contents-inner__cover.contents-inner__cover--tab.step-list.clearfix
-        .recipe__index__tab-menu
-          献立
+      .recipe__index__tab-recipe.step-list.active.clearfix
+        レシピ
+      .recipe__index__tab-menu.step-list.clearfix
+        献立
     .contents-inner__cover.contents-inner__cover--recipe-index
       .recipe__index__items.clearfix
         .recipe__index__items-title
@@ -33,9 +31,9 @@
 #mobile-recipe__index__box.clearfix.visible-xs
   .mobile-recipe__index__top
     .index-main__top.clearfix
-      .index-main__top__english
+      .index-main__top__english.u-pt10.u-pl10
         %p Recipe & Menu
-      .mobile-index-main__top__japanese
+      .mobile-index-main__top__japanese.u-pl10
         %p.u-white-1.c-circle.c-mobile.u-pink-2 レ
         %p.u-white-1.c-circle.c-mobile.u-pink-2 シ
         %p.u-white-1.c-circle.c-mobile.u-pink-2 ピ
@@ -44,16 +42,16 @@
         %p.c-circle.c-mobile.u-grey-2 一
         %p.c-circle.c-mobile.u-grey-2 覧
     .mobile-recipe__index__top-button
-      .mobiile-recipe__top-button-item.step-list.active
+      .mobiile-recipe__top-button-item.mobile-step-list.active
         レシピ
-      .mobiile-recipe__top-button-item.step-list
+      .mobiile-recipe__top-button-item.mobile-step-list
         献立
   %ul.mobile-recipe__index__contents.u-white-2
     .recipe__index__items-title
       = Recipe.categories[@category]
-    .recipe__index__item-recipe.main.active
+    .recipe__index__item-recipe.mobile-main.active
       - @categories.each do |category|
         = render 'recipes/recipe', recipe: category
-    .recipe__index__item-menu.main
+    .recipe__index__item-menu.mobile-main
       - @menu_categories.each do |menu_category|
         = render 'menus/menu', menu: menu_category

@@ -1,0 +1,17 @@
+#tsukurepo-modal
+  .tsukurepo-modal__box.clearfix
+    = form_for(@made_report) do |f|
+      .tsukurepo__top.clearfix
+        .tsukurepo-title.u-left
+          作ったよ
+        #close-tsukurepo.u-right
+          ×
+      .tsukureo__image.col-sm-6.imgInput
+        = f.file_field :image
+        = image_tag("no_image.png", :class => "imgView ", :size => "150x150")
+      .tsukurepo__message.col-sm-6
+        コメント(任意)
+        = f.text_area :message, class:'edit-field', placeholder:'コメントを入力する', cols:'30'
+      = f.hidden_field :recipe_id, :value => @recipe.id
+      .tsukurepo__submit
+        = f.submit "作ったよ", class: 'c-submit tsukurepo__submit'

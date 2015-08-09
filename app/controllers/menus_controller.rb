@@ -54,7 +54,7 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
-      if @menu.update(menu_params)
+      if @menu.update(update_menu_params)
         redirect_to(menu_path(@menu))
       else
         format.html { render action: 'edit' }
@@ -80,5 +80,9 @@ class MenusController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
       params.require(:menu).permit(:name, :point, :category, :image, category_selects_attributes: [:id, :category_number2, :category_number3, :category_number4, :category_number5, :category_number6], menu_recipes_attributes: [:id, :recipe_id])
+    end
+
+    def update_menu_params
+      params.require(:menu).permit(:name, :point, :category, :image, category_selects_attributes: [:id, :category_number2, :category_number3, :category_number4, :category_number5, :category_number6])
     end
   end

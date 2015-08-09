@@ -1,0 +1,42 @@
+#tsukurepo-modal{
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width:100%;
+}
+
+.tsukurepo-modal__box{
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  padding: 50px 0;
+  border-radius: 10px;
+  width: 600px;
+  height: 350px;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.tsukurepo-title{
+  font-size: 20px;
+  color: $yellow;
+}
+
+.tsukurepo__top{
+  border-bottom: 3px dotted $pink;
+  margin-bottom: 30px;
+}
+
+.tsukurepo__submit{
+  margin-top: 53px;
+}
+
+#close-tsukurepo{
+  font-size: 20px;
+}
