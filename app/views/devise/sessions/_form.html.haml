@@ -1,0 +1,100 @@
+.user__new__top.u-mt30
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = devise_error_messages!
+  - if params[:u_n] == "1"
+    = hidden_field_tag :u_n, 1
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        ユーザーログイン
+      .user__new__image-main.clearfix
+        .user__new__image.col-sm-3.imgInput
+          = f.file_field :image
+          .user__new__no-image.imgView 
+        .user__new__main.col-sm-9
+          .user__new__email.clearfix
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"     
+      .user__new__submit
+        = f.submit "ログインする", name: 'save', class: 'c-submit'
+  - else
+    = hidden_field_tag :u_n, 2
+    = f.hidden_field :permission, :value => 1
+
+    .user__new__contents.u-mb30.hidden-xs
+      .user__new__title
+        管理栄養士 ログイン
+      .user__new__image-main.clearfix 
+        .user__new__main.col-sm-9
+          .user__new__email.clearfix.u-pt30
+            .user__new__1
+              メールアドレス：
+            .c-essential
+              必須
+            .user__new__2
+              = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+          .user__new__password.clearfix.u-pt30
+            .user__new__1
+              パスワード：
+            .c-essential
+              必須
+            .user__new__2
+              = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 572px;height: 35px;"
+      .user__new__submit.u-pt50
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  - if params[:u_n] == "1"
+    = hidden_field_tag :u_n, 1
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .user__new__title
+        ユーザーログイン
+      .mobile-user__new__main.clearfix
+        .user__new__email
+          .user__new__1
+            メールアドレス
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password
+          .user__new__1
+            パスワード
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'
+  - else
+    = hidden_field_tag :u_n, 2
+    = f.hidden_field :permission, :value => 1
+    .mobile-user__new__contents.u-mb30.visible-xs
+      .mobile-user__new__title
+        管理栄養士 ログイン
+      .mobile-user__new__main.clearfix
+        .user__new__email
+          .user__new__1
+            メールアドレス
+          .c-essential
+            必須
+          .user__new__2
+            = f.text_field :email, class:'', placeholder:'メールアドレス', style:"width: 100%;height: 35px;"
+        .user__new__password
+          .user__new__1
+            パスワード
+          .c-essential
+            必須
+          .user__new__2
+            = f.password_field :password, placeholder:'パスワード　6〜20桁で', style:"width: 200px;height: 35px;"
+      .user__new__submit.u-mt10
+        = f.submit "会員登録する", name: 'save', class: 'c-submit'

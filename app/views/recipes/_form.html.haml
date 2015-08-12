@@ -29,7 +29,8 @@
       .recipe__new__image.col-sm-5.imgInput.u-bold
         写真
         = f.file_field :image
-        = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
+        .recipe__new__nophoto.imgView
+        / = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
       .recipe__new__ingredient.col-sm-7
         .recipe__new__ingredient-people.col-sm-6.u-bold
           材料の人数
@@ -171,7 +172,7 @@
       .recipe__new__image.imgInput
         写真
         = f.file_field :image
-        = image_tag("no_image.png", :class => "imgView", :size => "250x200") 
+        .mobile-recipe__new__nophoto.imgView
       .recipe__new__ingredient.u-mt10.u-pt10
         .recipe__new__ingredient-people.col-xs-6
           材料の人数<br>

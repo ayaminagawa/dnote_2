@@ -83,6 +83,34 @@
   margin-top: 28px;
 }
 
+.recipe__new__nophoto{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*11;
+  height: $image_height*11;
+}
+
+.mobile-recipe__new__nophoto{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*8;
+  height: $image_height*8;
+}
+
+.ingredient__image{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*6;
+  height: $image_height*6;
+}
+
+.mobile-ingredient__image{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*8;
+  height: $image_height*8;
+}
+
 
 //モバイル
 

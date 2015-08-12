@@ -9,7 +9,7 @@
       .user__new__image-main.clearfix
         .user__new__image.col-sm-3.imgInput
           = f.file_field :image
-          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+          .user__new__no-image.imgView 
         .user__new__main.col-sm-9
           .user__new__name.clearfix
             .user__new__1
@@ -139,7 +139,7 @@
       .user__new__image-main.clearfix
         .user__new__image.col-sm-3.imgInput
           = f.file_field :image
-          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+          .user__new__no-image.imgView 
         .user__new__main.col-sm-9
           .user__new__name.clearfix
             .user__new__1
@@ -202,7 +202,7 @@
             女
         .user__new__image.imgInput
           = f.file_field :image
-          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+          .user__new__no-image.imgView 
         .user__new__email
           .user__new__1
             メールアドレス
@@ -322,7 +322,7 @@
             = f.text_field :name, class:'', placeholder:'ユーザー名', rows:'10', style:"width: 100%;height: 35px;"
         .user__new__image.user__new__image__nutritionist.imgInput
           = f.file_field :image
-          = image_tag("no_image.png", :class => "imgView", :size => "250x250") 
+          .user__new__no-image.imgView 
         .user__new__email
           .user__new__1
             メールアドレス

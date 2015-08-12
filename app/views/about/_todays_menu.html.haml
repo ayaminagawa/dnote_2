@@ -37,7 +37,7 @@
   .index-main__contents
     .mobile-index-main__contents__image
       = link_to menu_path(@todays_menu) do
-        .index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
+        .mobile-index-main__picture{style:"background-image: url(#{@todays_menu.image.url(:original)});"}
     .mobile-index-main__contents__name
       = link_to @todays_menu.name, menu_path(@todays_menu)
     .mobile-index-main__recipe

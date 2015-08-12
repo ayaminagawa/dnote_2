@@ -53,10 +53,11 @@
 
 .index-main__picture{
   padding: 10px;
-  width: auto;
-  height: 250px;
+  width: $image_width*11;
+  height: $image_height*11;
   z-index: 100;
   position: relative;
+  @include background-resize;
 }
 
 .index-main__recipe--name a{
@@ -129,7 +130,9 @@
 }
 
 .ranking-item__image{
-  height: 200px;
+  width: $image_width*10;
+  height: $image_height*10;
+  @include background-resize;
 }
 
 .index-main__top--ranking{
@@ -153,6 +156,15 @@
 .mobile-index-main{
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.mobile-index-main__picture{
+  padding: 10px;
+  width: auto;
+  height: auto;
+  z-index: 100;
+  position: relative;
+  @include background-resize;
 }
 
 .index__top img{
@@ -208,12 +220,10 @@
   border-bottom: 1px solid #EBE1CA;
 }
 
-.index-main__picture{
-  @include background-resize;
-}
-
 .mobile-ranking-item__image{
-  height: 80px;
+  width: $image_width*4;
+  height: $image_height*4;
+  @include background-resize;
 }
 
 .mobile-ranking-item__top{

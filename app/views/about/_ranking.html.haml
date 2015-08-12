@@ -59,10 +59,10 @@
               = i
             .mobile-ranking-item__top.u-white-1.c-circle.c-small.u-pink-2
               位
-          .mobile-ranking-item__image.col-xs-5
+          .mobile-ranking-item__image.col-xs-7
             = link_to recipe_path(favorite_recipe) do 
               .mobile-ranking-item__image{style:"background-image: url(%{favorite_recipe.image.url});"}
-          .mobile-ranking-item__name.col-xs-7
+          .mobile-ranking-item__name.col-xs-5
             = link_to favorite_recipe.name, recipe_path(favorite_recipe)
             .mobile-ranking-item__description
               = favorite_recipe.description

@@ -22,7 +22,7 @@
           写真
         .menu__new__descroption-2.imgInput.u-pt50
           = f.file_field :image
-          = image_tag("no_image.png", :class => "imgView", :size => "300x250") 
+          .menu__new__no-image.imgView
       .menu__new__description.col-sm-6.u-pt30
         .menu__new__descroption-1.u-bold
           献立のポイント
@@ -85,7 +85,7 @@
       写真
     .menu__new__descroption-2.imgInput
       = f.file_field :image
-      = image_tag("no_image.png", :class => "imgView", :style => "width: 100%; height: 200px;") 
+      .mobile-menu__new__no-image.imgView 
     .menu__new__descroption-category
       .menu__new__description
         .menu__new__descroption-1

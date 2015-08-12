@@ -76,6 +76,20 @@
   display: inline-block;
 }
 
+.menu__new__no-image{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*11;
+  height: $image_height*11;
+}
+
+.mobile-menu__new__no-image{
+  background-image: url('no_image.png');
+  @include background-resize;
+  width: $image_width*8;
+  height: $image_height*8;
+}
+
 //モバイル
 
 .mobile-menu__new__contents{

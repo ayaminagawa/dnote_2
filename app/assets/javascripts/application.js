@@ -40,7 +40,7 @@ $(function(){
           return;
         } else {
           fileRdr.onload = function() {
-            prevElm.attr('src', fileRdr.result);
+            prevElm.attr('style', 'background-image:url(\'' +fileRdr.result + '\')');
           }
           fileRdr.readAsDataURL(file);
         }
